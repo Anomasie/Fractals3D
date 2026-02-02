@@ -1,11 +1,11 @@
 extends Marker3D
 
-var SPEED = 0.5
+var SPEED = 0.2
 
 @onready var CamPositioner = $CamPositioner
 
 func _process(delta):
-	self.rotation.y += delta * SPEED
+	self.rotate_y(delta * SPEED)
 
 func _input(event):
 	if event.is_action_pressed("scroll_out") and CamPositioner.position.length() > 0:

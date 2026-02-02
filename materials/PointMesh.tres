@@ -1,8 +1,5 @@
-[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://c5noae00wqem4"]
-
-[ext_resource type="Material" uid="uid://dy1grmdde171o" path="res://materials/ToonMetallic.tres" id="1_vri88"]
+[gd_resource type="SphereMesh" format=3 uid="uid://c5noae00wqem4"]
 
 [resource]
-material = ExtResource("1_vri88")
-radius = 0.01
-height = 0.02
+radius = 0.04
+height = 0.08

@@ -2,13 +2,43 @@ class_name Math
 
 #const VECTOR_EPSILON = 0.00001
 
+static func multiply(obj1, obj2):
+	if typeof(obj1) == TYPE_FLOAT:
+		print("Path 1")
+		return scalar_mult(obj1, obj2)
+	elif typeof(obj1) == TYPE_ARRAY:
+		if typeof(obj2) == TYPE_ARRAY:
+			print("Path 2a")
+			return matrix_mult(obj1, obj2)
+		elif typeof(obj2) == TYPE_VECTOR3:
+			print("Path 2b")
+			return apply_matrix(obj1, obj2)
+
+static func apply_matrix(A, x):
+	var result = matrix_mult(A, [[x.x], [x.y], [x.z]])
+	return Vector3(result[0][0], result[1][0], result[2][0])
+
 static func matrix_mult(A, B):
-	return [
-		A[0]*B[0] + A[1]*B[2],
-		A[0]*B[1] + A[1]*B[3],
-		A[2]*B[0] + A[3]*B[2],
-		A[2]*B[1] + A[3]*B[3]
-	]
+	if len(A[0]) == len(B):
+		var result = []
+		for i in len(A):
+			var row = []
+			for j in len(B[0]):
+				var sum = 0
+				for k in len(A[0]):
+					sum += A[i][k] * B[k][j]
+				row.append(sum)
+			result.append(row)
+		return result
+	print("ERROR in Math.matrix_mult: dimension error because trying to multiply ", A, " and ", B)
+
+static func scalar_mult(alpha, x):
+	if typeof(x) == TYPE_ARRAY:
+		var result = []
+		for something in x:
+			result.append(multiply(alpha, something))
+		return result
+	return alpha * x
 
 static func are_equal_approx(A, B):
 	if typeof(A) != typeof(B):

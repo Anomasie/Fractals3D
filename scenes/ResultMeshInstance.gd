@@ -7,9 +7,43 @@ signal drew_points
 @export var radius := 0.005
 
 func _ready():
-	print("loaded!")
+	var math = Math.new()
 	var my_ifs = IFS.random_ifs()
-	draw_points(my_ifs.calculate_fractal(point.new(), 10000))
+	
+	var R = [
+		[0,0,-1],
+		[0,1,0],
+		[1,0,0]
+	]
+	var R2 = [
+		[-0.5, -sqrt(3)/2, 0],
+		[sqrt(3)/2, -0.5, 0],
+		[0,0,1]
+	]
+	var R3 = [
+		[-0.5, sqrt(3)/2, 0],
+		[-sqrt(3)/2, -0.5, 0],
+		[0,0,1]
+	]
+	var t = Vector3(0, sqrt(3)/3, 0)
+	
+	var con1 = Contraction.new()
+	print("START!")
+	con1.matrix = math.multiply(2.0/3, R)
+	con1.translation = t
+	var con2 = Contraction.new()
+	con2.matrix = math.multiply(2.0/3, math.multiply(R2, R))
+	con2.translation = math.multiply(R2, t)
+	var con3 = Contraction.new()
+	con3.matrix = math.multiply(2.0/3, math.multiply(R3, R))
+	con3.translation = math.multiply(R3, t)
+	
+	print("1: ", con1.matrix)
+	print("2: ", con2.matrix)
+	print("3: ", con3.matrix)
+	
+	my_ifs.systems = [con1, con2, con3]
+	draw_points(my_ifs.calculate_fractal(point.new(), 3000))
 	await Engine.get_main_loop().process_frame
 	drew_points.emit(self.get_aabb().size)
 

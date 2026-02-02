@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cothr5kp6sd3u"]
+
+[ext_resource type="Script" uid="uid://ct22d48uyjku8" path="res://Playground.gd" id="1_ptgk4"]
+
+[node name="Playground" type="Node3D"]
+script = ExtResource("1_ptgk4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 10, 10, 10)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7645635, 0.5950729, 0.24765062, -0.644229, 0.71762043, 0.2645561, -0.020288967, -0.36181366, 0.9320296, 0, 17.279068, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018432617, 0.14804077, -1.0845947)
+size = Vector3(11.058838, 15.200256, 7.937744)

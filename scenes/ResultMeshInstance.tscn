@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b00d650tpnyy5"]
+
+[ext_resource type="Script" uid="uid://bfnsbl8x3gklu" path="res://scenes/ResultMeshInstance.gd" id="1_eh7m7"]
+[ext_resource type="SphereMesh" uid="uid://c5noae00wqem4" path="res://materials/PointMesh.tres" id="2_0w7kf"]
+
+[node name="ResultMeshInstance" type="MultiMeshInstance3D"]
+script = ExtResource("1_eh7m7")
+PMesh = ExtResource("2_0w7kf")

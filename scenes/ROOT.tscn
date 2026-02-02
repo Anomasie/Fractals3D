@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://7bgwgslqm6hl"]
+
+[ext_resource type="PackedScene" uid="uid://cothr5kp6sd3u" path="res://scenes/Playground3D.tscn" id="1_oo85p"]
+[ext_resource type="PackedScene" uid="uid://r5cpr0yi4ukk" path="res://scenes/Result3D.tscn" id="2_sfemp"]
+
+[node name="ROOT" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Playground" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_oo85p")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SubViewport2" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+own_world_3d = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Playground" parent="HBoxContainer/SubViewportContainer2/SubViewport2" instance=ExtResource("2_sfemp")]

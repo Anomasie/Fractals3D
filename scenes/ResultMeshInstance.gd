@@ -3,13 +3,12 @@ extends MultiMeshInstance3D
 
 signal drew_points
 
-@export var PMesh : Mesh
-@export var radius := 0.005
+#@export var PMesh : Mesh
+#@export var radius := 0.005
 
-func _ready():
-	var math = Math.new()
-	var my_ifs = IFS.random_ifs()
+func maxis_ifs():
 	
+	var math = Math.new()
 	var R = [
 		[0,0,-1],
 		[0,1,0],
@@ -42,29 +41,36 @@ func _ready():
 	print("2: ", con2.matrix)
 	print("3: ", con3.matrix)
 	
-	my_ifs.systems = [con1, con2, con3]
-	draw_points(my_ifs.calculate_fractal(point.new(), 3000))
+	return [con1, con2, con3]
+
+func _ready():
+	var my_ifs = IFS.random_ifs()
+	my_ifs.systems = maxis_ifs()
+	draw_points(my_ifs.calculate_fractal(point.new(), 500000))
 	await Engine.get_main_loop().process_frame
 	drew_points.emit(self.get_aabb().size)
 
 func draw_points(points):
-	var mesh = MultiMesh.new()
-
-	mesh.transform_format = MultiMesh.TRANSFORM_3D
-	mesh.instance_count = len(points)+1
-
-	# Sphere mesh
-	mesh.mesh = PMesh
-
+	multimesh = MultiMesh.new()
+	multimesh.transform_format = MultiMesh.TRANSFORM_3D
+	multimesh.use_colors=true
+	var pmesh = PointMesh.new()
+#	var material := StandardMaterial3D.new()
+#	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+#	material.albedo_color=Color(1,1,1)
+#	material.point_size=1
+#	material.vertex_color_use_as_albedo=true
+#	pmesh.material=material    
+	pmesh.material = load("res://scenes/Shadow.tres")
+	
+	multimesh.mesh=pmesh
+	multimesh.instance_count = len(points)
+	
 	var i = 0
 	for p in points:
-		var pos = Vector3(
-			p.position.x,
-			p.position.z,
-			p.position.y
-		)
+		var pos = p.position
 		i += 1
-		var transf = Transform3D(Basis(), pos)
-		mesh.set_instance_transform(i, transf)
-
-	self.multimesh = mesh
+		multimesh.set_instance_color(i,Color.WHITE)#Color.BLACK+pos.y*Color.WHITE)
+		multimesh.set_instance_transform(i, Transform3D(Basis(), pos))
+	
+	#self.multimesh = pmesh

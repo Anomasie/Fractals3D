@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/GLOBAL.gd"
 
+[gui]
+
+theme/custom="uid://c42j2c4nk8yk"
+theme/custom_font="uid://b0sulbmd2h3ww"
+
 [input]
 
 scroll_out={
@@ -34,5 +39,6 @@ scroll_in={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

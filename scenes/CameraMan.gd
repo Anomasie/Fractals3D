@@ -1,3 +1,4 @@
+#tool
 extends Marker3D
 
 var SPEED = 0.2

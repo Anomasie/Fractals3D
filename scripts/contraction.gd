@@ -1,5 +1,7 @@
 class_name Contraction
 
+const PRINT_ERRORS = false
+
 var translation = Vector3.ZERO
 var matrix = [
 	[ 0.5, 0, 0],
@@ -7,6 +9,9 @@ var matrix = [
 	[ 0, 0, 0.5]
 ]
 var color = Color.BLACK
+
+func _ready():
+	print("in CONTRACTION: PRINT_ERRORS is ", PRINT_ERRORS)
 
 static func random_contraction():
 	var contraction = Contraction.new()
@@ -16,7 +21,7 @@ static func random_contraction():
 		[ 0, randf(), 0],
 		[ 0, 0, randf()]
 	]
-	print("in Contraction: TODO")
+	if PRINT_ERRORS: print("in Contraction: TODO")
 	contraction.color = Color.from_hsv(randf(), randf(), randf())
 	return contraction
 

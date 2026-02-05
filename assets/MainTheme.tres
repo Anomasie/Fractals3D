@@ -1,0 +1,78 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://c42j2c4nk8yk"]
+
+[ext_resource type="FontFile" uid="uid://b0sulbmd2h3ww" path="res://assets/dogicapixel-new.ttf" id="1_scyhq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afnlq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4yvbc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ut4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bliwb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kkuj4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnocd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s15ey"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji2de"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2q2v"]
+bg_color = Color(0, 0, 0, 0)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("1_scyhq")
+default_font_size = 20
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(0.533333, 0.94902, 0.94902, 1)
+Button/colors/font_pressed_color = Color(0, 0.72549, 0.72549, 1)
+Button/constants/outline_size = 8
+Button/styles/disabled = SubResource("StyleBoxEmpty_afnlq")
+Button/styles/focus = SubResource("StyleBoxEmpty_4yvbc")
+Button/styles/hover = SubResource("StyleBoxEmpty_5ut4m")
+Button/styles/normal = SubResource("StyleBoxEmpty_bliwb")
+Button/styles/pressed = SubResource("StyleBoxEmpty_kkuj4")
+HBoxContainer/constants/separation = 16
+Label/constants/outline_size = 8
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_outline_color = Color(1, 1, 1, 0)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.501961)
+LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
+LineEdit/constants/caret_width = 2
+LineEdit/styles/focus = SubResource("StyleBoxFlat_pnocd")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_s15ey")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_ji2de")
+MarginContainer/constants/margin_bottom = 16
+MarginContainer/constants/margin_left = 16
+MarginContainer/constants/margin_right = 16
+MarginContainer/constants/margin_top = 16
+RichTextLabel/colors/selection_color = Color(0, 0.72549, 0.72549, 0.768627)
+TextButton/base_type = &"Button"
+TextButton/colors/font_disabled_color = Color(1, 1, 1, 1)
+TextButton/styles/disabled = SubResource("StyleBoxFlat_u2q2v")
+VBoxContainer/constants/separation = 16

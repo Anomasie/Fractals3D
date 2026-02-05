@@ -1,5 +1,7 @@
 class_name IFS
 
+const PRINT_ERRORS = false
+
 const ACCURACY = 0.0000001
 
 var systems = [] # array of contractions
@@ -10,6 +12,9 @@ var reusing_last_point = false
 var centered_view = false
 
 # random ifs
+
+func _ready():
+	print("IN IFS: PRINT_ERRORS is ", PRINT_ERRORS)
 
 static func random_ifs(centered = (randf() <= 0.5), len_systems = randi() % 5 + randi() % 5 + 1):
 	var ifs = IFS.new()
@@ -125,6 +130,6 @@ func get_distribution():
 	var distribution = []
 	for function in systems:
 		sum += 1
-		print("in ifs: TODO distributions")#function.contract.x * function.contract.y
+		if PRINT_ERRORS: print("in ifs: TODO distributions")#function.contract.x * function.contract.y
 		distribution.append(sum)
 	return distribution

@@ -12,7 +12,7 @@ const SAVE_PATH = "res://"
 const GALLERY_ADRESS = "https://gallery.fracmi.cc/g/ifs"
 ## ResultUI
 const DEFAULT_DELAY = 10
-const DEFAULT_POINTS = 1000000
+const DEFAULT_POINTS = 500000
 
 var language = "GER"
 

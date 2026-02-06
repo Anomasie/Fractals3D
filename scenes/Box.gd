@@ -9,16 +9,29 @@ var original_position = Vector3.ZERO
 var editing_face = Vector3.ZERO
 var drag_center = Vector3.ZERO # point on which the face / edge was clicked
 
+@onready var FaceAreas = [
+	$Area100, $Area200,
+	$Area010, $Area020,
+	$Area001, $Area002
+]
+
 func focus():
 	print("focusing!")
 	focused = true
 	self.material.albedo_color.a = 0.5
 	BoxArea.hide()
+	for Area in FaceAreas:
+		Area.show()
 
 func defocus():
 	focused = false
 	self.material.albedo_color.a = 1.0
 	BoxArea.show()
+	for Area in FaceAreas:
+		Area.hide()
+
+func _ready():
+	defocus()
 
 func _process(_delta):
 	if editing_face:

@@ -52,6 +52,5 @@ transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
 [node name="Box" parent="CSGCombiner3D" instance=ExtResource("3_3v8xh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9967074, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

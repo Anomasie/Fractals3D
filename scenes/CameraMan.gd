@@ -8,9 +8,9 @@ var rotating_origin = Vector2i.ZERO # position on screen when rotating_camera wa
 
 func _input(event):
 	if event.is_action_pressed("scroll_out") and CamPositioner.position.length() > 0:
-		CamPositioner.position *= 1.1
+		CamPositioner.position *= 21.0/20
 	elif event.is_action_pressed("scroll_in") and CamPositioner.position.length() > 0:
-		CamPositioner.position *= 0.9
+		CamPositioner.position *= 20.0/21
 	elif event.is_action_pressed("activate_camera_rotating"):
 		rotating_camera = true
 		rotating_origin = event.position

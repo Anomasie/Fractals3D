@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1m80wdvenq4x"]
+[gd_scene load_steps=8 format=3 uid="uid://b1m80wdvenq4x"]
 
 [ext_resource type="Script" uid="uid://cmlqvnc044p1o" path="res://scenes/Box.gd" id="1_gwc8e"]
 
@@ -10,6 +10,14 @@ transparency = 1
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gwc8e"]
 height = 0.1
 radius = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ncn"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_rf0kl"]
+material = SubResource("StandardMaterial3D_66ncn")
+radius = 0.1
+height = 0.2
 
 [sub_resource type="SphereMesh" id="SphereMesh_gwc8e"]
 radius = 0.1
@@ -34,7 +42,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 shape = SubResource("CylinderShape3D_gwc8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area100"]
-mesh = SubResource("SphereMesh_gwc8e")
+mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area200" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
@@ -46,6 +54,28 @@ shape = SubResource("CylinderShape3D_gwc8e")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area200"]
 mesh = SubResource("SphereMesh_gwc8e")
 
+[node name="Area010" type="Area3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area010"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gwc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area010"]
+mesh = SubResource("SphereMesh_rf0kl")
+
+[node name="Area001" type="Area3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area001"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gwc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area001"]
+mesh = SubResource("SphereMesh_rf0kl")
+
 [connection signal="input_event" from="BoxArea" to="." method="_on_box_area_input_event"]
 [connection signal="input_event" from="Area100" to="." method="_on_area_100_input_event"]
 [connection signal="input_event" from="Area200" to="." method="_on_area_200_input_event"]
+[connection signal="input_event" from="Area010" to="." method="_on_area_010_input_event"]
+[connection signal="input_event" from="Area001" to="." method="_on_area_001_input_event"]

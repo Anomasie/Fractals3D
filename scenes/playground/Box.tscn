@@ -1,6 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1m80wdvenq4x"]
+[gd_scene load_steps=6 format=3 uid="uid://b1m80wdvenq4x"]
 
 [ext_resource type="Script" uid="uid://cmlqvnc044p1o" path="res://scenes/Box.gd" id="1_gwc8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwc8e"]
+transparency = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew2ip"]
 
@@ -13,6 +16,7 @@ radius = 0.1
 height = 0.2
 
 [node name="Box" type="CSGBox3D"]
+material = SubResource("StandardMaterial3D_gwc8e")
 script = ExtResource("1_gwc8e")
 
 [node name="BoxArea" type="Area3D" parent="."]

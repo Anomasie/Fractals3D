@@ -14,21 +14,19 @@ metadata/_edit_lock_ = true
 
 [node name="XAxisLight_green" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-0.08619841, -0.14780936, 0.9852524, 0.9961947, -4.1689496e-08, 0.087155744, -0.012882391, 0.9890159, 0.1472469, 0, 0, 0)
-light_color = Color(0, 1, 0, 1)
-light_energy = 16.0
+light_color = Color(0.78431374, 1, 0.78431374, 1)
 shadow_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="YAxisLight_blue" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, 0, 0)
-light_color = Color(0, 0, 1, 1)
+light_color = Color(0.78431374, 0.78431374, 1, 1)
 shadow_enabled = true
 metadata/_edit_lock_ = true
 
 [node name="ZAxisLight_red" type="DirectionalLight3D" parent="Lights"]
 transform = Transform3D(-1, -7.619397e-09, 8.709011e-08, 0, 0.9961947, 0.08715574, -8.742278e-08, 0.08715574, -0.9961947, 0, 0, 0)
-light_color = Color(1, 0, 0, 1)
-light_energy = 16.0
+light_color = Color(1, 0.78431374, 0.78431374, 1)
 shadow_enabled = true
 metadata/_edit_lock_ = true
 
@@ -49,7 +47,7 @@ size = Vector3(0.1, 0.1, 2)
 material = ExtResource("2_wd1fg")
 
 [node name="CameraMan" parent="." instance=ExtResource("3_wd1fg")]
-transform = Transform3D(-0.27901617, 0, 0.96037984, 0, 1, 0, -0.96037984, 0, -0.27901617, 0, 0, 0)
+transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 

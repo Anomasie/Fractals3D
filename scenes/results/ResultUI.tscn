@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgxcq4wnjolon"]
 
-[ext_resource type="PackedScene" uid="uid://r5cpr0yi4ukk" path="res://scenes/Result3D.tscn" id="1_6jh3j"]
-[ext_resource type="Script" uid="uid://bwfet135b151k" path="res://scenes/ResultUI.gd" id="1_7nurk"]
+[ext_resource type="PackedScene" uid="uid://r5cpr0yi4ukk" path="res://scenes/results/Result3D.tscn" id="1_6jh3j"]
+[ext_resource type="Script" uid="uid://bwfet135b151k" path="res://scenes/results/ResultUI.gd" id="1_7nurk"]
 [ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="2_t20r7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nurk"]

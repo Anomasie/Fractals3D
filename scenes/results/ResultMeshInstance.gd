@@ -16,10 +16,11 @@ func add_points(points):
 	#multimesh.instance_count += len(points)
 	
 	for p in points:
-		var pos = p.position
-		multimesh.set_instance_color(next_instance_to_draw,Color.WHITE)
-		multimesh.set_instance_transform(next_instance_to_draw, Transform3D(Basis(), pos))
-		next_instance_to_draw += 1
+		if next_instance_to_draw < multimesh.instance_count:
+			var pos = p.position
+			multimesh.set_instance_color(next_instance_to_draw,Color.WHITE)
+			multimesh.set_instance_transform(next_instance_to_draw, Transform3D(Basis(), pos))
+			next_instance_to_draw += 1
 
 func prepare_mesh(instance_count):
 	multimesh = MultiMesh.new()
@@ -28,6 +29,6 @@ func prepare_mesh(instance_count):
 	multimesh.instance_count = instance_count
 	next_instance_to_draw = 0
 	var pmesh = PointMesh.new()
-	pmesh.material = load("res://scenes/Shadow.tres")
+	pmesh.material = load("res://materials/Shadow.tres")
 	
 	multimesh.mesh=pmesh

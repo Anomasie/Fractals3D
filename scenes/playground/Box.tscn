@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1m80wdvenq4x"]
+
+[ext_resource type="Script" uid="uid://cmlqvnc044p1o" path="res://scenes/Box.gd" id="1_gwc8e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew2ip"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gwc8e"]
+height = 0.1
+radius = 0.45
+
+[sub_resource type="SphereMesh" id="SphereMesh_gwc8e"]
+radius = 0.1
+height = 0.2
+
+[node name="Box" type="CSGBox3D"]
+script = ExtResource("1_gwc8e")
+
+[node name="BoxArea" type="Area3D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="BoxAreaShape" type="CollisionShape3D" parent="BoxArea"]
+shape = SubResource("BoxShape3D_ew2ip")
+
+[node name="Area100" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area100"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gwc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area100"]
+mesh = SubResource("SphereMesh_gwc8e")
+
+[node name="Area200" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area200"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gwc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area200"]
+mesh = SubResource("SphereMesh_gwc8e")
+
+[connection signal="input_event" from="BoxArea" to="." method="_on_box_area_input_event"]
+[connection signal="input_event" from="Area100" to="." method="_on_area_100_input_event"]
+[connection signal="input_event" from="Area200" to="." method="_on_area_200_input_event"]

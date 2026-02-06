@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://7bgwgslqm6hl"]
 
-[ext_resource type="PackedScene" uid="uid://cothr5kp6sd3u" path="res://scenes/Playground3D.tscn" id="1_oo85p"]
-[ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/ResultUI.tscn" id="2_sfemp"]
+[ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="1_sfemp"]
+[ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="2_sfemp"]
 
 [node name="ROOT" type="Control"]
 layout_mode = 3
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -18,17 +19,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="PlaygroundUI" type="SubViewportContainer" parent="HBoxContainer"]
+[node name="PlaygroundUI" parent="HBoxContainer" instance=ExtResource("1_sfemp")]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Subviewport" type="SubViewport" parent="HBoxContainer/PlaygroundUI"]
-own_world_3d = true
-handle_input_locally = false
-render_target_update_mode = 4
-
-[node name="Playground3D" parent="HBoxContainer/PlaygroundUI/Subviewport" instance=ExtResource("1_oo85p")]
 
 [node name="ResultUI" parent="HBoxContainer" instance=ExtResource("2_sfemp")]
 layout_mode = 2

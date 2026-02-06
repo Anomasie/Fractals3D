@@ -2,6 +2,36 @@ class_name Math
 
 #const VECTOR_EPSILON = 0.00001
 
+static func maxis_ifs():
+
+	var R = [
+		[0,0,-1],
+		[0,1,0],
+		[1,0,0]
+	]
+	var R2 = [
+		[-0.5, -sqrt(3)/2, 0],
+		[sqrt(3)/2, -0.5, 0],
+		[0,0,1]
+	]
+	var R3 = [
+		[-0.5, sqrt(3)/2, 0],
+		[-sqrt(3)/2, -0.5, 0],
+		[0,0,1]
+	]
+	var t = Vector3(0, sqrt(3)/3, 0)
+
+	var con1 = Contraction.new()
+	con1.matrix = Math.multiply(2.0/3, R)
+	con1.translation = t
+	var con2 = Contraction.new()
+	con2.matrix = Math.multiply(2.0/3, Math.multiply(R2, R))
+	con2.translation = Math.multiply(R2, t)
+	var con3 = Contraction.new()
+	con3.matrix = Math.multiply(2.0/3, Math.multiply(R3, R))
+	con3.translation = Math.multiply(R3, t)
+	return [con1, con2, con3]
+
 static func multiply(obj1, obj2):
 	if typeof(obj1) == TYPE_FLOAT:
 		return scalar_mult(obj1, obj2)

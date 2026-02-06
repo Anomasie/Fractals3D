@@ -17,42 +17,6 @@ var counter = 0
 @onready var PointTeller = $Screen/Columns/Left/Bottom/Grid/PointSlider/PointTeller
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
 
-func maxis_ifs():
-
-	var R = [
-		[0,0,-1],
-		[0,1,0],
-		[1,0,0]
-	]
-	var R2 = [
-		[-0.5, -sqrt(3)/2, 0],
-		[sqrt(3)/2, -0.5, 0],
-		[0,0,1]
-	]
-	var R3 = [
-		[-0.5, sqrt(3)/2, 0],
-		[-sqrt(3)/2, -0.5, 0],
-		[0,0,1]
-	]
-	var t = Vector3(0, sqrt(3)/3, 0)
-
-	var con1 = Contraction.new()
-	print("START!")
-	con1.matrix = Math.multiply(2.0/3, R)
-	con1.translation = t
-	var con2 = Contraction.new()
-	con2.matrix = Math.multiply(2.0/3, Math.multiply(R2, R))
-	con2.translation = Math.multiply(R2, t)
-	var con3 = Contraction.new()
-	con3.matrix = Math.multiply(2.0/3, Math.multiply(R3, R))
-	con3.translation = Math.multiply(R3, t)
-
-	print("1: ", con1.matrix)
-	print("2: ", con2.matrix)
-	print("3: ", con3.matrix)
-
-	return [con1, con2, con3]
-
 func _ready():
 	# set values
 	## PointTeller (ActualValueSlider)
@@ -65,7 +29,7 @@ func _ready():
 	
 	# new ifs
 	current_ifs = IFS.random_ifs()
-	current_ifs.systems = maxis_ifs()
+	current_ifs.systems = Math.maxis_ifs()
 
 func _process(delta):
 	draw_points(delta)

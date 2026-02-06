@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cothr5kp6sd3u"]
+[gd_scene load_steps=3 format=3 uid="uid://cothr5kp6sd3u"]
 
 [ext_resource type="Script" uid="uid://ct22d48uyjku8" path="res://Playground.gd" id="1_ptgk4"]
+[ext_resource type="Material" uid="uid://dy1grmdde171o" path="res://materials/ToonMetallic.tres" id="2_260g7"]
 
 [node name="Playground" type="Node3D"]
 script = ExtResource("1_ptgk4")
@@ -12,7 +13,22 @@ transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70
 transform = Transform3D(0.7645635, 0.5950729, 0.24765062, -0.644229, 0.71762043, 0.2645561, -0.020288967, -0.36181366, 0.9320296, 0, 17.279068, 0)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.030714, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018432617, 0.14804077, -1.0845947)
-size = Vector3(11.058838, 15.200256, 7.937744)
+
+[node name="Coordinates" type="CSGCombiner3D" parent="."]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="XAxis" type="CSGBox3D" parent="Coordinates"]
+size = Vector3(2, 0.1, 0.1)
+material = ExtResource("2_260g7")
+
+[node name="YAxis" type="CSGBox3D" parent="Coordinates"]
+size = Vector3(0.1, 2, 0.1)
+material = ExtResource("2_260g7")
+
+[node name="ZAxis" type="CSGBox3D" parent="Coordinates"]
+size = Vector3(0.1, 0.1, 2)
+material = ExtResource("2_260g7")

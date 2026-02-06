@@ -70,7 +70,7 @@ func _on_area_020_input_event(camera: Node, event: InputEvent, event_position: V
 		drag_center = event_position
 		original_scale = self.scale
 		original_position = self.position
-		editing_face = Vector3(0,1,0)
+		editing_face = Vector3(0,-1,0)
 
 func _on_area_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

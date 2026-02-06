@@ -9,7 +9,7 @@ func center_mesh():
 func add_points(points):
 	ResultMesh.add_points(points)
 
-func draw_points(limit, points=[]):
+func restart_mesh(limit, points=[]):
 	ResultMesh.prepare_mesh(limit)
 	ResultMesh.add_points(points)
 	center_mesh()

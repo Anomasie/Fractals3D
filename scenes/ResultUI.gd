@@ -86,7 +86,7 @@ func draw_points(delta):
 			amount = min(frame_limit, limit-counter)
 		
 		if counter <= 0:
-			Result3D.draw_points(limit, current_ifs.calculate_fractal(point.new(), amount))
+			Result3D.restart_mesh(limit, current_ifs.calculate_fractal(point.new(), amount))
 		else:
 			Result3D.add_points(current_ifs.calculate_fractal(point.new(), amount))
 		counter += amount
@@ -110,3 +110,11 @@ func point_slider_descaled(y):
 		return PointSlider.max_value
 	else:
 		return int( PointSlider.max_value * (1 - exp( - float(y) / POINT_LIMIT_HALF_VALUE )) ) + 1
+
+
+func _on_point_slider_drag_ended(value_changed: bool) -> void:
+	# set new point limit
+	limit = point_slider_scaled()
+	PointLineEdit.placeholder_text = str(limit)
+	# if too many points:
+	counter = 0

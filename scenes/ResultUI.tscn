@@ -118,3 +118,5 @@ texture = SubResource("AtlasTexture_t20r7")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "123456789"
+
+[connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]

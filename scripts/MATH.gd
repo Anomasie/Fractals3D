@@ -4,14 +4,11 @@ class_name Math
 
 static func multiply(obj1, obj2):
 	if typeof(obj1) == TYPE_FLOAT:
-		print("Path 1")
 		return scalar_mult(obj1, obj2)
 	elif typeof(obj1) == TYPE_ARRAY:
 		if typeof(obj2) == TYPE_ARRAY:
-			print("Path 2a")
 			return matrix_mult(obj1, obj2)
 		elif typeof(obj2) == TYPE_VECTOR3:
-			print("Path 2b")
 			return apply_matrix(obj1, obj2)
 
 static func apply_matrix(A, x):

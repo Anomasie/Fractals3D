@@ -65,9 +65,7 @@ func _ready():
 	
 	# new ifs
 	current_ifs = IFS.random_ifs()
-	#current_ifs.systems = maxis_ifs()
-	Result3D.draw_points(current_ifs.calculate_fractal(point.new(), 1000))
-	Result3D.center_mesh()
+	current_ifs.systems = maxis_ifs()
 
 func _process(delta):
 	draw_points(delta)
@@ -88,7 +86,7 @@ func draw_points(delta):
 			amount = min(frame_limit, limit-counter)
 		
 		if counter <= 0:
-			Result3D.draw_points(current_ifs.calculate_fractal(point.new(), amount))
+			Result3D.draw_points(limit, current_ifs.calculate_fractal(point.new(), amount))
 		else:
 			Result3D.add_points(current_ifs.calculate_fractal(point.new(), amount))
 		counter += amount

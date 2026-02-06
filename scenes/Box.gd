@@ -4,7 +4,8 @@ extends CSGBox3D
 
 var focused = false
 
-var original_scale = Vector3(1,1,1)
+var original_scale = self.scale
+var original_position = Vector3.ZERO
 var editing_face = Vector3.ZERO
 var drag_center = Vector3.ZERO # point on which the face / edge was clicked
 
@@ -31,14 +32,10 @@ func _process(_delta):
 		var a = drag_center
 		var b = camera_position
 		
-		var difference = 2 * ( v.dot(a-b) + x.dot(b-a) * v.dot(x) / x.dot(x) ) / ( x.dot(v)**2 / x.dot(x) - v.dot(v) )
+		var difference = ( v.dot(a-b) + x.dot(b-a) * v.dot(x) / x.dot(x) ) / ( x.dot(v)**2 / x.dot(x) - v.dot(v) )
 		
-		if editing_face.x != 0:
-			self.scale.x = original_scale.x + difference
-		if editing_face.y != 0:
-			self.scale.y = original_scale.y + difference
-		if editing_face.z != 0:
-			self.scale.z = original_scale.z + difference
+		self.scale = original_scale + difference * abs(editing_face)
+		self.position = original_position + difference/2 * editing_face
 		
 		if not Input.is_action_pressed("click"):
 			editing_face = false
@@ -51,23 +48,40 @@ func _on_area_100_input_event(_camera: Node, event: InputEvent, event_position: 
 	if event.is_action_pressed("click"):
 		drag_center = event_position
 		original_scale = self.scale
+		original_position = self.position
 		editing_face = Vector3(1,0,0)
 
 func _on_area_200_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		drag_center = event_position
 		original_scale = self.scale
+		original_position = self.position
 		editing_face = Vector3(-1,0,0)
 
 func _on_area_010_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		drag_center = event_position
 		original_scale = self.scale
+		original_position = self.position
 		editing_face = Vector3(0,1,0)
 
+func _on_area_020_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		drag_center = event_position
+		original_scale = self.scale
+		original_position = self.position
+		editing_face = Vector3(0,1,0)
 
 func _on_area_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		drag_center = event_position
 		original_scale = self.scale
+		original_position = self.position
 		editing_face = Vector3(0,0,1)
+
+func _on_area_002_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		drag_center = event_position
+		original_scale = self.scale
+		original_position = self.position
+		editing_face = Vector3(0,0,-1)

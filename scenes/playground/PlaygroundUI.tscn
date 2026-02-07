@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://badh6enwjuhom"]
+[gd_scene format=3 uid="uid://badh6enwjuhom"]
 
 [ext_resource type="Script" uid="uid://f4df5x1fytqi" path="res://scenes/playground/PlaygroundUI.gd" id="1_8ujcl"]
 [ext_resource type="PackedScene" uid="uid://cothr5kp6sd3u" path="res://scenes/playground/Playground3D.tscn" id="1_g2yml"]
 
-[node name="PlaygroundUI" type="Control"]
+[node name="PlaygroundUI" type="Control" unique_id=1516792894]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_8ujcl")
 
-[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+[node name="ViewportContainer" type="SubViewportContainer" parent="." unique_id=352526189]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,12 +24,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Subviewport" type="SubViewport" parent="ViewportContainer"]
+[node name="Subviewport" type="SubViewport" parent="ViewportContainer" unique_id=17468621]
 own_world_3d = true
 handle_input_locally = false
+physics_object_picking = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Playground" parent="ViewportContainer/Subviewport" instance=ExtResource("1_g2yml")]
+[node name="Playground" parent="ViewportContainer/Subviewport" unique_id=757170058 instance=ExtResource("1_g2yml")]
 
 [connection signal="fractal_changed" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_fractal_changed"]

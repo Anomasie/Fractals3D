@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dgxcq4wnjolon"]
+[gd_scene format=3 uid="uid://dgxcq4wnjolon"]
 
 [ext_resource type="PackedScene" uid="uid://r5cpr0yi4ukk" path="res://scenes/results/Result3D.tscn" id="1_6jh3j"]
 [ext_resource type="Script" uid="uid://bwfet135b151k" path="res://scenes/results/ResultUI.gd" id="1_7nurk"]
@@ -21,7 +21,7 @@ atlas = ExtResource("2_t20r7")
 region = Rect2(32, 320, 32, 32)
 margin = Rect2(32, 0, 0, 0)
 
-[node name="ResultUI" type="Control"]
+[node name="ResultUI" type="Control" unique_id=63759867]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7nurk")
 
-[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+[node name="ViewportContainer" type="SubViewportContainer" parent="." unique_id=1918779313]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,15 +42,15 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Subviewport" type="SubViewport" parent="ViewportContainer"]
+[node name="Subviewport" type="SubViewport" parent="ViewportContainer" unique_id=340745070]
 own_world_3d = true
 handle_input_locally = false
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Result3D" parent="ViewportContainer/Subviewport" instance=ExtResource("1_6jh3j")]
+[node name="Result3D" parent="ViewportContainer/Subviewport" unique_id=1019725376 instance=ExtResource("1_6jh3j")]
 
-[node name="Screen" type="MarginContainer" parent="."]
+[node name="Screen" type="MarginContainer" parent="." unique_id=1913812575]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,38 +59,38 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Columns" type="HBoxContainer" parent="Screen"]
+[node name="Columns" type="HBoxContainer" parent="Screen" unique_id=1665039196]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Left" type="VBoxContainer" parent="Screen/Columns"]
+[node name="Left" type="VBoxContainer" parent="Screen/Columns" unique_id=2139630275]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Bottom" type="MarginContainer" parent="Screen/Columns/Left"]
+[node name="Bottom" type="MarginContainer" parent="Screen/Columns/Left" unique_id=613568301]
 layout_mode = 2
 size_flags_vertical = 10
 mouse_filter = 2
 
-[node name="Grid" type="GridContainer" parent="Screen/Columns/Left/Bottom"]
+[node name="Grid" type="GridContainer" parent="Screen/Columns/Left/Bottom" unique_id=122036326]
 layout_mode = 2
 mouse_filter = 2
 columns = 4
 
-[node name="PointTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid"]
+[node name="PointTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1176675348]
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_7nurk")
 
-[node name="PointSlider" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid"]
+[node name="PointSlider" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1715495702]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 max_value = 1000000.0
 value = 500000.0
 
-[node name="PointTeller" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid/PointSlider"]
+[node name="PointTeller" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid/PointSlider" unique_id=1257632170]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,12 +109,12 @@ value = 200000.0
 editable = false
 scrollable = false
 
-[node name="PointTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid"]
+[node name="PointTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=893778573]
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_t20r7")
 
-[node name="PointLineEdit" type="LineEdit" parent="Screen/Columns/Left/Bottom/Grid"]
+[node name="PointLineEdit" type="LineEdit" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1955955914]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "123456789"

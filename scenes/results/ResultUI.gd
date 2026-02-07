@@ -34,8 +34,8 @@ func _ready():
 
 func set_ifs(new_ifs):
 	current_ifs = new_ifs
-	print(current_ifs.systems[0].matrix)
 	counter = 0
+	Result3D.restart_mesh(limit, current_ifs.calculate_fractal(point.new(), 10))
 
 func _process(delta):
 	draw_points(delta)

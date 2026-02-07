@@ -1,15 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1m80wdvenq4x"]
+[gd_scene load_steps=9 format=3 uid="uid://b1m80wdvenq4x"]
 
 [ext_resource type="Script" uid="uid://cmlqvnc044p1o" path="res://scenes/Box.gd" id="1_gwc8e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwc8e"]
+resource_local_to_scene = true
 transparency = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew2ip"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gwc8e"]
 height = 0.1
-radius = 0.45
+radius = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ncn"]
 albedo_color = Color(0, 0, 0, 1)
@@ -19,6 +20,12 @@ material = SubResource("StandardMaterial3D_66ncn")
 radius = 0.1
 height = 0.2
 rings = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gwc8e"]
+size = Vector3(0.75, 0.75, 0.75)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ncn"]
+size = Vector3(0.75, 0.75, 0.75)
 
 [node name="Box" type="CSGBox3D"]
 material = SubResource("StandardMaterial3D_gwc8e")
@@ -91,6 +98,14 @@ shape = SubResource("CylinderShape3D_gwc8e")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area002"]
 mesh = SubResource("SphereMesh_rf0kl")
 
+[node name="InnerArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea"]
+shape = SubResource("BoxShape3D_gwc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InnerArea"]
+mesh = SubResource("BoxMesh_66ncn")
+
 [connection signal="input_event" from="BoxArea" to="." method="_on_box_area_input_event"]
 [connection signal="input_event" from="Area100" to="." method="_on_area_100_input_event"]
 [connection signal="input_event" from="Area200" to="." method="_on_area_200_input_event"]
@@ -98,3 +113,4 @@ mesh = SubResource("SphereMesh_rf0kl")
 [connection signal="input_event" from="Area020" to="." method="_on_area_020_input_event"]
 [connection signal="input_event" from="Area001" to="." method="_on_area_001_input_event"]
 [connection signal="input_event" from="Area002" to="." method="_on_area_002_input_event"]
+[connection signal="input_event" from="InnerArea" to="." method="_on_inner_area_input_event"]

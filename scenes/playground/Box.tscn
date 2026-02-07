@@ -40,6 +40,7 @@ shape = SubResource("BoxShape3D_ew2ip")
 
 [node name="Area100" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area100"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -50,6 +51,7 @@ mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area200" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area200"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -60,6 +62,7 @@ mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area010" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area010"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -70,6 +73,7 @@ mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area020" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area020"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -80,6 +84,7 @@ mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area001" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.5)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area001"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
@@ -90,6 +95,7 @@ mesh = SubResource("SphereMesh_rf0kl")
 
 [node name="Area002" type="Area3D" parent="."]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.5)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area002"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)

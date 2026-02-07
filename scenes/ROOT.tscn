@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://7bgwgslqm6hl"]
+[gd_scene load_steps=4 format=3 uid="uid://7bgwgslqm6hl"]
 
+[ext_resource type="Script" uid="uid://eapxsgipyw75" path="res://scenes/Root.gd" id="1_osk3a"]
 [ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="1_sfemp"]
 [ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="2_sfemp"]
 
@@ -11,8 +12,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("1_osk3a")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Container" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,10 +23,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlaygroundUI" parent="HBoxContainer" instance=ExtResource("1_sfemp")]
+[node name="PlaygroundUI" parent="Container" instance=ExtResource("1_sfemp")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResultUI" parent="HBoxContainer" instance=ExtResource("2_sfemp")]
+[node name="ResultUI" parent="Container" instance=ExtResource("2_sfemp")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]

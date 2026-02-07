@@ -1,6 +1,7 @@
 extends CSGBox3D
 class_name ResizableBox
 
+signal changed
 signal focus_me
 
 @onready var BoxArea = $BoxArea
@@ -19,6 +20,17 @@ var drag_offset = Vector3.ZERO # point inside the InnerArea that was clicked
 	$Area010, $Area020,
 	$Area001, $Area002
 ]
+
+func get_contraction() -> Contraction:
+	var my_contraction = Contraction.new()
+	my_contraction.translation = self.position
+	my_contraction.matrix = [
+		[self.scale.x, 0, 0],
+		[0, self.scale.y, 0],
+		[0, 0, self.scale.z]
+	]
+	my_contraction.color = self.material.albedo_color
+	return my_contraction
 
 func set_focus(value = true):
 	if value: focus()
@@ -60,6 +72,9 @@ func _process(_delta):
 		
 		if not Input.is_action_pressed("click"):
 			editing_face = Vector3.ZERO
+		else:
+			changed.emit()
+	
 	elif editing_position:
 		var camera_position = get_viewport().get_camera_3d().global_transform.origin
 		var camera_direction = get_viewport().get_camera_3d().project_ray_normal(
@@ -75,6 +90,8 @@ func _process(_delta):
 		
 		if not Input.is_action_pressed("click"):
 			editing_position = false
+		else:
+			changed.emit()
 
 func _on_box_area_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_released("click"):

@@ -28,8 +28,14 @@ func _ready():
 	PointLineEdit.placeholder_text = str(limit)
 	
 	# new ifs
-	current_ifs = IFS.random_ifs()
-	current_ifs.systems = Math.maxis_ifs()
+	var new_ifs = IFS.random_ifs()
+	new_ifs.systems = Math.maxis_ifs()
+	self.set_ifs(new_ifs)
+
+func set_ifs(new_ifs):
+	current_ifs = new_ifs
+	print(current_ifs.systems[0].matrix)
+	counter = 0
 
 func _process(delta):
 	draw_points(delta)

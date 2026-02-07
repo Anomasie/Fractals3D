@@ -1,10 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://7bgwgslqm6hl"]
+[gd_scene format=3 uid="uid://7bgwgslqm6hl"]
 
 [ext_resource type="Script" uid="uid://eapxsgipyw75" path="res://scenes/Root.gd" id="1_osk3a"]
 [ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="1_sfemp"]
 [ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="2_sfemp"]
+[ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="4_v4i4c"]
 
-[node name="ROOT" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rmqh"]
+atlas = ExtResource("4_v4i4c")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8fnn1"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne5lc"]
+atlas = SubResource("CompressedTexture2D_8fnn1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vurmb"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7el72"]
+atlas = SubResource("CompressedTexture2D_vurmb")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o43t2"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4emob"]
+atlas = SubResource("CompressedTexture2D_o43t2")
+region = Rect2(96, 64, 32, 32)
+
+[node name="ROOT" type="Control" unique_id=362227451]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +40,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_osk3a")
 
-[node name="Container" type="HBoxContainer" parent="."]
+[node name="Container" type="HBoxContainer" parent="." unique_id=468426465]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,12 +49,37 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PlaygroundUI" parent="Container" instance=ExtResource("1_sfemp")]
+[node name="PlaygroundUI" parent="Container" unique_id=1930871 instance=ExtResource("1_sfemp")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResultUI" parent="Container" instance=ExtResource("2_sfemp")]
+[node name="ResultUI" parent="Container" unique_id=549357973 instance=ExtResource("2_sfemp")]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Center" type="MarginContainer" parent="." unique_id=256201059]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SyncButton" type="TextureButton" parent="Center" unique_id=1762179302]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_8rmqh")
+texture_pressed = SubResource("AtlasTexture_ne5lc")
+texture_hover = SubResource("AtlasTexture_7el72")
+texture_disabled = SubResource("AtlasTexture_4emob")
 
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
+[connection signal="pressed" from="Center/SyncButton" to="." method="_on_sync_button_pressed"]

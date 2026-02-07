@@ -24,6 +24,8 @@ var tooltip_nodes = []
 
 var uploaded_links = []
 
+@onready var Cams3D = []
+
 func _ready():
 	await get_tree().process_frame
 	var done_nodes = []

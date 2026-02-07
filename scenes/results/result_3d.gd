@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var ResultMesh = $ResultMesh
 
+# Mesh functions
+
 func center_mesh():
 	pass
 	#ResultMesh.position = ResultMesh.get_aabb().size/2

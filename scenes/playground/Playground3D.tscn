@@ -66,7 +66,7 @@ material = ExtResource("2_wd1fg")
 size = Vector3(0.1, 0.1, 2)
 material = ExtResource("2_wd1fg")
 
-[node name="CameraMan" parent="." unique_id=1836000795 instance=ExtResource("3_wd1fg")]
+[node name="CameraManP" parent="." unique_id=1836000795 instance=ExtResource("3_wd1fg")]
 transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
 
 [node name="Boxes" type="CSGCombiner3D" parent="." unique_id=794914400]

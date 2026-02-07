@@ -1,7 +1,5 @@
 extends Control
 
-signal drew_points
-
 var current_ifs
 
 # how many points should be drawn (in this frame and at all?)
@@ -82,7 +80,7 @@ func point_slider_descaled(y):
 		return int( PointSlider.max_value * (1 - exp( - float(y) / POINT_LIMIT_HALF_VALUE )) ) + 1
 
 
-func _on_point_slider_drag_ended(value_changed: bool) -> void:
+func _on_point_slider_drag_ended(_value_changed: bool) -> void:
 	# set new point limit
 	limit = point_slider_scaled()
 	PointLineEdit.placeholder_text = str(limit)

@@ -6,11 +6,20 @@ extends Marker3D
 var rotating_camera = false
 var rotating_origin = Vector2i.ZERO # position on screen when rotating_camera was activated
 
+var sync_camera : Node
+
+func _ready():
+	Global.Cams3D.append(self)
+
 func _input(event):
 	if event.is_action_pressed("scroll_out") and CamPositioner.position.length() > 0:
 		CamPositioner.position *= 21.0/20
+		if sync_camera:
+			sync_camera.load_data( self.rotation, CamPositioner.position )
 	elif event.is_action_pressed("scroll_in") and CamPositioner.position.length() > 0:
 		CamPositioner.position *= 20.0/21
+		if sync_camera:
+			sync_camera.load_data( self.rotation, CamPositioner.position )
 	elif event.is_action_pressed("activate_camera_rotating"):
 		rotating_camera = true
 		rotating_origin = event.position
@@ -27,3 +36,16 @@ func _process(_delta):
 		if self.rotation.x < -PI: self.rotation.x += 2*PI
 		if self.rotation.x > PI: self.rotation.x -= 2*PI
 		rotating_origin = get_viewport().get_mouse_position()
+		
+		if sync_camera:
+			sync_camera.load_data( self.rotation, CamPositioner.position )
+
+func load_data(rot, pos):
+	self.rotation = rot
+	CamPositioner.position = pos
+
+func sync_with(camera_man):
+	sync_camera = camera_man
+	if camera_man:
+		self.rotation = camera_man.rotation
+		self.CamPositioner.position = camera_man.CamPositioner.position

@@ -2,6 +2,78 @@
 
 [ext_resource type="Script" uid="uid://f4df5x1fytqi" path="res://scenes/playground/PlaygroundUI.gd" id="1_8ujcl"]
 [ext_resource type="PackedScene" uid="uid://cothr5kp6sd3u" path="res://scenes/playground/Playground3D.tscn" id="1_g2yml"]
+[ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="3_3dgkr"]
+[ext_resource type="PackedScene" uid="uid://mtu0mxcjwc41" path="res://scenes/color-options/ColorSliders.tscn" id="3_asuwu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neaf8"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5hmf"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_neaf8"]
+load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5fa79979924.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5vax"]
+atlas = SubResource("CompressedTexture2D_neaf8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_him7r"]
+load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5fa79979924.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bg3lk"]
+atlas = SubResource("CompressedTexture2D_him7r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iumx3"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_him7r"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y05m3"]
+atlas = SubResource("CompressedTexture2D_neaf8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kwn0"]
+atlas = SubResource("CompressedTexture2D_him7r")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6520"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aye8y"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm0tl"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3ee1"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dgkr"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjfem"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsbk1"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ugsc"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(96, 128, 32, 32)
 
 [node name="PlaygroundUI" type="Control" unique_id=1516792894]
 layout_mode = 3
@@ -33,4 +105,61 @@ render_target_update_mode = 4
 
 [node name="Playground" parent="ViewportContainer/Subviewport" unique_id=757170058 instance=ExtResource("1_g2yml")]
 
+[node name="Left" type="MarginContainer" parent="." unique_id=303210048]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 64.0
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="Left" unique_id=1394290444]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="AddButton" type="TextureButton" parent="Left/Main" unique_id=1542942416]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_neaf8")
+texture_pressed = SubResource("AtlasTexture_p5hmf")
+texture_hover = SubResource("AtlasTexture_x5vax")
+texture_disabled = SubResource("AtlasTexture_bg3lk")
+
+[node name="ColorButton" type="TextureButton" parent="Left/Main" unique_id=870585894]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_iumx3")
+texture_pressed = SubResource("AtlasTexture_him7r")
+texture_hover = SubResource("AtlasTexture_y05m3")
+texture_disabled = SubResource("AtlasTexture_7kwn0")
+
+[node name="RemoveButton" type="TextureButton" parent="Left/Main" unique_id=438899292]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_k6520")
+texture_pressed = SubResource("AtlasTexture_aye8y")
+texture_hover = SubResource("AtlasTexture_dm0tl")
+texture_disabled = SubResource("AtlasTexture_n3ee1")
+
+[node name="RemoveAllButton" type="TextureButton" parent="Left/Main" unique_id=272596385]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_3dgkr")
+texture_pressed = SubResource("AtlasTexture_xjfem")
+texture_hover = SubResource("AtlasTexture_fsbk1")
+texture_disabled = SubResource("AtlasTexture_3ugsc")
+
+[node name="ColorSliders" parent="." unique_id=649362228 instance=ExtResource("3_asuwu")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[connection signal="focus_these" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_focus_these"]
 [connection signal="fractal_changed" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_fractal_changed"]
+[connection signal="toggled" from="Left/Main/ColorButton" to="." method="_on_color_button_toggled"]
+[connection signal="color_changed" from="ColorSliders" to="." method="_on_color_sliders_color_changed"]
+[connection signal="finished" from="ColorSliders" to="." method="_on_color_sliders_finished"]

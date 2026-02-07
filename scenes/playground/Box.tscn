@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1m80wdvenq4x"]
+[gd_scene format=3 uid="uid://b1m80wdvenq4x"]
 
 [ext_resource type="Script" uid="uid://cmlqvnc044p1o" path="res://scenes/Box.gd" id="1_gwc8e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwc8e"]
 resource_local_to_scene = true
 transparency = 1
+albedo_color = Color(1, 1, 1, 0.49803922)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew2ip"]
 
@@ -24,92 +25,96 @@ rings = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_gwc8e"]
 size = Vector3(0.75, 0.75, 0.75)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rf0kl"]
+emission_enabled = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_66ncn"]
+material = SubResource("StandardMaterial3D_rf0kl")
 size = Vector3(0.75, 0.75, 0.75)
 
-[node name="Box" type="CSGBox3D"]
+[node name="Box" type="CSGBox3D" unique_id=75118264]
 material = SubResource("StandardMaterial3D_gwc8e")
 script = ExtResource("1_gwc8e")
 
-[node name="BoxArea" type="Area3D" parent="."]
+[node name="BoxArea" type="Area3D" parent="." unique_id=1439939039]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="BoxAreaShape" type="CollisionShape3D" parent="BoxArea"]
+[node name="BoxAreaShape" type="CollisionShape3D" parent="BoxArea" unique_id=1459475674]
 shape = SubResource("BoxShape3D_ew2ip")
 
-[node name="Area100" type="Area3D" parent="."]
+[node name="Area100" type="Area3D" parent="." unique_id=1492345288]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area100"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area100" unique_id=375103489]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area100"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area100" unique_id=896382044]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="Area200" type="Area3D" parent="."]
+[node name="Area200" type="Area3D" parent="." unique_id=2078729759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area200"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area200" unique_id=1262571339]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area200"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area200" unique_id=525328740]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="Area010" type="Area3D" parent="."]
+[node name="Area010" type="Area3D" parent="." unique_id=2045189612]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area010"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area010" unique_id=1040271850]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area010"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area010" unique_id=1495017160]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="Area020" type="Area3D" parent="."]
+[node name="Area020" type="Area3D" parent="." unique_id=33400677]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area020"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area020" unique_id=1227993068]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area020"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area020" unique_id=1989348880]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="Area001" type="Area3D" parent="."]
+[node name="Area001" type="Area3D" parent="." unique_id=222412778]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0.5)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area001"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area001" unique_id=1036824069]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area001"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area001" unique_id=486855171]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="Area002" type="Area3D" parent="."]
+[node name="Area002" type="Area3D" parent="." unique_id=719425701]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -0.5)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area002"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area002" unique_id=252630912]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area002"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area002" unique_id=1354111391]
 mesh = SubResource("SphereMesh_rf0kl")
 
-[node name="InnerArea" type="Area3D" parent="."]
+[node name="InnerArea" type="Area3D" parent="." unique_id=1356656531]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerArea" unique_id=1051568288]
 shape = SubResource("BoxShape3D_gwc8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="InnerArea"]
+[node name="Mesh" type="MeshInstance3D" parent="InnerArea" unique_id=1758302040]
 mesh = SubResource("BoxMesh_66ncn")
 
 [connection signal="input_event" from="BoxArea" to="." method="_on_box_area_input_event"]

@@ -4,8 +4,6 @@ class_name ResizableBox
 signal changed
 signal focus_me
 
-@onready var BoxArea = $BoxArea
-
 var focused = false
 
 var original_scale = self.scale
@@ -15,11 +13,13 @@ var editing_position = false
 var drag_center = Vector3.ZERO # point on which the face / edge was clicked
 var drag_offset = Vector3.ZERO # point inside the InnerArea that was clicked
 
+@onready var BoxArea = $BoxArea
 @onready var FaceAreas = [
 	$Area100, $Area200,
 	$Area010, $Area020,
 	$Area001, $Area002
 ]
+@onready var InnerAreaMesh = $InnerArea/Mesh
 
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
@@ -29,7 +29,7 @@ func get_contraction() -> Contraction:
 		[0, self.scale.y, 0],
 		[0, 0, self.scale.z]
 	]
-	my_contraction.color = self.material.albedo_color
+	my_contraction.color = get_color()
 	return my_contraction
 
 func set_focus(value = true):
@@ -92,6 +92,19 @@ func _process(_delta):
 			editing_position = false
 		else:
 			changed.emit()
+
+func get_color() -> Color:
+	var color = self.material.albedo_color
+	color.a = 1.0
+	return color
+
+func set_color(color : Color):
+	self.material.albedo_color = color
+	if focused:
+		self.material.albedo_color.a = 0.5
+	InnerAreaMesh.mesh.material.albedo_color = color
+
+# area signals
 
 func _on_box_area_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_released("click"):

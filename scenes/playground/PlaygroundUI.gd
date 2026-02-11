@@ -1,11 +1,14 @@
 extends Control
 
 signal fractal_changed
+signal fractal_changed_vastly
 
 @onready var Playground = $ViewportContainer/Subviewport/Playground
 # UI
 ## buttons
+@onready var RemoveButton = $Left/Main/RemoveButton
 @onready var ColorButton = $Left/Main/ColorButton
+@onready var RemoveAllButton = $Left/Main/RemoveAllButton
 ## extra menüs
 @onready var ColorSliders = $ColorSliders
 
@@ -16,12 +19,14 @@ func _ready():
 
 func focus(boxes = []) -> void:
 	Playground.focus(boxes)
+	
+	ColorButton.disabled = len(boxes) == 0
+	RemoveButton.disabled = len(boxes) == 0
+	
 	if len(boxes) > 0:
-		ColorButton.disabled = false
 		if ColorButton.button_pressed:
 			ColorSliders.open( boxes[0].get_color() )
 	else:
-		ColorButton.disabled = true
 		# close everything
 		ColorSliders.close()
 
@@ -50,3 +55,12 @@ func _on_color_sliders_finished() -> void:
 
 func _on_color_sliders_color_changed() -> void:
 	Playground.set_color( ColorSliders.get_color() )
+
+
+func _on_remove_button_pressed() -> void:
+	# close rect
+	await Playground.remove_current_boxes()
+	focus([])
+	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
+	
+	fractal_changed_vastly.emit( Playground.get_ifs() )

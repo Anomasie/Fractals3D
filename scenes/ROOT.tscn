@@ -82,4 +82,5 @@ texture_hover = SubResource("AtlasTexture_7el72")
 texture_disabled = SubResource("AtlasTexture_4emob")
 
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
+[connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]
 [connection signal="pressed" from="Center/SyncButton" to="." method="_on_sync_button_pressed"]

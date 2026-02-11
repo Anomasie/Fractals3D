@@ -16,3 +16,7 @@ func _on_sync_button_pressed() -> void:
 	else:
 		for cam in Global.Cams3D:
 			cam.sync_with(null)
+
+
+func _on_playground_ui_fractal_changed_vastly( ifs : IFS ) -> void:
+	_on_playground_ui_fractal_changed( ifs )

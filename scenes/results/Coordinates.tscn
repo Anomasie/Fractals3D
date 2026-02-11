@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bytvje6vfmjan"]
+
+[ext_resource type="Material" uid="uid://dy1grmdde171o" path="res://materials/ToonMetallic.tres" id="1_t141h"]
+
+[node name="Coordinates" type="CSGCombiner3D" unique_id=642234485]
+metadata/_edit_group_ = true
+
+[node name="XAxis" type="CSGBox3D" parent="." unique_id=2039982037]
+size = Vector3(2, 0.1, 0.1)
+material = ExtResource("1_t141h")
+
+[node name="YAxis" type="CSGBox3D" parent="." unique_id=927844950]
+size = Vector3(0.1, 2, 0.1)
+material = ExtResource("1_t141h")
+
+[node name="ZAxis" type="CSGBox3D" parent="." unique_id=782654315]
+size = Vector3(0.1, 0.1, 2)
+material = ExtResource("1_t141h")

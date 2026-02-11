@@ -17,18 +17,17 @@ func add_points(points):
 	
 	for p in points:
 		if next_instance_to_draw < multimesh.instance_count:
-			var pos = p.position
-			multimesh.set_instance_color(next_instance_to_draw,Color.WHITE)
-			multimesh.set_instance_transform(next_instance_to_draw, Transform3D(Basis(), pos))
+			multimesh.set_instance_transform(next_instance_to_draw, Transform3D(Basis(), p.position))
+			multimesh.set_instance_color(next_instance_to_draw, p.color)
 			next_instance_to_draw += 1
 
 func prepare_mesh(instance_count):
 	multimesh = MultiMesh.new()
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.use_colors=true
+	multimesh.use_colors = true
 	multimesh.instance_count = instance_count
 	next_instance_to_draw = 0
 	var pmesh = PointMesh.new()
-	pmesh.material = load("res://materials/Shadow.tres")
+	pmesh.material = load("res://materials/PointMaterial.tres")
 	
 	multimesh.mesh=pmesh

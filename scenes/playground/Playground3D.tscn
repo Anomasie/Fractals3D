@@ -1,21 +1,10 @@
 [gd_scene format=3 uid="uid://cothr5kp6sd3u"]
 
 [ext_resource type="Script" uid="uid://ct22d48uyjku8" path="res://scenes/playground/Playground.gd" id="1_2bvfw"]
-[ext_resource type="Material" uid="uid://dy1grmdde171o" path="res://materials/ToonMetallic.tres" id="2_wd1fg"]
+[ext_resource type="PackedScene" uid="uid://d3qmwykfg1kxm" path="res://scenes/Lights.tscn" id="2_3v8xh"]
 [ext_resource type="PackedScene" uid="uid://b1m80wdvenq4x" path="res://scenes/playground/Box.tscn" id="3_3v8xh"]
+[ext_resource type="PackedScene" uid="uid://bytvje6vfmjan" path="res://scenes/results/Coordinates.tscn" id="3_47e2k"]
 [ext_resource type="PackedScene" uid="uid://dviejn8y6hcqs" path="res://scenes/CameraMan.tscn" id="3_wd1fg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wd1fg"]
-resource_local_to_scene = true
-transparency = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v8xh"]
-resource_local_to_scene = true
-transparency = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47e2k"]
-resource_local_to_scene = true
-transparency = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_idikx"]
 resource_local_to_scene = true
@@ -25,46 +14,24 @@ transparency = 1
 resource_local_to_scene = true
 transparency = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ud6l"]
+resource_local_to_scene = true
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05vri"]
+resource_local_to_scene = true
+transparency = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_os1n6"]
+resource_local_to_scene = true
+transparency = 1
+
 [node name="Playground" type="Node3D" unique_id=385784093]
 script = ExtResource("1_2bvfw")
 
-[node name="Lights" type="Node3D" parent="." unique_id=493610087]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+[node name="Lights" parent="." unique_id=1838239300 instance=ExtResource("2_3v8xh")]
 
-[node name="XAxisLight_green" type="DirectionalLight3D" parent="Lights" unique_id=409101067]
-transform = Transform3D(-0.08619841, -0.14780936, 0.9852524, 0.9961947, -4.1689496e-08, 0.087155744, -0.012882391, 0.9890159, 0.1472469, 0, 0, 0)
-light_color = Color(0.78431374, 1, 0.78431374, 1)
-shadow_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="YAxisLight_blue" type="DirectionalLight3D" parent="Lights" unique_id=40352495]
-transform = Transform3D(-1, -8.742278e-08, 0, -3.821371e-15, 4.371139e-08, 1, -8.742278e-08, 1, -4.371139e-08, 0, 0, 0)
-light_color = Color(0.78431374, 0.78431374, 1, 1)
-shadow_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="ZAxisLight_red" type="DirectionalLight3D" parent="Lights" unique_id=1363965900]
-transform = Transform3D(-1, -7.619397e-09, 8.709011e-08, 0, 0.9961947, 0.08715574, -8.742278e-08, 0.08715574, -0.9961947, 0, 0, 0)
-light_color = Color(1, 0.78431374, 0.78431374, 1)
-shadow_enabled = true
-metadata/_edit_lock_ = true
-
-[node name="Coordinates" type="CSGCombiner3D" parent="." unique_id=2017209326]
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="XAxis" type="CSGBox3D" parent="Coordinates" unique_id=1016322248]
-size = Vector3(2, 0.1, 0.1)
-material = ExtResource("2_wd1fg")
-
-[node name="YAxis" type="CSGBox3D" parent="Coordinates" unique_id=1549201467]
-size = Vector3(0.1, 2, 0.1)
-material = ExtResource("2_wd1fg")
-
-[node name="ZAxis" type="CSGBox3D" parent="Coordinates" unique_id=1025976920]
-size = Vector3(0.1, 0.1, 2)
-material = ExtResource("2_wd1fg")
+[node name="Coordinates" parent="." unique_id=642234485 instance=ExtResource("3_47e2k")]
 
 [node name="CameraManP" parent="." unique_id=1836000795 instance=ExtResource("3_wd1fg")]
 transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
@@ -73,22 +40,22 @@ transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
 
 [node name="Box1" parent="Boxes" unique_id=570203667 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.6, 0, 0, 0, 1, -0.7847654, 0.0006122589, 0.0004941225)
-material = SubResource("StandardMaterial3D_wd1fg")
+material = SubResource("StandardMaterial3D_idikx")
 
 [node name="Box2" parent="Boxes" unique_id=1935731442 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.7, 0.5263343, -0.2812963, 0.25982255)
-material = SubResource("StandardMaterial3D_3v8xh")
+material = SubResource("StandardMaterial3D_tf4lo")
 
 [node name="Box3" parent="Boxes" unique_id=2063072095 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.6328844, 0.6093038, 0.401304)
-material = SubResource("StandardMaterial3D_47e2k")
+material = SubResource("StandardMaterial3D_0ud6l")
 
 [node name="Box4" parent="Boxes" unique_id=1528116015 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.19968188, 0.61932445, -0.64566445)
-material = SubResource("StandardMaterial3D_idikx")
+material = SubResource("StandardMaterial3D_05vri")
 
 [node name="Box5" parent="Boxes" unique_id=1508676453 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5492845, -0.015698016, -0.5738601)
-material = SubResource("StandardMaterial3D_tf4lo")
+material = SubResource("StandardMaterial3D_os1n6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1705646065]

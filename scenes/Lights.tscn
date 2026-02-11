@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d3qmwykfg1kxm"]
+
+[ext_resource type="Script" uid="uid://d1gfnx0re35xb" path="res://scenes/Lights.gd" id="1_3pqeu"]
+
+[node name="Lights" type="Node3D" unique_id=1838239300]
+script = ExtResource("1_3pqeu")
+metadata/_edit_group_ = true
+
+[node name="XAxisLight_green" type="DirectionalLight3D" parent="." unique_id=1663273810]
+transform = Transform3D(-0.08619841, -0.14780936, 0.9852524, 0.9961947, -4.1689496e-08, 0.087155744, -0.012882391, 0.9890159, 0.1472469, 0, 0, 0)
+light_color = Color(0, 1, 0, 1)
+shadow_enabled = true
+
+[node name="YAxisLight_blue" type="DirectionalLight3D" parent="." unique_id=1340336324]
+transform = Transform3D(0.13868433, -0.98979366, 0.03279011, 0.07547911, 0.043577876, 0.9961947, -0.98745614, -0.13568163, 0.08075231, 0, 0, 0)
+light_color = Color(0, 0, 1, 1)
+shadow_enabled = true
+
+[node name="ZAxisLight_red" type="DirectionalLight3D" parent="." unique_id=1602058748]
+transform = Transform3D(1, 0, 0, 0, 0.9961947, 0.08715574, 0, -0.08715574, 0.9961947, 0, 0, 0)
+light_color = Color(1, 0, 0, 1)
+shadow_enabled = true

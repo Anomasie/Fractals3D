@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnjqskfirj5j"]
+
+[ext_resource type="Material" uid="uid://5dl0tq4h1wg6" path="res://materials/Shadow.tres" id="1_xy2p5"]
+
+[resource]
+next_pass = ExtResource("1_xy2p5")
+vertex_color_use_as_albedo = true

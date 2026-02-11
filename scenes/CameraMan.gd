@@ -21,8 +21,11 @@ func _input(event):
 		if sync_camera:
 			sync_camera.load_data( self.rotation, CamPositioner.position )
 	elif event.is_action_pressed("activate_camera_rotating"):
+		if event.get("position"):
+			rotating_origin = event.position
+		elif not rotating_camera:
+			rotating_origin = get_viewport().get_mouse_position()
 		rotating_camera = true
-		rotating_origin = event.position
 	elif event.is_action_released("activate_camera_rotating"):
 		rotating_camera = false
 

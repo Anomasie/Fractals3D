@@ -12,8 +12,12 @@ func _ready():
 	await Engine.get_main_loop().process_frame
 	_on_box_changed()
 
-func get_boxes():
-	return $Boxes.get_children()
+func get_boxes() -> Array:
+	var boxes = []
+	for box in $Boxes.get_children():
+		if box.visible:
+			boxes.append(box)
+	return boxes
 
 func get_ifs() -> IFS:
 	var my_ifs = IFS.new()

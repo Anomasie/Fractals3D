@@ -193,5 +193,6 @@ grow_vertical = 0
 [connection signal="fractal_changed" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_fractal_changed"]
 [connection signal="toggled" from="Left/Main/ColorButton" to="." method="_on_color_button_toggled"]
 [connection signal="pressed" from="Left/Main/RemoveButton" to="." method="_on_remove_button_pressed"]
+[connection signal="pressed" from="Left/Main/RemoveAllButton" to="." method="_on_remove_all_button_pressed"]
 [connection signal="color_changed" from="ColorSliders" to="." method="_on_color_sliders_color_changed"]
 [connection signal="finished" from="ColorSliders" to="." method="_on_color_sliders_finished"]

@@ -64,3 +64,8 @@ func _on_remove_button_pressed() -> void:
 	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
 	
 	fractal_changed_vastly.emit( Playground.get_ifs() )
+
+
+func _on_remove_all_button_pressed() -> void:
+	Playground.FocusedBoxes = Playground.get_boxes()
+	_on_remove_button_pressed()

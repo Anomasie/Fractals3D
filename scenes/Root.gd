@@ -5,9 +5,9 @@ extends Control
 
 @onready var SyncButton = $Center/SyncButton
 
+
 func _on_playground_ui_fractal_changed(new_ifs) -> void:
 	ResultUI.set_ifs(new_ifs)
-
 
 func _on_sync_button_pressed() -> void:
 	if SyncButton.button_pressed:

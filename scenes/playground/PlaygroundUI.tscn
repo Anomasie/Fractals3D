@@ -147,6 +147,7 @@ texture_hover = SubResource("AtlasTexture_fsbk1")
 texture_disabled = SubResource("AtlasTexture_3ugsc")
 
 [node name="ColorSliders" parent="." unique_id=649362228 instance=ExtResource("3_asuwu")]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

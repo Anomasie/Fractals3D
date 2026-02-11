@@ -8,7 +8,7 @@ var matrix = [
 	[ 0, 0.5, 0],
 	[ 0, 0, 0.5]
 ]
-var color = Color.BLACK
+var color = Color.WHITE
 
 func _ready():
 	print("in CONTRACTION: PRINT_ERRORS is ", PRINT_ERRORS)

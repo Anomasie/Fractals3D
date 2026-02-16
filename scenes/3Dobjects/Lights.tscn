@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d3qmwykfg1kxm"]
 
-[ext_resource type="Script" uid="uid://d1gfnx0re35xb" path="res://scenes/Lights.gd" id="1_3pqeu"]
+[ext_resource type="Script" uid="uid://d1gfnx0re35xb" path="res://scenes/3Dobjects/Lights.gd" id="1_fbb5r"]
 
 [node name="Lights" type="Node3D" unique_id=1838239300]
-script = ExtResource("1_3pqeu")
+script = ExtResource("1_fbb5r")
 metadata/_edit_group_ = true
 
 [node name="XAxisLight_green" type="DirectionalLight3D" parent="." unique_id=1663273810]

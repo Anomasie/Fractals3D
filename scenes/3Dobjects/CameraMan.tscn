@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dviejn8y6hcqs"]
 
-[ext_resource type="Script" uid="uid://degnd5fi0r4l7" path="res://scenes/CameraMan.gd" id="1_jk5lh"]
+[ext_resource type="Script" uid="uid://degnd5fi0r4l7" path="res://scenes/3Dobjects/CameraMan.gd" id="1_1l3cw"]
 
 [node name="CameraMan" type="Marker3D" unique_id=846073337]
 transform = Transform3D(1.0000898, 0, 0, 0, 1, 0, 0, 0, 1.0000898, 0, 0, 0)
-script = ExtResource("1_jk5lh")
+script = ExtResource("1_1l3cw")
 metadata/_edit_lock_ = true
 
 [node name="CamPositioner" type="Marker3D" parent="." unique_id=172708227]

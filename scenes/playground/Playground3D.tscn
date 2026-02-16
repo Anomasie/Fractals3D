@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cothr5kp6sd3u"]
 
 [ext_resource type="Script" uid="uid://ct22d48uyjku8" path="res://scenes/playground/Playground.gd" id="1_2bvfw"]
-[ext_resource type="PackedScene" uid="uid://d3qmwykfg1kxm" path="res://scenes/Lights.tscn" id="2_3v8xh"]
+[ext_resource type="PackedScene" uid="uid://d3qmwykfg1kxm" path="res://scenes/3Dobjects/Lights.tscn" id="2_3v8xh"]
 [ext_resource type="PackedScene" uid="uid://b1m80wdvenq4x" path="res://scenes/playground/Box.tscn" id="3_3v8xh"]
-[ext_resource type="PackedScene" uid="uid://bytvje6vfmjan" path="res://scenes/results/Coordinates.tscn" id="3_47e2k"]
-[ext_resource type="PackedScene" uid="uid://dviejn8y6hcqs" path="res://scenes/CameraMan.tscn" id="3_wd1fg"]
+[ext_resource type="PackedScene" uid="uid://bytvje6vfmjan" path="res://scenes/3Dobjects/Coordinates.tscn" id="3_47e2k"]
+[ext_resource type="PackedScene" uid="uid://dviejn8y6hcqs" path="res://scenes/3Dobjects/CameraMan.tscn" id="3_wd1fg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v8xh"]
 resource_local_to_scene = true
@@ -59,3 +59,5 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5492845, -0.015698016
 material = SubResource("StandardMaterial3D_0ud6l")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1705646065]
+
+[connection signal="clicked_axis" from="Coordinates" to="." method="_on_coordinates_clicked_axis"]

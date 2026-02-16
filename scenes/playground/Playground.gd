@@ -3,6 +3,8 @@ extends Node3D
 signal fractal_changed
 signal focus_these
 
+@onready var CameraMan = $CameraManP
+
 var FocusedBoxes = []
 
 func _ready():
@@ -11,6 +13,8 @@ func _ready():
 		box.changed.connect(_on_box_changed)
 	await Engine.get_main_loop().process_frame
 	_on_box_changed()
+
+# box functions
 
 func get_boxes() -> Array:
 	var boxes = []
@@ -51,3 +55,14 @@ func _on_box_focus_me(box):
 
 func _on_box_changed():
 	fractal_changed.emit( self.get_ifs() )
+
+# camera and coordinates functions
+
+func _on_coordinates_clicked_axis(axis) -> void:
+	var rot = Vector3.ZERO
+	if axis.y != 0:
+		rot.x = -axis.y*PI/2
+		rot.y = CameraMan.rotation.y
+	else:
+		rot.y = axis.x*PI/2 + int(axis.z < 0)*PI
+	CameraMan.load_data(rot)

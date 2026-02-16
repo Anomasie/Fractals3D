@@ -43,9 +43,9 @@ func _process(_delta):
 		if sync_camera:
 			sync_camera.load_data( self.rotation, CamPositioner.position )
 
-func load_data(rot, pos):
-	self.rotation = rot
-	CamPositioner.position = pos
+func load_data(rot, pos=CamPositioner.position):
+	self.rotation = rot # angle
+	CamPositioner.position = pos # zoom
 
 func sync_with(camera_man):
 	sync_camera = camera_man

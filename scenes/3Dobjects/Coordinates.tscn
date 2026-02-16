@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://bytvje6vfmjan"]
+
+[ext_resource type="Script" uid="uid://dkshw2okpingu" path="res://scenes/3Dobjects/Coordinates.gd" id="1_sg6cw"]
+[ext_resource type="Material" uid="uid://dy1grmdde171o" path="res://materials/ToonMetallic.tres" id="2_b88gr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t141h"]
+height = 0.1
+radius = 0.07128906
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2r8d"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qahpc"]
+material = SubResource("StandardMaterial3D_w2r8d")
+radius = 0.05
+height = 0.1
+rings = 1
+
+[node name="Coordinates" type="CSGCombiner3D" unique_id=642234485]
+script = ExtResource("1_sg6cw")
+metadata/_edit_group_ = true
+
+[node name="XAxis" type="CSGBox3D" parent="." unique_id=2039982037]
+size = Vector3(2, 0.1, 0.1)
+material = ExtResource("2_b88gr")
+
+[node name="YAxis" type="CSGBox3D" parent="." unique_id=927844950]
+size = Vector3(0.1, 2, 0.1)
+material = ExtResource("2_b88gr")
+
+[node name="ZAxis" type="CSGBox3D" parent="." unique_id=782654315]
+size = Vector3(0.1, 0.1, 2)
+material = ExtResource("2_b88gr")
+
+[node name="Area100" type="Area3D" parent="." unique_id=623050686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area100" unique_id=1890914458]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area100" unique_id=635596869]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_qahpc")
+
+[node name="Area200" type="Area3D" parent="." unique_id=684089839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area200" unique_id=734148670]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area200" unique_id=907972281]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_qahpc")
+
+[node name="Area010" type="Area3D" parent="." unique_id=168008487]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area010" unique_id=1599884560]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area010" unique_id=1136714678]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_qahpc")
+
+[node name="Area020" type="Area3D" parent="." unique_id=1516692722]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area020" unique_id=1248453701]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area020" unique_id=1375077504]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_qahpc")
+
+[node name="Area001" type="Area3D" parent="." unique_id=989876289]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area001" unique_id=471770655]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area001" unique_id=1547363004]
+mesh = SubResource("SphereMesh_qahpc")
+
+[node name="Area002" type="Area3D" parent="." unique_id=1221089817]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area002" unique_id=1827603144]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_t141h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area002" unique_id=1682709493]
+mesh = SubResource("SphereMesh_qahpc")
+
+[connection signal="input_event" from="Area100" to="." method="_on_area_100_input_event"]
+[connection signal="input_event" from="Area200" to="." method="_on_area_200_input_event"]
+[connection signal="input_event" from="Area010" to="." method="_on_area_010_input_event"]
+[connection signal="input_event" from="Area020" to="." method="_on_area_020_input_event"]
+[connection signal="input_event" from="Area001" to="." method="_on_area_001_input_event"]
+[connection signal="input_event" from="Area002" to="." method="_on_area_002_input_event"]

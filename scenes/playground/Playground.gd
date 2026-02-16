@@ -65,4 +65,4 @@ func _on_coordinates_clicked_axis(axis) -> void:
 		rot.y = CameraMan.rotation.y
 	else:
 		rot.y = axis.x*PI/2 + int(axis.z < 0)*PI
-	CameraMan.load_data(rot)
+	CameraMan.load_data(rot, null, true)

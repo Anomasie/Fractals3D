@@ -25,7 +25,6 @@ func get_ifs() -> IFS:
 	
 	for box in self.get_boxes():
 		if box.visible:
-			print(box.name)
 			systems.append( box.get_contraction() )
 	my_ifs.systems = systems
 	

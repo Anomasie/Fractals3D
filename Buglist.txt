@@ -1,0 +1,9 @@
+IFS-Computation
+
+- Wahrscheinlichkeiten richtig ausrechnen
+
+ResultUI
+
+- Erstes Bild scheint Probleme zu machen. Wenn auf 0 gesetzt, funktioniert es wieder.
+- Auch andere Bilder funktionieren nicht recht. Punkte scheinen nicht gelöscht zu werden.
+- Flackern während _fractal_changed emittiert wird. Erstes Fraktal zu sehen?

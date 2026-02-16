@@ -5,8 +5,9 @@ var current_ifs
 # how many points should be drawn (in this frame and at all?)
 var limit = 0
 var frame_limit = 1000 # to manage frame performance
+var frame_limit_for_new_ifs = 1000 # if ifs is loaded new
 var max_frame_limit = 100000
-var frame_step = 100
+var frame_factor = 1.2
 var counter = 0
 
 @onready var Result3D = $ViewportContainer/Subviewport/Result3D
@@ -14,6 +15,8 @@ var counter = 0
 @onready var PointSlider = $Screen/Columns/Left/Bottom/Grid/PointSlider
 @onready var PointTeller = $Screen/Columns/Left/Bottom/Grid/PointSlider/PointTeller
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
+
+var new_ifs_this_frame = false
 
 func _ready():
 	# set values
@@ -31,31 +34,43 @@ func _ready():
 	self.set_ifs(new_ifs)
 
 func set_ifs(new_ifs):
+	new_ifs_this_frame = true
 	current_ifs = new_ifs
 	counter = 0
-	Result3D.restart_mesh(limit, current_ifs.calculate_fractal(point.new(), 10))
+	#Result3D.restart_mesh(limit, [])#current_ifs.calculate_fractal(point.new(), 0))
 
 func _process(delta):
-	draw_points(delta)
+	draw_points(delta, new_ifs_this_frame)
+	new_ifs_this_frame = false
 
-func draw_points(delta):
+func draw_points(delta, load_new_ifs=false):
 	if limit < 0 or counter < limit:
 		# decide how many points to be calculated in one frame
 		if len(current_ifs.systems) > 0:
-			if delta > 1.0/15: # too slow
-				frame_limit = max(0, frame_limit-frame_step)
-			if delta < 1.0/30: # fast enough
-				frame_limit = min(frame_limit+frame_step, max_frame_limit)
+			if load_new_ifs:
+				if delta > 1.0/5:
+					print("too slow ", frame_limit_for_new_ifs)
+					frame_limit_for_new_ifs = frame_limit_for_new_ifs/frame_factor
+				elif delta < 1.0/30:
+					print("too fast ", frame_limit_for_new_ifs)
+					frame_limit_for_new_ifs = frame_limit_for_new_ifs*frame_factor
+			else:
+				if delta > 1.0/30: # too slow
+					frame_limit = frame_limit/frame_factor
+				elif delta < 1.0/40: # fast enough
+					frame_limit = frame_limit*frame_factor
 
 		# calculate more points
 		## how many?
-		var amount = frame_limit
-		if limit >= 0:
+		var amount = 0
+		if load_new_ifs:
+			amount = min(frame_limit_for_new_ifs, limit-counter)
+		else:
 			amount = min(frame_limit, limit-counter)
 		
 		if counter <= 0:
 			Result3D.restart_mesh(limit, current_ifs.calculate_fractal(point.new(), amount))
-		else:
+		elif amount > 0:
 			Result3D.add_points(current_ifs.calculate_fractal(point.new(), amount))
 		counter += amount
 		

@@ -1,9 +1,10 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dy1grmdde171o"]
 
 [resource]
+transparency = 1
 diffuse_mode = 3
 specular_mode = 1
-albedo_color = Color(0.63, 0.63, 0.63, 1)
+albedo_color = Color(1, 1, 1, 0.48235294)
 metallic_specular = 0.09
 roughness = 0.08
 emission = Color(0.197937, 0.197937, 0.197937, 1)

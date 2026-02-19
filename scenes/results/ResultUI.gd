@@ -48,11 +48,9 @@ func draw_points(delta, load_new_ifs=false):
 		# decide how many points to be calculated in one frame
 		if len(current_ifs.systems) > 0:
 			if load_new_ifs:
-				if delta > 1.0/5:
-					print("too slow ", frame_limit_for_new_ifs)
+				if delta > 1.0/7:
 					frame_limit_for_new_ifs = frame_limit_for_new_ifs/frame_factor
 				elif delta < 1.0/30:
-					print("too fast ", frame_limit_for_new_ifs)
 					frame_limit_for_new_ifs = frame_limit_for_new_ifs*frame_factor
 			else:
 				if delta > 1.0/30: # too slow

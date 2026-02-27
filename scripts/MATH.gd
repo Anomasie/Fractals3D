@@ -3,7 +3,7 @@ class_name Math
 #const VECTOR_EPSILON = 0.00001
 
 static func rotation_matrix(rotation : Vector3):
-	return multiply( multiply(yaw_matrix(rotation.x), pitch_matrix(rotation.x)), roll_matrix(rotation.z) )
+	return multiply( multiply(yaw_matrix(rotation.x), pitch_matrix(rotation.y)), roll_matrix(rotation.z) )
 
 static func yaw_matrix(alpha):
 	return [

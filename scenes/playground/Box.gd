@@ -33,11 +33,12 @@ var rotation_face_center = Vector3.ZERO
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
 	my_contraction.translation = self.position
-	my_contraction.matrix = [
+	my_contraction.matrix = Math.multiply([
 		[self.scale.x, 0, 0],
 		[0, self.scale.y, 0],
 		[0, 0, self.scale.z]
-	]
+	], Math.rotation_matrix(self.rotation))
+	print(my_contraction.matrix)
 	my_contraction.color = get_color()
 	return my_contraction
 

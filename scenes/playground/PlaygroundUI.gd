@@ -17,6 +17,11 @@ func _ready():
 	ColorSliders.close()
 	focus()
 
+func get_ifs(ifs = Playground.get_ifs()) -> IFS:
+	ifs.uniform_coloring = ColorSliders.UniformColorButton.on
+	
+	return ifs
+
 func focus(boxes = []) -> void:
 	Playground.focus(boxes)
 	
@@ -33,7 +38,7 @@ func focus(boxes = []) -> void:
 # playground
 
 func _on_playground_fractal_changed(ifs) -> void:
-	fractal_changed.emit( ifs )
+	fractal_changed.emit( self.get_ifs(ifs) )
 
 func _on_playground_focus_these(boxes) -> void:
 	focus(boxes)
@@ -55,7 +60,8 @@ func _on_color_sliders_finished() -> void:
 
 func _on_color_sliders_color_changed() -> void:
 	Playground.set_color( ColorSliders.get_color() )
-
+	
+	fractal_changed.emit( self.get_ifs() )
 
 func _on_remove_button_pressed() -> void:
 	# close rect
@@ -63,8 +69,7 @@ func _on_remove_button_pressed() -> void:
 	focus([])
 	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
 	
-	fractal_changed_vastly.emit( Playground.get_ifs() )
-
+	fractal_changed_vastly.emit( self.get_ifs() )
 
 func _on_remove_all_button_pressed() -> void:
 	Playground.FocusedBoxes = Playground.get_boxes()

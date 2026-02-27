@@ -63,7 +63,6 @@ func _ready():
 		] + Presets + UserPresets)
 	# open something
 	open(Color.WHITE)
-	close()
 	
 	UniformColorButton.visible = not self.BACKGROUND_COLOR_SLIDER
 

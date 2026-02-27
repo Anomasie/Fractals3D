@@ -33,15 +33,14 @@ var rotation_face_center = Vector3.ZERO
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
 	my_contraction.translation = self.position
-	my_contraction.matrix = Math.multiply([
-		[self.scale.x, 0, 0],
-		[0, self.scale.y, 0],
-		[0, 0, self.scale.z]
-	], Math.rotation_matrix(self.rotation))
-	
-	if self.rotation != Vector3.ZERO:
-		print(my_contraction.matrix)
-	
+	my_contraction.matrix = Math.multiply(
+		Math.rotation_matrix(self.rotation),
+		[
+			[self.scale.x, 0, 0],
+			[0, self.scale.y, 0],
+			[0, 0, self.scale.z]
+		]
+	)
 	my_contraction.color = get_color()
 	return my_contraction
 
@@ -87,12 +86,16 @@ func _process(_delta):
 		self.scale = original_scale + difference * abs(editing_face)
 		self.position = original_position + difference/2 * editing_face_rotated
 		
+		
+		#$Tester1.set_global_position(editing_face_rotated)
+		
 		if not Input.is_action_pressed("click"):
 			editing_face = Vector3.ZERO
 			editing_face_rotated = Vector3.ZERO
 			changed_vastly.emit()
 		else:
 			changed.emit()
+		
 	
 	elif editing_position:
 		var camera_position = get_viewport().get_camera_3d().global_transform.origin
@@ -194,7 +197,11 @@ func set_scaling_face(face_vector, event_position):
 	original_scale = self.scale
 	original_position = self.position
 	editing_face = face_vector
-	editing_face_rotated = face_vector.rotated(Vector3(0,0,1), self.rotation.z)
+	var array = Math.multiply(
+		Math.rotation_matrix(self.rotation),
+		[[face_vector.x], [face_vector.y], [face_vector.z]]
+	)
+	editing_face_rotated = Vector3(array[0][0], array[1][0], array[2][0])
 
 func _on_area_100_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

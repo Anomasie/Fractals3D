@@ -2,24 +2,38 @@ class_name Math
 
 #const VECTOR_EPSILON = 0.00001
 
-static func rotation_matrix(rotation : Vector3):
-	return multiply( multiply(yaw_matrix(rotation.x), pitch_matrix(rotation.y)), roll_matrix(rotation.z) )
+static func det(m) -> float:
+	# Sarrus 3x3
+	var sum = 0
+	sum += m[0][0] * m[1][1] * m[2][2]
+	sum += m[0][1] * m[1][2] * m[2][0]
+	sum += m[0][2] * m[1][0] * m[2][1]
+	sum -= m[0][2] * m[1][1] * m[2][0]
+	sum -= m[0][0] * m[1][2] * m[2][1]
+	sum -= m[0][1] * m[1][0] * m[2][2]
+	return sum
 
-static func yaw_matrix(alpha):
+static func rotation_matrix(rotation : Vector3):
+	return multiply(
+		multiply(yaw_matrix(rotation.y), pitch_matrix(rotation.x)),
+		roll_matrix(rotation.z)
+	)
+
+static func roll_matrix(alpha):
 	return [
 		[cos(alpha), -sin(alpha), 0],
 		[sin(alpha), cos(alpha), 0],
 		[0, 0, 1]
 	]
 
-static func pitch_matrix(alpha):
+static func yaw_matrix(alpha):
 	return [
 		[cos(alpha), 0, sin(alpha)],
 		[0, 1, 0],
 		[-sin(alpha), 0, cos(alpha)]
 	]
 
-static func roll_matrix(alpha):
+static func pitch_matrix(alpha):
 	return [
 		[1, 0, 0],
 		[0, cos(alpha), -sin(alpha)],

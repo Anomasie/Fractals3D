@@ -26,7 +26,7 @@ var rotation_face_center = Vector3.ZERO
 	$Area001, $Area002
 ]
 @onready var TurnAreas = [
-	$Turn001
+	$Turn001, $Turn002
 ]
 @onready var InnerAreaMesh = $InnerArea/Mesh
 
@@ -126,6 +126,14 @@ func _process(_delta):
 		var a = x - rotation_face_center
 		var b = mouse_intersects_face - rotation_face_center
 		var angle = acos ( (a.normalized()).dot(b.normalized()) )
+		
+		$TestMesh1.set_global_position(mouse_intersects_face)
+		$TestMesh2.set_global_position(x)
+		$TestMesh3.set_global_position(b)
+		
+		if rotation_face_center != abs(rotation_face_center):
+			angle *= -1
+		
 		if (rotation_face_normal).dot(a.cross(b)) >= 0:
 			self.rotation.z = angle + original_rotation
 		else:
@@ -201,10 +209,17 @@ func _on_inner_area_input_event(_camera: Node, event: InputEvent, event_position
 
 ## rotating
 
+func set_turning_face(face_vector, face_area, event_position):
+	editing_rotation_face = face_vector
+	drag_center = event_position
+	rotation_face_normal = (face_area.get_global_position()-self.get_global_position()).normalized()
+	rotation_face_center = self.get_global_position() + face_area.position * self.scale
+	original_rotation = self.rotation.z
+
 func _on_turn_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		editing_rotation_face = Vector3(0,0,1)
-		drag_center = event_position
-		rotation_face_normal = ($Area001.get_global_position()-self.get_global_position()).normalized()
-		rotation_face_center = self.get_global_position() + $Area001.position * self.scale
-		original_rotation = self.rotation.z
+		set_turning_face(Vector3(0,0,1), FaceAreas[4], event_position)
+
+func _on_turn_002_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		set_turning_face(Vector3(0,0,-1), FaceAreas[5], event_position)

@@ -11,6 +11,7 @@ var original_scale = self.scale
 var original_position = Vector3.ZERO
 var original_rotation = 0.0
 var editing_face = Vector3.ZERO
+var editing_face_rotated = Vector3.ZERO
 var editing_rotation_face = Vector3.ZERO
 var editing_position = false
 var drag_center = Vector3.ZERO # point on which the face / edge was clicked
@@ -72,7 +73,7 @@ func _process(_delta):
 			get_viewport().get_mouse_position()
 		)
 		
-		var v = editing_face
+		var v = editing_face_rotated
 		var x = camera_direction
 		var a = drag_center
 		var b = camera_position
@@ -80,10 +81,11 @@ func _process(_delta):
 		var difference = ( v.dot(a-b) + x.dot(b-a) * v.dot(x) / x.dot(x) ) / ( x.dot(v)**2 / x.dot(x) - v.dot(v) )
 		
 		self.scale = original_scale + difference * abs(editing_face)
-		self.position = original_position + difference/2 * editing_face
+		self.position = original_position + difference/2 * editing_face_rotated
 		
 		if not Input.is_action_pressed("click"):
 			editing_face = Vector3.ZERO
+			editing_face_rotated = Vector3.ZERO
 			changed_vastly.emit()
 		else:
 			changed.emit()
@@ -152,47 +154,40 @@ func _on_box_area_input_event(_camera: Node, event: InputEvent, _event_position:
 	if event.is_action_released("click"):
 		focus_me.emit(self)
 
+## scaling
+
+func set_scaling_face(face_vector, event_position):
+	drag_center = event_position
+	original_scale = self.scale
+	original_position = self.position
+	editing_face = face_vector
+	editing_face_rotated = face_vector.rotated(Vector3(0,0,1), self.rotation.z)
+
 func _on_area_100_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(1,0,0)
+		set_scaling_face(Vector3(1,0,0), event_position)
 
 func _on_area_200_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(-1,0,0)
+		set_scaling_face(Vector3(-1,0,0), event_position)
 
 func _on_area_010_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(0,1,0)
+		set_scaling_face(Vector3(0,1,0), event_position)
 
 func _on_area_020_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(0,-1,0)
+		set_scaling_face(Vector3(0,-1,0), event_position)
 
 func _on_area_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(0,0,1)
+		set_scaling_face(Vector3(0,0,1), event_position)
 
 func _on_area_002_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		drag_center = event_position
-		original_scale = self.scale
-		original_position = self.position
-		editing_face = Vector3(0,0,-1)
+		set_scaling_face(Vector3(0,0,-1), event_position)
+
+## dragging
 
 func _on_inner_area_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
@@ -203,6 +198,8 @@ func _on_inner_area_input_event(_camera: Node, event: InputEvent, event_position
 			drag_offset = event_position - self.position
 			original_position = self.position
 			editing_position = true
+
+## rotating
 
 func _on_turn_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

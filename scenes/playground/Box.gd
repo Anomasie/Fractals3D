@@ -9,10 +9,10 @@ var focused = false
 
 var original_scale = self.scale
 var original_position = Vector3.ZERO
-var original_rotation = 0.0
 var editing_face = Vector3.ZERO
 var editing_face_rotated = Vector3.ZERO
 var editing_rotation_face = Vector3.ZERO
+var last_angle = 0.0
 var editing_position = false
 var drag_center = Vector3.ZERO # point on which the face / edge was clicked
 var drag_offset = Vector3.ZERO # point inside the InnerArea that was clicked
@@ -111,39 +111,69 @@ func _process(_delta):
 	
 	elif editing_rotation_face:
 		
-		var camera_position = get_viewport().get_camera_3d().global_transform.origin
-		var camera_direction = get_viewport().get_camera_3d().project_ray_normal(
-			get_viewport().get_mouse_position()
-		)
+		var angle = calculate_angle()
 		
-		var n = rotation_face_normal
-		var x = drag_center
-		var v = camera_direction
-		var c = camera_position
-		var s = (n.dot(x-c))/n.dot(v)
-		
-		var mouse_intersects_face = c + s * v
-		var a = x - rotation_face_center
-		var b = mouse_intersects_face - rotation_face_center
-		var angle = acos ( (a.normalized()).dot(b.normalized()) )
-		
-		$TestMesh1.set_global_position(mouse_intersects_face)
-		$TestMesh2.set_global_position(x)
-		$TestMesh3.set_global_position(b)
-		
-		if rotation_face_center != abs(rotation_face_center):
-			angle *= -1
-		
-		if (rotation_face_normal).dot(a.cross(b)) >= 0:
-			self.rotation.z = angle + original_rotation
+		if rotation_flipped():
+			if editing_rotation_face.x != 0:
+				self.rotate_x(angle-last_angle)
+			else:
+				self.rotate_z(angle-last_angle)
 		else:
-			self.rotation.z = - angle + original_rotation
+			if editing_rotation_face.x != 0:
+				self.rotate_x(-angle + last_angle)
+			else:
+				self.rotate_z(-angle + last_angle)
+		
+		last_angle = angle
 		
 		if not Input.is_action_pressed("click"):
 			editing_rotation_face = Vector3.ZERO
 			changed_vastly.emit()
 		else:
 			changed.emit()
+
+func calculate_angle() -> float:
+	var camera_position = get_viewport().get_camera_3d().global_transform.origin
+	var camera_direction = get_viewport().get_camera_3d().project_ray_normal(
+		get_viewport().get_mouse_position()
+	)
+	
+	var n = rotation_face_normal
+	var x = drag_center
+	var v = camera_direction
+	var c = camera_position
+	var s = (n.dot(x-c))/n.dot(v)
+	
+	var mouse_intersects_face = c + s * v
+	var a = x - rotation_face_center
+	var b = mouse_intersects_face - rotation_face_center
+	var angle = acos ( (a.normalized()).dot(b.normalized()) )
+	
+	$TestMesh1.set_global_position(mouse_intersects_face)
+	$TestMesh2.set_global_position(x)
+	$TestMesh3.set_global_position(b)
+	
+	if editing_rotation_face != abs(editing_rotation_face):
+		angle *= -1
+	
+	return angle
+
+func rotation_flipped() -> bool:
+	var camera_position = get_viewport().get_camera_3d().global_transform.origin
+	var camera_direction = get_viewport().get_camera_3d().project_ray_normal(
+		get_viewport().get_mouse_position()
+	)
+	var n = rotation_face_normal
+	var x = drag_center
+	var v = camera_direction
+	var c = camera_position
+	var s = (n.dot(x-c))/n.dot(v)
+	
+	var mouse_intersects_face = c + s * v
+	var a = x - rotation_face_center
+	var b = mouse_intersects_face - rotation_face_center
+	
+	return  (rotation_face_normal).dot(a.cross(b)) >= 0
 
 func get_color() -> Color:
 	var color = self.material.albedo_color
@@ -214,7 +244,15 @@ func set_turning_face(face_vector, face_area, event_position):
 	drag_center = event_position
 	rotation_face_normal = (face_area.get_global_position()-self.get_global_position()).normalized()
 	rotation_face_center = self.get_global_position() + face_area.position * self.scale
-	original_rotation = self.rotation.z
+	last_angle = calculate_angle()
+
+func _on_turn_100_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		set_turning_face(Vector3(1,0,0), FaceAreas[0], event_position)
+
+func _on_turn_200_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		set_turning_face(Vector3(-1,0,0), FaceAreas[1], event_position)
 
 func _on_turn_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

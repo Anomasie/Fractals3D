@@ -38,7 +38,10 @@ func get_contraction() -> Contraction:
 		[0, self.scale.y, 0],
 		[0, 0, self.scale.z]
 	], Math.rotation_matrix(self.rotation))
-	print(my_contraction.matrix)
+	
+	if self.rotation != Vector3.ZERO:
+		print(my_contraction.matrix)
+	
 	my_contraction.color = get_color()
 	return my_contraction
 

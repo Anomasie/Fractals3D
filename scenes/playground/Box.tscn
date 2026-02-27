@@ -45,6 +45,21 @@ radius = 0.05
 height = 0.2
 rings = 1
 
+[sub_resource type="SphereMesh" id="SphereMesh_vc7k5"]
+material = SubResource("StandardMaterial3D_0xymn")
+radius = 0.05
+height = 0.2
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lbo01"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_hmfwv"]
+material = SubResource("StandardMaterial3D_lbo01")
+radius = 0.05
+height = 0.2
+rings = 1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vc7k5"]
 albedo_color = Color(0, 0, 1, 1)
 
@@ -53,14 +68,6 @@ material = SubResource("StandardMaterial3D_vc7k5")
 radius = 0.05
 height = 0.2
 rings = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n11xc"]
-albedo_color = Color(1, 0, 1, 1)
-
-[sub_resource type="TorusMesh" id="TorusMesh_gwc8e"]
-material = SubResource("StandardMaterial3D_n11xc")
-inner_radius = 0.068
-outer_radius = 0.178
 
 [node name="Box" type="CSGBox3D" unique_id=75118264]
 material = SubResource("StandardMaterial3D_gwc8e")
@@ -164,7 +171,29 @@ shape = SubResource("CylinderShape3D_66ncn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Turn200" unique_id=758491299]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0)
-mesh = SubResource("SphereMesh_66ncn")
+mesh = SubResource("SphereMesh_vc7k5")
+
+[node name="Turn010" type="Area3D" parent="." unique_id=1095814070]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Turn010" unique_id=15997027]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0.05)
+shape = SubResource("CylinderShape3D_66ncn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turn010" unique_id=1350718560]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0)
+mesh = SubResource("SphereMesh_hmfwv")
+
+[node name="Turn020" type="Area3D" parent="." unique_id=2084585238]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Turn020" unique_id=505062850]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0.05)
+shape = SubResource("CylinderShape3D_66ncn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Turn020" unique_id=1833569643]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0)
+mesh = SubResource("SphereMesh_hmfwv")
 
 [node name="Turn001" type="Area3D" parent="." unique_id=559004143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
@@ -188,17 +217,6 @@ shape = SubResource("CylinderShape3D_66ncn")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.2, 0.2, 0)
 mesh = SubResource("SphereMesh_gwc8e")
 
-[node name="TestMesh1" type="MeshInstance3D" parent="." unique_id=1778805478]
-mesh = SubResource("TorusMesh_gwc8e")
-
-[node name="TestMesh2" type="MeshInstance3D" parent="." unique_id=607904863]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("TorusMesh_gwc8e")
-
-[node name="TestMesh3" type="MeshInstance3D" parent="." unique_id=813000256]
-transform = Transform3D(-4.371139e-08, 1, -4.371139e-08, 0, -4.371139e-08, -1, -1, -4.371139e-08, 1.9106855e-15, 0, 0, 0)
-mesh = SubResource("TorusMesh_gwc8e")
-
 [connection signal="input_event" from="BoxArea" to="." method="_on_box_area_input_event"]
 [connection signal="input_event" from="Area100" to="." method="_on_area_100_input_event"]
 [connection signal="input_event" from="Area200" to="." method="_on_area_200_input_event"]
@@ -209,5 +227,7 @@ mesh = SubResource("TorusMesh_gwc8e")
 [connection signal="input_event" from="InnerArea" to="." method="_on_inner_area_input_event"]
 [connection signal="input_event" from="Turn100" to="." method="_on_turn_100_input_event"]
 [connection signal="input_event" from="Turn200" to="." method="_on_turn_200_input_event"]
+[connection signal="input_event" from="Turn010" to="." method="_on_turn_010_input_event"]
+[connection signal="input_event" from="Turn020" to="." method="_on_turn_020_input_event"]
 [connection signal="input_event" from="Turn001" to="." method="_on_turn_001_input_event"]
 [connection signal="input_event" from="Turn002" to="." method="_on_turn_002_input_event"]

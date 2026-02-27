@@ -113,16 +113,14 @@ func _process(_delta):
 		
 		var angle = calculate_angle()
 		
-		if rotation_flipped():
-			if editing_rotation_face.x != 0:
-				self.rotate_x(angle-last_angle)
-			else:
-				self.rotate_z(angle-last_angle)
-		else:
-			if editing_rotation_face.x != 0:
-				self.rotate_x(-angle + last_angle)
-			else:
-				self.rotate_z(-angle + last_angle)
+		var alpha = angle-last_angle
+		
+		if rotation_flipped(): alpha *= -1
+		
+		self.rotate(rotation_face_normal, alpha)
+		
+			#if editing_rotation_face.x != 0:
+			#	self.rotate(rotation_face_normal, -alpha)
 		
 		last_angle = angle
 		
@@ -149,10 +147,6 @@ func calculate_angle() -> float:
 	var b = mouse_intersects_face - rotation_face_center
 	var angle = acos ( (a.normalized()).dot(b.normalized()) )
 	
-	$TestMesh1.set_global_position(mouse_intersects_face)
-	$TestMesh2.set_global_position(x)
-	$TestMesh3.set_global_position(b)
-	
 	if editing_rotation_face != abs(editing_rotation_face):
 		angle *= -1
 	
@@ -173,7 +167,7 @@ func rotation_flipped() -> bool:
 	var a = x - rotation_face_center
 	var b = mouse_intersects_face - rotation_face_center
 	
-	return  (rotation_face_normal).dot(a.cross(b)) >= 0
+	return  (rotation_face_normal).dot(a.cross(b)) < 0
 
 func get_color() -> Color:
 	var color = self.material.albedo_color
@@ -243,21 +237,29 @@ func set_turning_face(face_vector, face_area, event_position):
 	editing_rotation_face = face_vector
 	drag_center = event_position
 	rotation_face_normal = (face_area.get_global_position()-self.get_global_position()).normalized()
-	rotation_face_center = self.get_global_position() + face_area.position * self.scale
+	rotation_face_center = face_area.get_global_position()#self.get_global_position() + face_area.position * self.scale
 	last_angle = calculate_angle()
 
-func _on_turn_100_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_turn_100_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		set_turning_face(Vector3(1,0,0), FaceAreas[0], event_position)
 
-func _on_turn_200_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_turn_200_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		set_turning_face(Vector3(-1,0,0), FaceAreas[1], event_position)
+
+func _on_turn_010_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		set_turning_face(Vector3(0,1,0), FaceAreas[2], event_position)
+
+func _on_turn_020_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event.is_action_pressed("click"):
+		set_turning_face(Vector3(0,-1,0), FaceAreas[3], event_position)
 
 func _on_turn_001_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		set_turning_face(Vector3(0,0,1), FaceAreas[4], event_position)
 
-func _on_turn_002_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_turn_002_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		set_turning_face(Vector3(0,0,-1), FaceAreas[5], event_position)

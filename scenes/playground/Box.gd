@@ -115,7 +115,7 @@ func _process(_delta):
 		
 		var alpha = angle-last_angle
 		
-		if rotation_flipped(): alpha *= -1
+		if rotation_over_pi(): alpha *= -1
 		
 		self.rotate(rotation_face_normal, alpha)
 		
@@ -147,12 +147,9 @@ func calculate_angle() -> float:
 	var b = mouse_intersects_face - rotation_face_center
 	var angle = acos ( (a.normalized()).dot(b.normalized()) )
 	
-	if editing_rotation_face != abs(editing_rotation_face):
-		angle *= -1
-	
 	return angle
 
-func rotation_flipped() -> bool:
+func rotation_over_pi() -> bool:
 	var camera_position = get_viewport().get_camera_3d().global_transform.origin
 	var camera_direction = get_viewport().get_camera_3d().project_ray_normal(
 		get_viewport().get_mouse_position()

@@ -63,6 +63,11 @@ func _on_color_sliders_color_changed() -> void:
 	
 	fractal_changed.emit( self.get_ifs() )
 
+## add and remove buttons
+
+func _on_add_button_pressed() -> void:
+	Playground.add_box()
+
 func _on_remove_button_pressed() -> void:
 	# close rect
 	await Playground.remove_current_boxes()

@@ -30,6 +30,15 @@ var rotation_face_center = Vector3.ZERO
 ]
 @onready var InnerAreaMesh = $InnerArea/Mesh
 
+func set_contraction(contraction = Contraction.new()) -> void:
+	self.position = contraction.translation
+	self.scale = Vector3.ONE
+	self.rotation = Vector3.ZERO
+	if not InnerAreaMesh:
+		await self.ready
+	set_color(contraction.color)
+	focus_me.emit(self)
+
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
 	my_contraction.translation = self.position

@@ -4,6 +4,7 @@ signal fractal_changed
 signal focus_these
 
 @onready var CameraMan = $CameraManP
+@onready var Boxes = $Boxes
 
 var FocusedBoxes = []
 
@@ -16,9 +17,22 @@ func _ready():
 
 # box functions
 
+var counter = 0
+
+func add_box(contraction = null) -> void:
+	if not contraction:
+		contraction = Contraction.new()
+		contraction.translation = Vector3(0.5,0,0).rotated(Vector3.UP, counter)
+		counter += 1
+	var box = load("res://scenes/playground/Box.tscn").instantiate()
+	box.set_contraction(contraction)
+	box.focus_me.connect(_on_box_focus_me)
+	box.changed.connect(_on_box_changed)
+	Boxes.add_child(box)
+
 func get_boxes() -> Array:
 	var boxes = []
-	for box in $Boxes.get_children():
+	for box in Boxes.get_children():
 		if box.visible:
 			boxes.append(box)
 	return boxes

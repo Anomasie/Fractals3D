@@ -263,6 +263,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="SaveFile" parent="." unique_id=304587453 instance=ExtResource("6_alrpd")]
+visible = false
 
 [connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/BGColorButton" to="." method="_on_bg_color_button_pressed"]

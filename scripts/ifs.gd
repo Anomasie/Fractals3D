@@ -13,9 +13,6 @@ var centered_view = false
 
 # random ifs
 
-func _ready():
-	print("IN IFS: PRINT_ERRORS is ", PRINT_ERRORS)
-
 static func random_ifs(centered = (randf() <= 0.5), len_systems = randi() % 5 + randi() % 5 + 1):
 	var ifs = IFS.new()
 	# systems
@@ -129,7 +126,6 @@ func get_distribution():
 	var sum = 0.0
 	var distribution = []
 	for function in systems:
-		sum += 1
-		if PRINT_ERRORS: print("in ifs: TODO distributions")#function.contract.x * function.contract.y
+		sum += max(abs(function.matrix.determinant()), 0.001)
 		distribution.append(sum)
 	return distribution

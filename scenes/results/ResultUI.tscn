@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="2_t20r7"]
 [ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_8fnn1"]
 [ext_resource type="PackedScene" uid="uid://mtu0mxcjwc41" path="res://scenes/color-options/ColorSliders.tscn" id="5_n044m"]
+[ext_resource type="PackedScene" uid="uid://dbsrwqoc4xjea" path="res://scenes/color-options/LightColorSliders.tscn" id="6_vurmb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nurk"]
 atlas = ExtResource("2_t20r7")
@@ -189,9 +190,24 @@ offset_right = 0.0
 offset_bottom = 236.0
 grow_horizontal = 0
 
+[node name="LightColorSliders" parent="." unique_id=857632019 instance=ExtResource("6_vurmb")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -236.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
 [connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/BGColorButton" to="." method="_on_bg_color_button_pressed"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/LightColorButton" to="." method="_on_light_color_button_pressed"]
 [connection signal="color_changed" from="BGColorSliders" to="." method="_on_bg_color_sliders_color_changed"]
 [connection signal="color_changed_vastly" from="BGColorSliders" to="." method="_on_bg_color_sliders_color_changed_vastly"]
 [connection signal="finished" from="BGColorSliders" to="." method="_on_bg_color_sliders_finished"]
+[connection signal="color_changed" from="LightColorSliders" to="." method="_on_light_color_sliders_color_changed"]
+[connection signal="color_changed_vastly" from="LightColorSliders" to="." method="_on_light_color_sliders_color_changed_vastly"]
+[connection signal="finished" from="LightColorSliders" to="." method="_on_light_color_sliders_finished"]

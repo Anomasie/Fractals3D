@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var ResultMesh = $ResultMesh
-
+@onready var Lights = $Lights
 @onready var World = $WorldEnvironment
 
 # Mesh functions
@@ -23,3 +23,9 @@ func set_background_color(new_color) -> void:
 
 func get_background_color() -> Color:
 	return World.environment.background_color
+
+func set_light_colors(colors) -> void:
+	Lights.set_light_colors(colors)
+
+func get_light_colors() -> Array:
+	return Lights.get_light_colors()

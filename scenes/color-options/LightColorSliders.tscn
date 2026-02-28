@@ -1,0 +1,532 @@
+[gd_scene format=3 uid="uid://dbsrwqoc4xjea"]
+
+[ext_resource type="Script" uid="uid://dmnr2a3rhwbkt" path="res://scenes/color-options/LightColorSliders.gd" id="1_uamyb"]
+[ext_resource type="Texture2D" uid="uid://vceyw8jntod2" path="res://assets/gui/panels.png" id="2_kbdvu"]
+[ext_resource type="PackedScene" uid="uid://duebklrl317w2" path="res://scenes/gui/SwitchButton.tscn" id="3_y744t"]
+[ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_aiswy"]
+[ext_resource type="Texture2D" uid="uid://ci2mpewrmv3rv" path="res://assets/gui/close_button.png" id="5_87ook"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bj178"]
+atlas = ExtResource("2_kbdvu")
+region = Rect2(18, 2, 12, 12)
+
+[sub_resource type="Gradient" id="Gradient_xjnaf"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xe8bl"]
+gradient = SubResource("Gradient_xjnaf")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_qvcnl"]
+resource_local_to_scene = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e2yrv"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_qvcnl")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kopvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mvmrp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atda5"]
+
+[sub_resource type="Gradient" id="Gradient_uk8i4"]
+resource_local_to_scene = true
+colors = PackedColorArray(1, 1, 1, 1, 0.0078125, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1bh3c"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_uk8i4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ro3f"]
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyfgn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wk3s"]
+
+[sub_resource type="Gradient" id="Gradient_15o5r"]
+offsets = PackedFloat32Array(0, 0.167, 0.333, 0.5, 0.667, 0.833, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_koc1a"]
+gradient = SubResource("Gradient_15o5r")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_namad"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4t1bo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_721e2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uamyb"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbdvu"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wuu3x"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(0, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ot51"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(64, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmc8l"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(32, 480, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vpi4"]
+resource_local_to_scene = true
+atlas = ExtResource("4_aiswy")
+region = Rect2(94, 480, 32, 32)
+
+[sub_resource type="InputEventKey" id="InputEventKey_6slxs"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_06eut"]
+device = -1
+keycode = 43
+unicode = 43
+
+[sub_resource type="Shortcut" id="Shortcut_e31gr"]
+events = [SubResource("InputEventKey_6slxs"), SubResource("InputEventKey_06eut")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcoqw"]
+atlas = ExtResource("4_aiswy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcil7"]
+atlas = ExtResource("4_aiswy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkpn8"]
+atlas = ExtResource("4_aiswy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75bkv"]
+atlas = ExtResource("5_87ook")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kltj"]
+atlas = ExtResource("5_87ook")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrmm1"]
+atlas = ExtResource("5_87ook")
+region = Rect2(32, 0, 32, 32)
+
+[node name="TreeColorSliders" type="MarginContainer" unique_id=287632870]
+offset_right = 422.0
+offset_bottom = 120.0
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_uamyb")
+
+[node name="Dialogue" type="MarginContainer" parent="." unique_id=480992196]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Background" type="NinePatchRect" parent="Dialogue" unique_id=1773640705]
+layout_mode = 2
+texture = SubResource("AtlasTexture_bj178")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Content" type="MarginContainer" parent="Dialogue" unique_id=1097538317]
+layout_mode = 2
+
+[node name="Lines" type="VBoxContainer" parent="Dialogue/Content" unique_id=1705933571]
+layout_mode = 2
+
+[node name="OptionsLabel" type="Label" parent="Dialogue/Content/Lines" unique_id=1752421699]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Color option name"
+
+[node name="Columns" type="HBoxContainer" parent="Dialogue/Content/Lines" unique_id=987602610]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Frame" type="TextureRect" parent="Dialogue/Content/Lines/Columns" unique_id=379431141]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "preview of selected color"
+texture = SubResource("GradientTexture1D_xe8bl")
+
+[node name="Margin" type="MarginContainer" parent="Dialogue/Content/Lines/Columns/Frame" unique_id=1544836381]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Previews" type="GridContainer" parent="Dialogue/Content/Lines/Columns/Frame/Margin" unique_id=1372518053]
+layout_mode = 2
+columns = 2
+
+[node name="Label1" type="Label" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=1724951703]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "X"
+
+[node name="Set1" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=293895614]
+modulate = Color(0.98039216, 0.9529412, 0.83137256, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "preset color"
+toggle_mode = true
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Label2" type="Label" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=949645522]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "Y"
+
+[node name="Set2" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=523278872]
+modulate = Color(0.98039216, 0.9529412, 0.83137256, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "preset color"
+toggle_mode = true
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Label3" type="Label" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=15942936]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "Z"
+
+[node name="Set3" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Frame/Margin/Previews" unique_id=1042381432]
+modulate = Color(0.98039216, 0.9529412, 0.83137256, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "preset color"
+toggle_mode = true
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Sliders" type="VBoxContainer" parent="Dialogue/Content/Lines/Columns" unique_id=1245219805]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="Value" type="MarginContainer" parent="Dialogue/Content/Lines/Columns/Sliders" unique_id=45598264]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Texture" type="TextureRect" parent="Dialogue/Content/Lines/Columns/Sliders/Value" unique_id=538843143]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_e2yrv")
+
+[node name="Slider" type="HSlider" parent="Dialogue/Content/Lines/Columns/Sliders/Value" unique_id=1415684413]
+layout_mode = 2
+tooltip_text = "brightness"
+theme_override_styles/slider = SubResource("StyleBoxEmpty_kopvc")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_mvmrp")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_atda5")
+value = 100.0
+
+[node name="Saturation" type="MarginContainer" parent="Dialogue/Content/Lines/Columns/Sliders" unique_id=174287653]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Texture" type="TextureRect" parent="Dialogue/Content/Lines/Columns/Sliders/Saturation" unique_id=2087015864]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_1bh3c")
+
+[node name="Slider" type="HSlider" parent="Dialogue/Content/Lines/Columns/Sliders/Saturation" unique_id=137525942]
+layout_mode = 2
+tooltip_text = "saturation or intensity of the color"
+theme_override_styles/slider = SubResource("StyleBoxTexture_2ro3f")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_kyfgn")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_1wk3s")
+
+[node name="Hue" type="MarginContainer" parent="Dialogue/Content/Lines/Columns/Sliders" unique_id=1353448830]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Texture" type="TextureRect" parent="Dialogue/Content/Lines/Columns/Sliders/Hue" unique_id=1526352048]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_koc1a")
+
+[node name="Slider" type="HSlider" parent="Dialogue/Content/Lines/Columns/Sliders/Hue" unique_id=1792411955]
+layout_mode = 2
+tooltip_text = "hue (\"color tone\") of selected color"
+theme_override_styles/slider = SubResource("StyleBoxEmpty_namad")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_4t1bo")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_721e2")
+max_value = 256.0
+value = 171.0
+
+[node name="Presets" type="HBoxContainer" parent="Dialogue/Content/Lines/Columns/Sliders" unique_id=712694309]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="Set1" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=111928048]
+modulate = Color(0.98039216, 0.9529412, 0.83137256, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set2" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=451915917]
+modulate = Color(0.9019608, 0.78431374, 0.3254902, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set3" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=1155688564]
+modulate = Color(0.8784314, 0, 0.24705882, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set4" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=1929395454]
+modulate = Color(0, 0.48235294, 0.87058824, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set5" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=988482752]
+modulate = Color(0.15686275, 0.14117648, 0.27058825, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set6" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=1502756601]
+modulate = Color(0.16470589, 0.4509804, 0.21176471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "preset color"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Hashtag" type="Label" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=678583218]
+layout_mode = 2
+size_flags_vertical = 1
+text = "#"
+vertical_alignment = 1
+
+[node name="Hash" type="LineEdit" parent="Dialogue/Content/Lines/Columns/Sliders/Presets" unique_id=317037998]
+custom_minimum_size = Vector2(94, 28)
+layout_mode = 2
+size_flags_stretch_ratio = 4.0
+tooltip_text = "enter html-color-code here"
+placeholder_text = "ffffff"
+max_length = 6
+caret_blink = true
+
+[node name="Buttons" type="VBoxContainer" parent="Dialogue/Content/Lines/Columns" unique_id=792944912]
+layout_mode = 2
+
+[node name="UniformButton" parent="Dialogue/Content/Lines/Columns/Buttons" unique_id=992766264 instance=ExtResource("3_y744t")]
+layout_mode = 2
+tooltip_ = "change color algorithm"
+tooltip_ger = "ändere Farbgebung"
+on = true
+tex_on = SubResource("AtlasTexture_uamyb")
+tex_off = SubResource("AtlasTexture_kbdvu")
+
+[node name="RandomButton" type="TextureButton" parent="Dialogue/Content/Lines/Columns/Buttons" unique_id=2063745131]
+layout_mode = 2
+size_flags_vertical = 10
+texture_normal = SubResource("AtlasTexture_wuu3x")
+texture_pressed = SubResource("AtlasTexture_1ot51")
+texture_hover = SubResource("AtlasTexture_qmc8l")
+texture_disabled = SubResource("AtlasTexture_8vpi4")
+
+[node name="LastLine" type="HBoxContainer" parent="Dialogue/Content/Lines" unique_id=548906658]
+layout_mode = 2
+
+[node name="AddButton" type="TextureButton" parent="Dialogue/Content/Lines/LastLine" unique_id=854413304]
+visibility_layer = 2
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+tooltip_text = "add current color to presets"
+shortcut = SubResource("Shortcut_e31gr")
+texture_normal = SubResource("AtlasTexture_pcoqw")
+texture_pressed = SubResource("AtlasTexture_gcil7")
+texture_hover = SubResource("AtlasTexture_rkpn8")
+
+[node name="UserPresets" type="HBoxContainer" parent="Dialogue/Content/Lines/LastLine" unique_id=17128875]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="UserPresetsLabel" type="Label" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=268423632]
+layout_mode = 2
+text = "Presets:"
+
+[node name="Set1" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=605021065]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set2" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=1173229371]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set3" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=1862769241]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set4" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=1340011513]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set5" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=2145480762]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set6" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=1031312794]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set7" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=821371042]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="Set8" type="TextureButton" parent="Dialogue/Content/Lines/LastLine/UserPresets" unique_id=1202372425]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "colors you saved
+(max. 8)"
+texture_normal = SubResource("GradientTexture1D_xe8bl")
+texture_pressed = SubResource("GradientTexture1D_xe8bl")
+texture_hover = SubResource("GradientTexture1D_xe8bl")
+stretch_mode = 0
+
+[node name="CloseButton" type="TextureButton" parent="." unique_id=1110612673]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+tooltip_text = "reset and close"
+texture_normal = SubResource("AtlasTexture_75bkv")
+texture_pressed = SubResource("AtlasTexture_8kltj")
+texture_hover = SubResource("AtlasTexture_lrmm1")
+
+[connection signal="drag_ended" from="Dialogue/Content/Lines/Columns/Sliders/Value/Slider" to="." method="_on_slider_drag_ended"]
+[connection signal="value_changed" from="Dialogue/Content/Lines/Columns/Sliders/Value/Slider" to="." method="_on_slider_value_changed"]
+[connection signal="drag_ended" from="Dialogue/Content/Lines/Columns/Sliders/Saturation/Slider" to="." method="_on_slider_drag_ended"]
+[connection signal="value_changed" from="Dialogue/Content/Lines/Columns/Sliders/Saturation/Slider" to="." method="_on_slider_value_changed"]
+[connection signal="drag_ended" from="Dialogue/Content/Lines/Columns/Sliders/Hue/Slider" to="." method="_on_slider_drag_ended"]
+[connection signal="value_changed" from="Dialogue/Content/Lines/Columns/Sliders/Hue/Slider" to="." method="_on_slider_value_changed"]
+[connection signal="focus_exited" from="Dialogue/Content/Lines/Columns/Sliders/Presets/Hash" to="." method="_on_hash_focus_exited"]
+[connection signal="text_submitted" from="Dialogue/Content/Lines/Columns/Sliders/Presets/Hash" to="." method="_on_hash_text_submitted"]
+[connection signal="pressed" from="Dialogue/Content/Lines/Columns/Buttons/UniformButton" to="." method="_on_uniform_button_pressed"]
+[connection signal="pressed" from="Dialogue/Content/Lines/Columns/Buttons/RandomButton" to="." method="_on_random_button_pressed"]
+[connection signal="pressed" from="Dialogue/Content/Lines/LastLine/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

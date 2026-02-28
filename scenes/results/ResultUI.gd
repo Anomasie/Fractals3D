@@ -17,6 +17,7 @@ var counter = 0
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
 
 @onready var BGColorSliders = $BGColorSliders
+@onready var LightColorSliders = $LightColorSliders
 
 @onready var BGColorButton = $Screen/Columns/Right/Top/Main/BGColorButton
 @onready var LightColorButton = $Screen/Columns/Right/Top/Main/LightColorButton
@@ -34,6 +35,7 @@ func _ready():
 	PointLineEdit.placeholder_text = str(limit)
 	
 	BGColorSliders.hide()
+	LightColorSliders.hide()
 
 func set_ifs(new_ifs):
 	new_ifs_this_frame = true
@@ -119,10 +121,23 @@ func _on_bg_color_sliders_finished() -> void:
 func _on_bg_color_sliders_color_changed() -> void:
 	Result3D.set_background_color(BGColorSliders.get_color())
 
+func _on_bg_color_sliders_color_changed_vastly() -> void:
+	print("background color changed vastly!")
+
 ## Light colors
 
 func _on_light_color_button_pressed() -> void:
-	print("change lights color!")
+	if LightColorButton.button_pressed:
+		LightColorSliders.open(Result3D.get_light_colors())
+	else:
+		LightColorSliders.hide()
 
-func _on_bg_color_sliders_color_changed_vastly() -> void:
-	pass # Replace with function body.
+func _on_light_color_sliders_color_changed() -> void:
+	Result3D.set_light_colors( LightColorSliders.get_colors() )
+
+func _on_light_color_sliders_color_changed_vastly() -> void:
+	print("light color changed vastly!")
+
+func _on_light_color_sliders_finished() -> void:
+	LightColorSliders.hide()
+	LightColorButton.button_pressed = false

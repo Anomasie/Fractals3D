@@ -14,18 +14,24 @@ var counter = 0
 
 var file_counter = 0
 
+# Result mesh stuff
 @onready var Result3D = $ViewportContainer/Subviewport/Result3D
 
+# sliders
 @onready var PointSlider = $Screen/Columns/Left/Bottom/Grid/PointSlider
 @onready var PointTeller = $Screen/Columns/Left/Bottom/Grid/PointSlider/PointTeller
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
 
+# color sliders
 @onready var BGColorSliders = $BGColorSliders
 @onready var LightColorSliders = $LightColorSliders
 
+# buttons
 @onready var BGColorButton = $Screen/Columns/Right/Top/Main/BGColorButton
 @onready var LightColorButton = $Screen/Columns/Right/Top/Main/LightColorButton
+@onready var CenterButton = $Screen/Columns/Right/Top/Main/CenterButton
 
+# dialogs
 @onready var SaveFileDialog = $SaveFile
 
 var new_ifs_this_frame = false
@@ -62,6 +68,8 @@ func set_ifs(new_ifs, overwrite_ui = false):
 		
 		# camera
 		Result3D.set_camera(new_ifs.camera_rotation, new_ifs.camera_position)
+	elif new_ifs and current_ifs:
+		new_ifs.centered_view = current_ifs.centered_view
 	
 	# systems
 	current_ifs = new_ifs
@@ -129,6 +137,8 @@ func draw_points(delta, load_new_ifs=false):
 		
 		if counter <= 0:
 			Result3D.restart_mesh( limit, points )
+			if current_ifs.centered_view:
+				Result3D.center_camera()
 		elif amount > 0:
 			Result3D.add_points( points )
 		counter += amount
@@ -227,3 +237,8 @@ func _on_save_file_path_selected(path) -> void:
 
 func _on_share_button_pressed() -> void:
 	store_to_url.emit()
+
+
+func _on_center_button_pressed() -> void:
+	current_ifs.centered_view = CenterButton.button_pressed
+	Result3D.center_camera( CenterButton.button_pressed )

@@ -44,3 +44,10 @@ func set_camera(rot, pos) -> void:
 
 func get_camera() -> Array:
 	return CameraMan.get_data()
+
+func center_camera(center_me=true) -> void:
+	if center_me:
+		var aabb = ResultMesh.multimesh.get_aabb()
+		CameraMan.position = aabb.position + aabb.size/2
+	else:
+		CameraMan.position = Vector3.ZERO

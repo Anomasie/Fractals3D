@@ -34,8 +34,8 @@ var rotation_face_center = Vector3.ZERO
 
 func set_contraction(contraction = Contraction.new()) -> void:
 	self.position = contraction.translation
-	self.scale = contraction.matrix.get_scale()
-	self.rotation = contraction.matrix.get_euler()
+	self.scale = contraction.scale
+	self.rotation = contraction.rotation
 	if not InnerAreaMesh:
 		await self.ready
 	set_color(contraction.color)
@@ -44,10 +44,9 @@ func set_contraction(contraction = Contraction.new()) -> void:
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
 	my_contraction.translation = self.position
-	my_contraction.matrix = Basis.from_euler(-self.rotation) * Basis(
-		self.scale.x * Vector3(1,0,0),
-		self.scale.y * Vector3(0,1,0),
-		self.scale.z * Vector3(0,0,1))
+	my_contraction.rotation = self.rotation
+	my_contraction.scale = self.scale
+	my_contraction.calculate_matrix()
 	my_contraction.color = get_color()
 	return my_contraction
 

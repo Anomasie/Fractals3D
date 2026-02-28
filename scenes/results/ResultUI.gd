@@ -51,6 +51,7 @@ func _ready():
 	BGColorSliders.hide()
 	LightColorSliders.hide()
 	SaveFileDialog.hide()
+	Result3D.restart_mesh(0, [])
 
 func set_ifs(new_ifs, overwrite_ui = false):
 	if overwrite_ui:
@@ -104,9 +105,9 @@ func _process(delta):
 	new_ifs_this_frame = false
 
 func draw_points(delta, load_new_ifs=false):
-	if limit < 0 or counter < limit:
+	if current_ifs and (limit < 0 or counter < limit):
 		# decide how many points to be calculated in one frame
-		if len(current_ifs.systems) > 0:
+		if current_ifs and len(current_ifs.systems) > 0:
 			if load_new_ifs:
 				if delta > 1.0/7:
 					frame_limit_for_new_ifs = frame_limit_for_new_ifs/frame_factor
@@ -239,5 +240,6 @@ func _on_share_button_pressed() -> void:
 
 
 func _on_center_button_pressed() -> void:
-	current_ifs.centered_view = CenterButton.button_pressed
+	if current_ifs:
+		current_ifs.centered_view = CenterButton.button_pressed
 	Result3D.center_camera( CenterButton.button_pressed )

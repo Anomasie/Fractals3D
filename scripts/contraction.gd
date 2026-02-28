@@ -8,21 +8,26 @@ var matrix = Basis(
 		Vector3(0, 0.3, 0),
 		Vector3(0, 0, 0.3)
 	) * Basis.IDENTITY
+var rotation = Vector3.ZERO
+var scale = 0.3 * Vector3.ONE
 var color = Color.WHITE
 
 func _ready():
 	print("in CONTRACTION: PRINT_ERRORS is ", PRINT_ERRORS)
 
+func calculate_matrix() -> void:
+	self.matrix = Basis(
+		self.scale.x * Vector3(1,0,0),
+		self.scale.y * Vector3(0,1,0),
+		self.scale.z * Vector3(0,0,1)
+	) * Basis.from_euler(-self.rotation)
+
 static func random_contraction():
 	var contraction = Contraction.new()
 	contraction.translation = Vector3( Math.nrnumber()/2, Math.nrnumber()/2, Math.nrnumber()/2 )
-	contraction.matrix = Basis.from_euler(
-		Vector3(randf(), randf(), randf())
-	) * Basis(
-		Vector3(Math.nrnumber(), 0, 0),
-		Vector3(0, Math.nrnumber(), 0),
-		Vector3(0, 0, Math.nrnumber())
-	)
+	contraction.rotation = Vector3(randf(), randf(), randf())
+	contraction.scale = Vector3(Math.nrnumber(), Math.nrnumber(), Math.nrnumber())
+	contraction.calculate_matrix()
 	if PRINT_ERRORS: print("in Contraction: TODO")
 	contraction.color = Color.from_hsv(randf(), randf(), randf())
 	return contraction

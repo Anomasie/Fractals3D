@@ -78,6 +78,7 @@ texture_hover = SubResource("AtlasTexture_7el72")
 texture_disabled = SubResource("AtlasTexture_d6r2u")
 
 [node name="DebugEdit" type="LineEdit" parent="." unique_id=182073387]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0

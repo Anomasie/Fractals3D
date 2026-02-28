@@ -40,6 +40,7 @@ func store_to_url() -> void:
 	JavaScriptBridge.eval("location.replace(\"#%s\")" % url_hash)
 	print("\tIFS meta data: \n",url_hash)
 
+# debug area
 
 func _on_debug_edit_text_submitted(new_text: String) -> void:
 	set_ifs( IFS.from_meta_data(new_text) )

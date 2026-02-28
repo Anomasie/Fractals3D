@@ -25,6 +25,7 @@ func add_box(contraction = null) -> void:
 	box.focus_me.connect(_on_box_focus_me)
 	box.changed.connect(_on_box_changed)
 	Boxes.add_child(box)
+	
 
 func get_boxes() -> Array:
 	var boxes = []

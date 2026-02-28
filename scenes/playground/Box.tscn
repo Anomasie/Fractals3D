@@ -13,11 +13,47 @@ albedo_color = Color(1, 1, 1, 0.49803922)
 height = 0.1
 radius = 0.15
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmfwv"]
+albedo_color = Color(0.3764706, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6m7tu"]
+material = SubResource("StandardMaterial3D_hmfwv")
+radius = 0.1
+height = 0.2
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugvpq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jalm5"]
+material = SubResource("StandardMaterial3D_ugvpq")
+radius = 0.1
+height = 0.2
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jalm5"]
+albedo_color = Color(0, 0.3764706, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1hadm"]
+material = SubResource("StandardMaterial3D_jalm5")
+radius = 0.1
+height = 0.2
+rings = 1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66ncn"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rf0kl"]
 material = SubResource("StandardMaterial3D_66ncn")
+radius = 0.1
+height = 0.2
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6m7tu"]
+albedo_color = Color(0, 0, 0.3764706, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ugvpq"]
+material = SubResource("StandardMaterial3D_6m7tu")
 radius = 0.1
 height = 0.2
 rings = 1
@@ -98,7 +134,7 @@ shape = SubResource("CylinderShape3D_gwc8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area100" unique_id=896382044]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_rf0kl")
+mesh = SubResource("SphereMesh_6m7tu")
 
 [node name="Area200" type="Area3D" parent="." unique_id=2078729759]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
@@ -109,7 +145,7 @@ shape = SubResource("CylinderShape3D_gwc8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area200" unique_id=525328740]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_rf0kl")
+mesh = SubResource("SphereMesh_jalm5")
 
 [node name="Area010" type="Area3D" parent="." unique_id=2045189612]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.5, 0)
@@ -120,7 +156,7 @@ shape = SubResource("CylinderShape3D_gwc8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area010" unique_id=1495017160]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("SphereMesh_rf0kl")
+mesh = SubResource("SphereMesh_1hadm")
 
 [node name="Area020" type="Area3D" parent="." unique_id=33400677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -140,7 +176,7 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 shape = SubResource("CylinderShape3D_gwc8e")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area001" unique_id=486855171]
-mesh = SubResource("SphereMesh_rf0kl")
+mesh = SubResource("SphereMesh_ugvpq")
 
 [node name="Area002" type="Area3D" parent="." unique_id=719425701]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, -0.5)

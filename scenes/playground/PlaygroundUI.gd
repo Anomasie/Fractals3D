@@ -19,8 +19,6 @@ func _ready():
 	ColorSliders.close()
 	_on_presets_button_pressed()
 	focus()
-	
-	set_ifs(IFS.random_ifs())
 
 func set_ifs(ifs = IFS.random_ifs()) -> void:
 	Playground.set_ifs(ifs)
@@ -81,6 +79,8 @@ func _on_color_sliders_color_changed() -> void:
 func _on_add_button_pressed() -> void:
 	Playground.add_box()
 	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
+	if Presets.visible:
+		_on_presets_close_me()
 	
 	fractal_changed.emit( self.get_ifs() )
 

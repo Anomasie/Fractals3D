@@ -151,9 +151,8 @@ func to_meta_data() -> String:
 	for contraction in systems:
 		string += "|"
 		string += str(contraction.translation.x) + "," + str(contraction.translation.y) + "," + str(contraction.translation.z) + ","
-		string += str(contraction.matrix.x.x) + "," + str(contraction.matrix.x.y) + "," + str(contraction.matrix.x.z) + ","
-		string += str(contraction.matrix.y.x) + "," + str(contraction.matrix.y.y) + "," + str(contraction.matrix.y.z) + ","
-		string += str(contraction.matrix.z.x) + "," + str(contraction.matrix.z.y) + "," + str(contraction.matrix.z.z) + ","
+		string += str(contraction.rotation.x) + "," + str(contraction.rotation.y) + "," + str(contraction.rotation.z) + ","
+		string += str(contraction.scale.x) + "," + str(contraction.scale.y) + "," + str(contraction.scale.z) + ","
 		string += contraction.color.to_html(false)
 	return string
 
@@ -244,13 +243,15 @@ static func from_meta_data_version(meta_data, version) -> IFS:
 					contraction.translation = Vector3(
 						float(entries[0]), float(entries[1]), float(entries[2])
 					)
-					contraction.matrix = Basis(
-						Vector3(float(entries[3]), float(entries[4]), float(entries[5])),
-						Vector3(float(entries[6]), float(entries[7]), float(entries[8])),
-						Vector3(float(entries[9]), float(entries[10]), float(entries[11]))
+					contraction.rotation = Vector3(
+						float(entries[3]), float(entries[4]), float(entries[5])
 					)
+					contraction.scale = Vector3(
+						float(entries[6]), float(entries[7]), float(entries[8])
+					)
+					contraction.calculate_matrix()
 					
-					contraction.color = Color.from_string(entries[12], Color.BLACK) # black is default
+					contraction.color = Color.from_string(entries[9], Color.BLACK) # black is default
 					meta_ifs_systems.append(contraction)
 				ifs.systems = meta_ifs_systems
 			

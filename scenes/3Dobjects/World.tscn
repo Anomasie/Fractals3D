@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d1k6ho4w2kucr"]
+
+[sub_resource type="Environment" id="Environment_028jh"]
+background_mode = 1
+background_color = Color(0.39215687, 0.39215687, 0.39215687, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=374688635]
+environment = SubResource("Environment_028jh")

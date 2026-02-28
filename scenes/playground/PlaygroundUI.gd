@@ -36,7 +36,7 @@ func focus(boxes = []) -> void:
 	
 	if len(boxes) > 0:
 		if ColorButton.button_pressed:
-			ColorSliders.open( boxes[0].get_color() )
+			ColorSliders.open( boxes[0].get_color(), "" )
 	else:
 		# close everything
 		ColorSliders.close()
@@ -54,7 +54,7 @@ func _on_playground_focus_these(boxes) -> void:
 func _on_color_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		if len(Playground.FocusedBoxes) > 0:
-			ColorSliders.open( Playground.FocusedBoxes[0].get_color() )
+			ColorSliders.open( Playground.FocusedBoxes[0].get_color(), "" )
 	else:
 		ColorSliders.close()
 

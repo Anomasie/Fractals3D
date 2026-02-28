@@ -68,7 +68,14 @@ func _ready():
 
 # open and close
 
-func open(color):
+@onready var OptionsLabel = $Dialogue/Content/Lines/OptionsLabel
+
+func open(color, type = OptionsLabel.text):
+	if not type:
+		OptionsLabel.hide()
+	else:
+		OptionsLabel.text = type
+		OptionsLabel.show()
 	# load ui
 	set_color(color)
 	load_preset_colors()

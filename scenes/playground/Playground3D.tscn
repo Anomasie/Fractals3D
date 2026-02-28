@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://ct22d48uyjku8" path="res://scenes/playground/Playground.gd" id="1_2bvfw"]
 [ext_resource type="PackedScene" uid="uid://d3qmwykfg1kxm" path="res://scenes/3Dobjects/Lights.tscn" id="2_3v8xh"]
+[ext_resource type="PackedScene" uid="uid://d1k6ho4w2kucr" path="res://scenes/3Dobjects/World.tscn" id="2_47e2k"]
 [ext_resource type="PackedScene" uid="uid://b1m80wdvenq4x" path="res://scenes/playground/Box.tscn" id="3_3v8xh"]
 [ext_resource type="PackedScene" uid="uid://bytvje6vfmjan" path="res://scenes/3Dobjects/Coordinates.tscn" id="3_47e2k"]
 [ext_resource type="PackedScene" uid="uid://dviejn8y6hcqs" path="res://scenes/3Dobjects/CameraMan.tscn" id="3_wd1fg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v8xh"]
-resource_local_to_scene = true
-transparency = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47e2k"]
 resource_local_to_scene = true
@@ -26,8 +23,14 @@ transparency = 1
 resource_local_to_scene = true
 transparency = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05vri"]
+resource_local_to_scene = true
+transparency = 1
+
 [node name="Playground" type="Node3D" unique_id=385784093]
 script = ExtResource("1_2bvfw")
+
+[node name="WorldEnvironment" parent="." unique_id=374688635 instance=ExtResource("2_47e2k")]
 
 [node name="Lights" parent="." unique_id=1838239300 instance=ExtResource("2_3v8xh")]
 
@@ -40,24 +43,22 @@ transform = Transform3D(1.0000896, 0, 0, 0, 1, 0, 0, 0, 1.0000896, 0, 0, 0)
 
 [node name="Box1" parent="Boxes" unique_id=570203667 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.5, 0, 0, 0, 0.6, 0, 0, 0, 1, -0.7847654, 0.0006122589, 0.0004941225)
-material = SubResource("StandardMaterial3D_3v8xh")
+material = SubResource("StandardMaterial3D_47e2k")
 
 [node name="Box2" parent="Boxes" unique_id=1935731442 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.7, 0.5263343, -0.2812963, 0.25982255)
-material = SubResource("StandardMaterial3D_47e2k")
+material = SubResource("StandardMaterial3D_idikx")
 
 [node name="Box3" parent="Boxes" unique_id=2063072095 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.6328844, 0.6093038, 0.401304)
-material = SubResource("StandardMaterial3D_idikx")
+material = SubResource("StandardMaterial3D_tf4lo")
 
 [node name="Box4" parent="Boxes" unique_id=1528116015 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.19968188, 0.61932445, -0.64566445)
-material = SubResource("StandardMaterial3D_tf4lo")
+material = SubResource("StandardMaterial3D_0ud6l")
 
 [node name="Box5" parent="Boxes" unique_id=1508676453 instance=ExtResource("3_3v8xh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.5492845, -0.015698016, -0.5738601)
-material = SubResource("StandardMaterial3D_0ud6l")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1705646065]
+material = SubResource("StandardMaterial3D_05vri")
 
 [connection signal="clicked_axis" from="Coordinates" to="." method="_on_coordinates_clicked_axis"]

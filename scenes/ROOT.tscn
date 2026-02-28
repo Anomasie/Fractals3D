@@ -48,6 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="PlaygroundUI" parent="Container" unique_id=1930871 instance=ExtResource("1_sfemp")]
 layout_mode = 2

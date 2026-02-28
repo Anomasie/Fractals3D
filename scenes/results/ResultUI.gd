@@ -16,6 +16,11 @@ var counter = 0
 @onready var PointTeller = $Screen/Columns/Left/Bottom/Grid/PointSlider/PointTeller
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
 
+@onready var BGColorSliders = $BGColorSliders
+
+@onready var BGColorButton = $Screen/Columns/Right/Top/Main/BGColorButton
+@onready var LightColorButton = $Screen/Columns/Right/Top/Main/LightColorButton
+
 var new_ifs_this_frame = false
 
 func _ready():
@@ -27,6 +32,8 @@ func _ready():
 	PointTeller.max_value = PointSlider.max_value
 	PointTeller.value = 0
 	PointLineEdit.placeholder_text = str(limit)
+	
+	BGColorSliders.hide()
 
 func set_ifs(new_ifs):
 	new_ifs_this_frame = true
@@ -94,3 +101,28 @@ func _on_point_slider_drag_ended(_value_changed: bool) -> void:
 	PointLineEdit.placeholder_text = str(limit)
 	# if too many points:
 	counter = 0
+
+# color sliders
+
+## background color
+
+func _on_bg_color_button_pressed() -> void:
+	if BGColorButton.button_pressed:
+		BGColorSliders.open(Result3D.get_background_color(), "Background Color")
+	else:
+		BGColorSliders.close()
+
+func _on_bg_color_sliders_finished() -> void:
+	BGColorSliders.close()
+	BGColorButton.button_pressed = false
+
+func _on_bg_color_sliders_color_changed() -> void:
+	Result3D.set_background_color(BGColorSliders.get_color())
+
+## Light colors
+
+func _on_light_color_button_pressed() -> void:
+	print("change lights color!")
+
+func _on_bg_color_sliders_color_changed_vastly() -> void:
+	pass # Replace with function body.

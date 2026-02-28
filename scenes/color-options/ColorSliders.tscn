@@ -157,6 +157,11 @@ layout_mode = 2
 [node name="Lines" type="VBoxContainer" parent="Dialogue/Content" unique_id=1705933571]
 layout_mode = 2
 
+[node name="OptionsLabel" type="Label" parent="Dialogue/Content/Lines" unique_id=1752421699]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Color option name"
+
 [node name="Columns" type="HBoxContainer" parent="Dialogue/Content/Lines" unique_id=987602610]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2

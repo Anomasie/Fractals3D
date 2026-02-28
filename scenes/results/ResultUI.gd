@@ -55,8 +55,7 @@ func _ready():
 func set_ifs(new_ifs, overwrite_ui = false):
 	if overwrite_ui:
 		# constants
-		print("reusing last point in set_ifs einfügen!")
-		print("centered_view in set_ifs einfügen!")
+		CenterButton.button_pressed = new_ifs.centered_view
 		
 		# colors
 		Result3D.set_background_color(new_ifs.background_color)
@@ -83,8 +82,8 @@ func get_ifs() -> IFS:
 	var ifs = current_ifs
 	
 	# constants
-	ifs.reusing_last_point = false
-	ifs.centered_view = false
+	ifs.reusing_last_point = true
+	ifs.centered_view = CenterButton.button_pressed
 	
 	# colors
 	ifs.background_color = Result3D.get_background_color()

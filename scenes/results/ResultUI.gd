@@ -1,5 +1,7 @@
 extends Control
 
+signal store_to_url
+
 var current_ifs
 
 # how many points should be drawn (in this frame and at all?)
@@ -9,6 +11,8 @@ var frame_limit_for_new_ifs = 1000 # if ifs is loaded new
 var max_frame_limit = 100000
 var frame_factor = 1.2
 var counter = 0
+
+var file_counter = 0
 
 @onready var Result3D = $ViewportContainer/Subviewport/Result3D
 
@@ -22,6 +26,8 @@ var counter = 0
 @onready var BGColorButton = $Screen/Columns/Right/Top/Main/BGColorButton
 @onready var LightColorButton = $Screen/Columns/Right/Top/Main/LightColorButton
 
+@onready var SaveFileDialog = $SaveFile
+
 var new_ifs_this_frame = false
 
 func _ready():
@@ -34,8 +40,10 @@ func _ready():
 	PointTeller.value = 0
 	PointLineEdit.placeholder_text = str(limit)
 	
+	# hide & show
 	BGColorSliders.hide()
 	LightColorSliders.hide()
+	SaveFileDialog.hide()
 
 func set_ifs(new_ifs):
 	new_ifs_this_frame = true
@@ -141,3 +149,29 @@ func _on_light_color_sliders_color_changed_vastly() -> void:
 func _on_light_color_sliders_finished() -> void:
 	LightColorSliders.hide()
 	LightColorButton.button_pressed = false
+
+# saving
+
+func get_image() -> Image:
+	var texture = (Result3D.get_viewport().get_texture())
+	return texture.get_image()
+
+func save(path):
+	# save image
+	if not path.ends_with(".png") and not path.ends_with(".PNG"):
+		get_image().save_png(path + ".png")
+	else:
+		get_image().save_png(path)
+
+func _on_save_button_pressed() -> void:
+	store_to_url.emit()
+	if OS.has_feature("web"):
+		var filename = "fractal" + str(file_counter) + ".png"
+		file_counter += 1
+		var buf = get_image().save_png_to_buffer()
+		JavaScriptBridge.download_buffer(buf, filename)
+	else:
+		SaveFileDialog.open()
+
+func _on_save_file_path_selected(path) -> void:
+	save(path)

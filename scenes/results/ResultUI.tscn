@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bwfet135b151k" path="res://scenes/results/ResultUI.gd" id="1_7nurk"]
 [ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="2_t20r7"]
 [ext_resource type="PackedScene" uid="uid://mtu0mxcjwc41" path="res://scenes/color-options/ColorSliders.tscn" id="5_n044m"]
+[ext_resource type="PackedScene" uid="uid://eeubmpoydn2u" path="res://file-contact/MyFileDialog.tscn" id="6_alrpd"]
 [ext_resource type="PackedScene" uid="uid://dbsrwqoc4xjea" path="res://scenes/color-options/LightColorSliders.tscn" id="6_vurmb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nurk"]
@@ -80,6 +81,22 @@ load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32
 [sub_resource type="AtlasTexture" id="AtlasTexture_atx3i"]
 atlas = SubResource("CompressedTexture2D_oi1yo")
 region = Rect2(96, 608, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n044m"]
+atlas = SubResource("CompressedTexture2D_alrpd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alrpd"]
+atlas = SubResource("CompressedTexture2D_alrpd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v1sp"]
+atlas = SubResource("CompressedTexture2D_alrpd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dimpx"]
+atlas = SubResource("CompressedTexture2D_alrpd")
+region = Rect2(96, 0, 32, 32)
 
 [node name="ResultUI" type="Control" unique_id=63759867]
 layout_mode = 3
@@ -207,6 +224,15 @@ texture_pressed = SubResource("AtlasTexture_o43t2")
 texture_hover = SubResource("AtlasTexture_unx28")
 texture_disabled = SubResource("AtlasTexture_atx3i")
 
+[node name="SaveButton" type="TextureButton" parent="Screen/Columns/Right/Top/Main" unique_id=1926873561]
+layout_mode = 2
+toggle_mode = true
+shortcut = SubResource("Shortcut_n044m")
+texture_normal = SubResource("AtlasTexture_n044m")
+texture_pressed = SubResource("AtlasTexture_alrpd")
+texture_hover = SubResource("AtlasTexture_2v1sp")
+texture_disabled = SubResource("AtlasTexture_dimpx")
+
 [node name="BGColorSliders" parent="." unique_id=287632870 instance=ExtResource("5_n044m")]
 visible = false
 layout_mode = 1
@@ -231,12 +257,21 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=720382480]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SaveFile" parent="." unique_id=304587453 instance=ExtResource("6_alrpd")]
+
 [connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/BGColorButton" to="." method="_on_bg_color_button_pressed"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/LightColorButton" to="." method="_on_light_color_button_pressed"]
+[connection signal="pressed" from="Screen/Columns/Right/Top/Main/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="color_changed" from="BGColorSliders" to="." method="_on_bg_color_sliders_color_changed"]
 [connection signal="color_changed_vastly" from="BGColorSliders" to="." method="_on_bg_color_sliders_color_changed_vastly"]
 [connection signal="finished" from="BGColorSliders" to="." method="_on_bg_color_sliders_finished"]
 [connection signal="color_changed" from="LightColorSliders" to="." method="_on_light_color_sliders_color_changed"]
 [connection signal="color_changed_vastly" from="LightColorSliders" to="." method="_on_light_color_sliders_color_changed_vastly"]
 [connection signal="finished" from="LightColorSliders" to="." method="_on_light_color_sliders_finished"]
+[connection signal="path_selected" from="SaveFile" to="." method="_on_save_file_path_selected"]

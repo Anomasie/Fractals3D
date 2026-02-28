@@ -129,3 +129,9 @@ func get_distribution():
 		sum += max(abs(function.matrix.determinant()), 0.001)
 		distribution.append(sum)
 	return distribution
+
+# meta data and url storage
+
+static func from_meta_data(meta_data_string) -> IFS:
+	print("load ifs from meta data string:\n", meta_data_string, "\n")
+	return IFS.new()

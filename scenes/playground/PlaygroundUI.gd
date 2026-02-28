@@ -11,10 +11,13 @@ signal fractal_changed_vastly
 @onready var RemoveAllButton = $Left/Main/RemoveAllButton
 ## extra menüs
 @onready var ColorSliders = $ColorSliders
+@onready var PresetsButton = $Bottom/PresetsButton
+@onready var Presets = $Presets
 
 func _ready():
 	# hide and show
 	ColorSliders.close()
+	_on_presets_button_pressed()
 	focus()
 	
 	set_ifs(IFS.random_ifs())
@@ -22,6 +25,9 @@ func _ready():
 func set_ifs(ifs = IFS.random_ifs()) -> void:
 	Playground.set_ifs(ifs)
 	ColorSliders.UniformColorButton.on = ifs.uniform_coloring
+	await Engine.get_main_loop().process_frame
+	fractal_changed.emit(get_ifs())
+	fractal_changed_vastly.emit(get_ifs())
 
 func get_ifs(ifs = Playground.get_ifs()) -> IFS:
 	ifs.uniform_coloring = ColorSliders.UniformColorButton.on
@@ -85,3 +91,17 @@ func _on_remove_button_pressed() -> void:
 func _on_remove_all_button_pressed() -> void:
 	Playground.FocusedBoxes = Playground.get_boxes()
 	_on_remove_button_pressed()
+
+# presets
+
+func _on_presets_close_me() -> void:
+	PresetsButton.show()
+	Presets.hide()
+
+func _on_presets_load_preset(new_ifs) -> void:
+	set_ifs(new_ifs)
+	_on_presets_close_me()
+
+func _on_presets_button_pressed() -> void:
+	PresetsButton.hide()
+	Presets.show()

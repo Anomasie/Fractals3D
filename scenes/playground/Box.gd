@@ -96,6 +96,7 @@ func _process(_delta):
 		else:
 			changed.emit()
 		
+		print(self.scale)
 	
 	elif editing_position:
 		var camera_position = get_viewport().get_camera_3d().global_transform.origin
@@ -232,7 +233,7 @@ func _on_area_002_input_event(_camera: Node, event: InputEvent, event_position: 
 func _on_inner_area_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
 		if event.double_click:
-			self.flip_faces = not self.flip_faces
+			self.scale *= -1
 		else:
 			drag_center = event_position
 			drag_offset = event_position - self.position

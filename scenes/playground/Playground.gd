@@ -9,11 +9,7 @@ signal focus_these
 var FocusedBoxes = []
 
 func _ready():
-	for box in self.get_boxes():
-		box.focus_me.connect(_on_box_focus_me)
-		box.changed.connect(_on_box_changed)
-	await Engine.get_main_loop().process_frame
-	_on_box_changed()
+	remove_current_boxes( get_boxes() )
 
 # box functions
 
@@ -38,8 +34,7 @@ func get_boxes() -> Array:
 	return boxes
 
 func set_ifs(ifs = IFS.new()) -> void:
-	FocusedBoxes = get_boxes()
-	remove_current_boxes()
+	remove_current_boxes( get_boxes() )
 	
 	for system in ifs.systems:
 		add_box(system)
@@ -65,11 +60,13 @@ func set_color(color : Color):
 	for box in FocusedBoxes:
 		box.set_color(color)
 
-func remove_current_boxes():
-	for box in FocusedBoxes:
+func remove_current_boxes( boxes=null ):
+	if not boxes:
+		boxes = FocusedBoxes
+		FocusedBoxes = []
+	for box in boxes:
 		box.hide()
 		box.queue_free()
-	FocusedBoxes = []
 
 func _on_box_focus_me(box):
 	focus_these.emit([box])

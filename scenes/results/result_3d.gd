@@ -39,5 +39,8 @@ func get_light_colors() -> Array:
 
 # camera
 
+func set_camera(rot, pos) -> void:
+	CameraMan.load_data(rot, pos, true)
+
 func get_camera() -> Array:
 	return CameraMan.get_data()

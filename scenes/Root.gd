@@ -9,9 +9,8 @@ func _ready():
 	_on_sync_button_pressed()
 
 func set_ifs( ifs = IFS.random_ifs() ) -> void:
-	print("set ifs from ", ifs)
 	PlaygroundUI.set_ifs(ifs)
-	ResultUI.set_ifs(ifs)
+	ResultUI.set_ifs(ifs, true)
 
 func get_ifs() -> IFS:
 	return ResultUI.get_ifs()
@@ -39,7 +38,7 @@ func store_to_url() -> void:
 	# store ifs
 	var url_hash = ifs.to_meta_data()
 	JavaScriptBridge.eval("location.replace(\"#%s\")" % url_hash)
-	print(url_hash)
+	print("\tIFS meta data: \n",url_hash)
 
 
 func _on_debug_edit_text_submitted(new_text: String) -> void:

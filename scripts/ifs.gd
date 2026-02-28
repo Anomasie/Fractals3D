@@ -7,7 +7,7 @@ const ACCURACY = 0.0000001
 var systems = [] # array of contractions
 var background_color = Color.WHITE
 var uniform_coloring = false
-var reusing_last_point = false
+var reusing_last_point = true
 var centered_view = false
 
 var axis_color_x = Color.GREEN
@@ -27,7 +27,7 @@ static func random_ifs(centered = (randf() <= 0.5), len_systems = randi() % 5 + 
 	# rest
 	ifs.background_color = Color.from_hsv(randf(), randf(), randf())
 	ifs.uniform_coloring = (randf() <= 0.5)
-	ifs.reusing_last_point = (randf() <= 0.5)
+	ifs.reusing_last_point = true#(randf() <= 0.5)
 	ifs.centered_view = centered
 	return ifs
 
@@ -183,11 +183,7 @@ static func from_meta_data_version(meta_data, version) -> IFS:
 			
 			var units = meta_data.split("|", false)
 			
-			print("i do start here")
-			
 			if len(units) > 0:
-				
-				print("i get to here")
 				
 				# 0. version
 				units.remove_at(0)
@@ -257,7 +253,5 @@ static func from_meta_data_version(meta_data, version) -> IFS:
 					contraction.color = Color.from_string(entries[12], Color.BLACK) # black is default
 					meta_ifs_systems.append(contraction)
 				ifs.systems = meta_ifs_systems
-				
-				print("ready!")
 			
 	return ifs

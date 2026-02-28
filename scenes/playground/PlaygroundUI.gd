@@ -28,6 +28,7 @@ func set_ifs(ifs = IFS.random_ifs()) -> void:
 	await Engine.get_main_loop().process_frame
 	fractal_changed.emit(get_ifs())
 	fractal_changed_vastly.emit(get_ifs())
+	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
 
 func get_ifs(ifs = Playground.get_ifs()) -> IFS:
 	ifs.uniform_coloring = ColorSliders.UniformColorButton.on
@@ -79,6 +80,9 @@ func _on_color_sliders_color_changed() -> void:
 
 func _on_add_button_pressed() -> void:
 	Playground.add_box()
+	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
+	
+	fractal_changed.emit( self.get_ifs() )
 
 func _on_remove_button_pressed() -> void:
 	# close rect

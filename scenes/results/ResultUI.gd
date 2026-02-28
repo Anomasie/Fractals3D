@@ -29,6 +29,7 @@ var file_counter = 0
 @onready var SaveFileDialog = $SaveFile
 
 var new_ifs_this_frame = false
+var last_point = point.new()
 
 func _ready():
 	# set values
@@ -45,9 +46,28 @@ func _ready():
 	LightColorSliders.hide()
 	SaveFileDialog.hide()
 
-func set_ifs(new_ifs):
-	new_ifs_this_frame = true
+func set_ifs(new_ifs, overwrite_ui = false):
+	if overwrite_ui:
+		# constants
+		print("reusing last point in set_ifs einfügen!")
+		print("centered_view in set_ifs einfügen!")
+		
+		# colors
+		Result3D.set_background_color(new_ifs.background_color)
+		Result3D.set_light_colors([
+			new_ifs.axis_color_x,
+			new_ifs.axis_color_y,
+			new_ifs.axis_color_z
+		])
+		
+		# camera
+		Result3D.set_camera(new_ifs.camera_rotation, new_ifs.camera_position)
+	
+	# systems
 	current_ifs = new_ifs
+	
+	# management
+	new_ifs_this_frame = true
 	counter = 0
 	#Result3D.restart_mesh(limit, [])#current_ifs.calculate_fractal(point.new(), 0))
 
@@ -99,10 +119,18 @@ func draw_points(delta, load_new_ifs=false):
 		else:
 			amount = min(frame_limit, limit-counter)
 		
+		var start_point = point.new()
+		if current_ifs.reusing_last_point:
+			start_point = last_point
+		
+		var points = current_ifs.calculate_fractal(start_point, amount)
+		if len(points) > 0:
+			last_point = points[-1]
+		
 		if counter <= 0:
-			Result3D.restart_mesh(limit, current_ifs.calculate_fractal(point.new(), amount))
+			Result3D.restart_mesh( limit, points )
 		elif amount > 0:
-			Result3D.add_points(current_ifs.calculate_fractal(point.new(), amount))
+			Result3D.add_points( points )
 		counter += amount
 		
 		PointTeller.value = point_slider_descaled(counter)

@@ -26,6 +26,8 @@ var rotation_face_center = Vector3.ZERO
 	$Area001, $Area002
 ]
 @onready var TurnAreas = [
+	$Turn100, $Turn200,
+	$Turn010, $Turn020,
 	$Turn001, $Turn002
 ]
 @onready var InnerAreaMesh = $InnerArea/Mesh
@@ -100,8 +102,6 @@ func _process(_delta):
 			changed_vastly.emit()
 		else:
 			changed.emit()
-		
-		print(self.scale)
 	
 	elif editing_position:
 		var camera_position = get_viewport().get_camera_3d().global_transform.origin

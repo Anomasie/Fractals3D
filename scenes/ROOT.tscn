@@ -77,6 +77,16 @@ texture_pressed = SubResource("AtlasTexture_ne5lc")
 texture_hover = SubResource("AtlasTexture_7el72")
 texture_disabled = SubResource("AtlasTexture_d6r2u")
 
+[node name="DebugEdit" type="LineEdit" parent="." unique_id=182073387]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+placeholder_text = "Debug line edit"
+
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
 [connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]
+[connection signal="store_to_url" from="Container/ResultUI" to="." method="_on_result_ui_store_to_url"]
 [connection signal="pressed" from="Center/SyncButton" to="." method="_on_sync_button_pressed"]
+[connection signal="text_submitted" from="DebugEdit" to="." method="_on_debug_edit_text_submitted"]

@@ -51,6 +51,27 @@ func set_ifs(new_ifs):
 	counter = 0
 	#Result3D.restart_mesh(limit, [])#current_ifs.calculate_fractal(point.new(), 0))
 
+func get_ifs() -> IFS:
+	var ifs = current_ifs
+	
+	# constants
+	ifs.reusing_last_point = false
+	ifs.centered_view = false
+	
+	# colors
+	ifs.background_color = Result3D.get_background_color()
+	var lights = Result3D.get_light_colors()
+	ifs.axis_color_x = lights[0]
+	ifs.axis_color_y = lights[1]
+	ifs.axis_color_z = lights[2]
+	
+	# camera
+	var camera_data = Result3D.get_camera()
+	ifs.camera_rotation = camera_data[0]
+	ifs.camera_position = camera_data[1]
+	
+	return ifs
+
 func _process(delta):
 	draw_points(delta, new_ifs_this_frame)
 	new_ifs_this_frame = false
@@ -175,3 +196,6 @@ func _on_save_button_pressed() -> void:
 
 func _on_save_file_path_selected(path) -> void:
 	save(path)
+
+func _on_share_button_pressed() -> void:
+	store_to_url.emit()

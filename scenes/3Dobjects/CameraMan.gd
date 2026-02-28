@@ -43,6 +43,12 @@ func _process(_delta):
 		if sync_camera:
 			sync_camera.load_data( self.rotation, CamPositioner.position )
 
+func get_data() -> Array:
+	return [
+		self.rotation,
+		CamPositioner.position
+	]
+
 func load_data(rot, pos=CamPositioner.position, sync=false):
 	if pos == null:
 		pos=CamPositioner.position

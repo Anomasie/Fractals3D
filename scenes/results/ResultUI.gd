@@ -128,7 +128,7 @@ func _on_bg_color_sliders_color_changed_vastly() -> void:
 
 func _on_light_color_button_pressed() -> void:
 	if LightColorButton.button_pressed:
-		LightColorSliders.open(Result3D.get_light_colors())
+		LightColorSliders.open(Result3D.get_light_colors(), "Light Colors")
 	else:
 		LightColorSliders.hide()
 

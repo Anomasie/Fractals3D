@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://r5cpr0yi4ukk" path="res://scenes/results/Result3D.tscn" id="1_6jh3j"]
 [ext_resource type="Script" uid="uid://bwfet135b151k" path="res://scenes/results/ResultUI.gd" id="1_7nurk"]
 [ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="2_t20r7"]
-[ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_8fnn1"]
 [ext_resource type="PackedScene" uid="uid://mtu0mxcjwc41" path="res://scenes/color-options/ColorSliders.tscn" id="5_n044m"]
 [ext_resource type="PackedScene" uid="uid://dbsrwqoc4xjea" path="res://scenes/color-options/LightColorSliders.tscn" id="6_vurmb"]
 
@@ -32,27 +31,55 @@ unicode = 99
 [sub_resource type="Shortcut" id="Shortcut_n044m"]
 events = [SubResource("InputEventKey_iumx3")]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pfr5"]
+atlas = ExtResource("2_t20r7")
+region = Rect2(0, 576, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_unx28"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi1yo"]
+atlas = SubResource("CompressedTexture2D_unx28")
+region = Rect2(64, 576, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_atx3i"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xvdg"]
+atlas = SubResource("CompressedTexture2D_atx3i")
+region = Rect2(32, 576, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu6ew"]
+atlas = ExtResource("2_t20r7")
+region = Rect2(96, 576, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n044m"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vurmb"]
-atlas = ExtResource("4_8fnn1")
-region = Rect2(0, 64, 32, 32)
+atlas = SubResource("CompressedTexture2D_n044m")
+region = Rect2(0, 608, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_alrpd"]
-atlas = ExtResource("4_8fnn1")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_neaf8"]
-load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5fa79979924.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_alrpd"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o43t2"]
-atlas = SubResource("CompressedTexture2D_neaf8")
-region = Rect2(32, 64, 32, 32)
+atlas = SubResource("CompressedTexture2D_alrpd")
+region = Rect2(64, 608, 32, 32)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_him7r"]
-load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5fa79979924.ctex"
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2v1sp"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2v1sp"]
-atlas = SubResource("CompressedTexture2D_him7r")
-region = Rect2(96, 64, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_unx28"]
+atlas = SubResource("CompressedTexture2D_2v1sp")
+region = Rect2(32, 608, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_oi1yo"]
+load_path = "res://.godot/imported/result_buttons.png-dd17630ac09b5c915db44b2d32183189.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atx3i"]
+atlas = SubResource("CompressedTexture2D_oi1yo")
+region = Rect2(96, 608, 32, 32)
 
 [node name="ResultUI" type="Control" unique_id=63759867]
 layout_mode = 3
@@ -166,21 +193,22 @@ layout_mode = 2
 layout_mode = 2
 toggle_mode = true
 shortcut = SubResource("Shortcut_n044m")
-texture_normal = SubResource("AtlasTexture_vurmb")
-texture_pressed = SubResource("AtlasTexture_alrpd")
-texture_hover = SubResource("AtlasTexture_o43t2")
-texture_disabled = SubResource("AtlasTexture_2v1sp")
+texture_normal = SubResource("AtlasTexture_6pfr5")
+texture_pressed = SubResource("AtlasTexture_oi1yo")
+texture_hover = SubResource("AtlasTexture_6xvdg")
+texture_disabled = SubResource("AtlasTexture_qu6ew")
 
 [node name="LightColorButton" type="TextureButton" parent="Screen/Columns/Right/Top/Main" unique_id=1212123594]
 layout_mode = 2
 toggle_mode = true
 shortcut = SubResource("Shortcut_n044m")
 texture_normal = SubResource("AtlasTexture_vurmb")
-texture_pressed = SubResource("AtlasTexture_alrpd")
-texture_hover = SubResource("AtlasTexture_o43t2")
-texture_disabled = SubResource("AtlasTexture_2v1sp")
+texture_pressed = SubResource("AtlasTexture_o43t2")
+texture_hover = SubResource("AtlasTexture_unx28")
+texture_disabled = SubResource("AtlasTexture_atx3i")
 
 [node name="BGColorSliders" parent="." unique_id=287632870 instance=ExtResource("5_n044m")]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -191,6 +219,7 @@ offset_bottom = 236.0
 grow_horizontal = 0
 
 [node name="LightColorSliders" parent="." unique_id=857632019 instance=ExtResource("6_vurmb")]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0

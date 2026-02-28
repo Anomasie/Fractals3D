@@ -181,8 +181,13 @@ texture_disabled = SubResource("AtlasTexture_2v1sp")
 
 [node name="BGColorSliders" parent="." unique_id=287632870 instance=ExtResource("5_n044m")]
 layout_mode = 1
-offset_right = 448.0
-offset_bottom = 200.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -448.0
+offset_right = 0.0
+offset_bottom = 236.0
+grow_horizontal = 0
 
 [connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/BGColorButton" to="." method="_on_bg_color_button_pressed"]

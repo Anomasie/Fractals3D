@@ -15,7 +15,7 @@ func _ready():
 
 static func random_contraction():
 	var contraction = Contraction.new()
-	contraction.translation = Vector3( randf()/2+0.25, randf()/2+0.25, randf()/2+0.25 )
+	contraction.translation = Vector3( Math.nrnumber()/2, Math.nrnumber()/2, Math.nrnumber()/2 )
 	contraction.matrix = Basis.from_euler(
 		Vector3(randf(), randf(), randf())
 	) * Basis(

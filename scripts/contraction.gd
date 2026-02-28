@@ -3,11 +3,7 @@ class_name Contraction
 const PRINT_ERRORS = false
 
 var translation = Vector3.ZERO
-var matrix = [
-	[ 0.5, 0, 0],
-	[ 0, 0.5, 0],
-	[ 0, 0, 0.5]
-]
+var matrix = Basis.IDENTITY
 var color = Color.WHITE
 
 func _ready():
@@ -16,11 +12,13 @@ func _ready():
 static func random_contraction():
 	var contraction = Contraction.new()
 	contraction.translation = Vector3( randf()/2+0.25, randf()/2+0.25, randf()/2+0.25 )
-	contraction.matrix = [
-		[ randf(), 0, 0],
-		[ 0, randf(), 0],
-		[ 0, 0, randf()]
-	]
+	contraction.matrix = Basis.from_euler(
+		Vector3(randf(), randf(), randf())
+	) * Basis(
+		Vector3(randf(), 0, 0),
+		Vector3(0, randf(), 0),
+		Vector3(0, 0, randf())
+	)
 	if PRINT_ERRORS: print("in Contraction: TODO")
 	contraction.color = Color.from_hsv(randf(), randf(), randf())
 	return contraction

@@ -37,6 +37,13 @@ func get_boxes() -> Array:
 			boxes.append(box)
 	return boxes
 
+func set_ifs(ifs = IFS.new()) -> void:
+	FocusedBoxes = get_boxes()
+	remove_current_boxes()
+	
+	for system in ifs.systems:
+		add_box(system)
+
 func get_ifs() -> IFS:
 	var my_ifs = IFS.new()
 	var systems = []

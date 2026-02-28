@@ -32,7 +32,7 @@ var rotation_face_center = Vector3.ZERO
 
 func set_contraction(contraction = Contraction.new()) -> void:
 	self.position = contraction.translation
-	self.scale = Vector3.ONE
+	self.scale = Vector3.ONE * 0.2
 	self.rotation = Vector3.ZERO
 	if not InnerAreaMesh:
 		await self.ready
@@ -42,14 +42,10 @@ func set_contraction(contraction = Contraction.new()) -> void:
 func get_contraction() -> Contraction:
 	var my_contraction = Contraction.new()
 	my_contraction.translation = self.position
-	my_contraction.matrix = Math.multiply(
-		Math.rotation_matrix(self.rotation),
-		[
-			[self.scale.x, 0, 0],
-			[0, self.scale.y, 0],
-			[0, 0, self.scale.z]
-		]
-	)
+	my_contraction.matrix = Basis.from_euler(-self.rotation) * Basis(
+		self.scale.x * Vector3(1,0,0),
+		self.scale.y * Vector3(0,1,0),
+		self.scale.z * Vector3(0,0,1))
 	my_contraction.color = get_color()
 	return my_contraction
 
@@ -207,11 +203,7 @@ func set_scaling_face(face_vector, event_position):
 	original_scale = self.scale
 	original_position = self.position
 	editing_face = face_vector
-	var array = Math.multiply(
-		Math.rotation_matrix(self.rotation),
-		[[face_vector.x], [face_vector.y], [face_vector.z]]
-	)
-	editing_face_rotated = Vector3(array[0][0], array[1][0], array[2][0])
+	editing_face_rotated = Basis.from_euler(self.rotation) * face_vector
 
 func _on_area_100_input_event(_camera: Node, event: InputEvent, event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event.is_action_pressed("click"):

@@ -5,12 +5,9 @@ var next_instance_to_draw = 0
 
 func _ready():
 	multimesh = MultiMesh.new()
-	
-	if Engine.is_editor_hint():
-		var current_ifs = IFS.random_ifs()
-		current_ifs.systems = Math.maxis_ifs()
-		prepare_mesh(10000)
-		add_points(current_ifs.calculate_fractal(point.new(), 10000-1))
+	var current_ifs = IFS.random_ifs()
+	prepare_mesh(10000)
+	add_points(current_ifs.calculate_fractal(point.new(), 10000-1))
 
 func add_points(points):
 	#multimesh.instance_count += len(points)

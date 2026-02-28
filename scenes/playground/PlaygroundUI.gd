@@ -16,6 +16,12 @@ func _ready():
 	# hide and show
 	ColorSliders.close()
 	focus()
+	
+	set_ifs(IFS.random_ifs())
+
+func set_ifs(ifs = IFS.random_ifs()) -> void:
+	Playground.set_ifs(ifs)
+	ColorSliders.UniformColorButton.on = ifs.uniform_coloring
 
 func get_ifs(ifs = Playground.get_ifs()) -> IFS:
 	ifs.uniform_coloring = ColorSliders.UniformColorButton.on

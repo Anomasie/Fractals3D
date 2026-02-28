@@ -27,11 +27,6 @@ func _ready():
 	PointTeller.max_value = PointSlider.max_value
 	PointTeller.value = 0
 	PointLineEdit.placeholder_text = str(limit)
-	
-	# new ifs
-	var new_ifs = IFS.random_ifs()
-	new_ifs.systems = Math.maxis_ifs()
-	self.set_ifs(new_ifs)
 
 func set_ifs(new_ifs):
 	new_ifs_this_frame = true

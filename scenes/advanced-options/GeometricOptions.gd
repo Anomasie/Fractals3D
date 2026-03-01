@@ -86,12 +86,16 @@ func _on_matrix_button_pressed():
 
 # values changed
 
-func _on_edit_text_submitted(new_text, Edit) -> void:
-	if new_text:
-		var value = float(new_text)
-		Edit.placeholder_text = str(value)
-		Edit.text = ""
-		changed.emit()
+func set_text_to_placeholder(nodes = TranslationEdits+ContractionEdits+RotationEdits) -> void:
+	for node in nodes:
+		if node.text:
+			var value = float(node.text)
+			node.placeholder_text = str(value)
+			node.text = ""
+			changed.emit()
+
+func _on_edit_text_submitted(_new_text, Edit) -> void:
+	set_text_to_placeholder()
 	Edit.release_focus()
 
 # language & translation

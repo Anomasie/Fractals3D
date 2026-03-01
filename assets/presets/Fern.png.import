@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://imsfxcvolgls"
-path="res://.godot/imported/Whirl.png-cb23032dca1058d64d1c008176cd0a9d.ctex"
+uid="uid://chhh0t5fxw7p5"
+path="res://.godot/imported/Fern.png-9a52e789d9a3e0589aeb0e3308f37a89.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/presets/Whirl.png"
-dest_files=["res://.godot/imported/Whirl.png-cb23032dca1058d64d1c008176cd0a9d.ctex"]
+source_file="res://assets/presets/Fern.png"
+dest_files=["res://.godot/imported/Fern.png-9a52e789d9a3e0589aeb0e3308f37a89.ctex"]
 
 [params]
 

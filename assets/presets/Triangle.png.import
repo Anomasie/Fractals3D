@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0altdjedf2b"
-path="res://.godot/imported/KochSnowflake.png-adf91b770ced8cb950ec6afb68a3b15a.ctex"
+uid="uid://064rbvkyu7cj"
+path="res://.godot/imported/Triangle.png-3e437fc61a71e081b310d61a9c2126cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/presets/KochSnowflake.png"
-dest_files=["res://.godot/imported/KochSnowflake.png-adf91b770ced8cb950ec6afb68a3b15a.ctex"]
+source_file="res://assets/presets/Triangle.png"
+dest_files=["res://.godot/imported/Triangle.png-3e437fc61a71e081b310d61a9c2126cf.ctex"]
 
 [params]
 

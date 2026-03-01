@@ -45,7 +45,10 @@ func focus(boxes = []) -> void:
 	GeometricButton.disabled = len(boxes) == 0
 	
 	if GeometricOptions.visible:
-		GeometricOptions.load_ui(Playground.get_contraction())
+		if len(Playground.get_boxes()) > 0:
+			GeometricOptions.load_ui(Playground.get_contraction())
+		else:
+			_on_geometric_options_close_me()
 	
 	if len(boxes) > 0:
 		if ColorButton.button_pressed:

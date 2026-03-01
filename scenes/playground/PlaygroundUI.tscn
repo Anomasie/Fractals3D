@@ -30,6 +30,22 @@ load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5
 atlas = SubResource("CompressedTexture2D_him7r")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu8q0"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yscx"]
+atlas = ExtResource("3_3dgkr")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6nl7"]
+atlas = SubResource("CompressedTexture2D_neaf8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6e32"]
+atlas = SubResource("CompressedTexture2D_him7r")
+region = Rect2(96, 32, 32, 32)
+
 [sub_resource type="InputEventKey" id="InputEventKey_iumx3"]
 device = -1
 keycode = 67
@@ -177,6 +193,13 @@ texture_pressed = SubResource("AtlasTexture_p5hmf")
 texture_hover = SubResource("AtlasTexture_x5vax")
 texture_disabled = SubResource("AtlasTexture_bg3lk")
 
+[node name="DuplicateButton" type="TextureButton" parent="Left/Main" unique_id=1601367716]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_mu8q0")
+texture_pressed = SubResource("AtlasTexture_2yscx")
+texture_hover = SubResource("AtlasTexture_b6nl7")
+texture_disabled = SubResource("AtlasTexture_t6e32")
+
 [node name="ColorButton" type="TextureButton" parent="Left/Main" unique_id=870585894]
 layout_mode = 2
 toggle_mode = true
@@ -250,6 +273,7 @@ layout_mode = 1
 [connection signal="focus_these" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_focus_these"]
 [connection signal="fractal_changed" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_fractal_changed"]
 [connection signal="pressed" from="Left/Main/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="pressed" from="Left/Main/DuplicateButton" to="." method="_on_duplicate_button_pressed"]
 [connection signal="toggled" from="Left/Main/ColorButton" to="." method="_on_color_button_toggled"]
 [connection signal="pressed" from="Left/Main/RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="pressed" from="Left/Main/RemoveAllButton" to="." method="_on_remove_all_button_pressed"]

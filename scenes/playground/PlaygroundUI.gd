@@ -41,7 +41,11 @@ func focus(boxes = []) -> void:
 	
 	ColorButton.disabled = len(boxes) == 0
 	RemoveButton.disabled = len(boxes) == 0
+	RemoveAllButton.disabled = len(Playground.get_boxes()) == 0
 	GeometricButton.disabled = len(boxes) == 0
+	
+	if GeometricOptions.visible:
+		GeometricOptions.load_ui(Playground.get_contraction())
 	
 	if len(boxes) > 0:
 		if ColorButton.button_pressed:
@@ -90,11 +94,20 @@ func _on_add_button_pressed() -> void:
 	
 	fractal_changed.emit( self.get_ifs() )
 
+func _on_duplicate_button_pressed() -> void:
+	var current_contraction = Playground.get_contraction()
+	current_contraction.translation += Vector3(0.1,0.1,0.1)
+	Playground.add_box(current_contraction)
+	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
+	if Presets.visible:
+		_on_presets_close_me()
+	
+	fractal_changed.emit( self.get_ifs() )
+
 func _on_remove_button_pressed() -> void:
 	# close rect
 	await Playground.remove_current_boxes()
 	focus([])
-	RemoveAllButton.disabled = (len(Playground.FocusedBoxes) == 0)
 	
 	fractal_changed_vastly.emit( self.get_ifs() )
 
@@ -119,12 +132,15 @@ func _on_presets_button_pressed() -> void:
 # geometric options
 
 func _on_geometric_button_pressed() -> void:
-	GeometricOptions.open(Playground.get_contraction())
-	GeometricButton.disabled = true
+	if GeometricButton.button_pressed:
+		GeometricOptions.open(Playground.get_contraction())
+	else:
+		_on_geometric_options_close_me()
 
 func _on_geometric_options_changed() -> void:
 	Playground.set_contraction( GeometricOptions.read_ui(), false )
 
 func _on_geometric_options_close_me() -> void:
 	GeometricOptions.hide()
+	GeometricButton.button_pressed = false
 	GeometricButton.disabled = len(Playground.FocusedBoxes)==0

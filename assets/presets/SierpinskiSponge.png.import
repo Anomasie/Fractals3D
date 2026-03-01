@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coi5u3kqbwaoh"
-path="res://.godot/imported/SierpinskiCarpet.png-3defc1a568421db8bdb357cddac0ad09.ctex"
+uid="uid://vaubv0efn7r5"
+path="res://.godot/imported/SierpinskiSponge.png-2b6284f69175d21e703814ea255df16e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/presets/SierpinskiCarpet.png"
-dest_files=["res://.godot/imported/SierpinskiCarpet.png-3defc1a568421db8bdb357cddac0ad09.ctex"]
+source_file="res://assets/presets/SierpinskiSponge.png"
+dest_files=["res://.godot/imported/SierpinskiSponge.png-2b6284f69175d21e703814ea255df16e.ctex"]
 
 [params]
 

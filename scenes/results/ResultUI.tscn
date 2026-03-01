@@ -266,6 +266,7 @@ texture_hover = SubResource("AtlasTexture_y6blq")
 texture_disabled = SubResource("AtlasTexture_dbeeg")
 
 [node name="ShareButton" type="TextureButton" parent="Screen/Columns/Right/Top/Main" unique_id=1702731526]
+visible = false
 layout_mode = 2
 shortcut = SubResource("Shortcut_n044m")
 texture_normal = SubResource("AtlasTexture_o78ha")

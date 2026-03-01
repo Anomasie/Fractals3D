@@ -81,6 +81,7 @@ texture_hover = SubResource("AtlasTexture_7el72")
 texture_disabled = SubResource("AtlasTexture_d6r2u")
 
 [node name="DebugEdit" type="LineEdit" parent="." unique_id=182073387]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -89,6 +90,7 @@ grow_horizontal = 2
 placeholder_text = "Debug line edit"
 
 [node name="ShareDialogue" parent="." unique_id=1929791214 instance=ExtResource("5_8rmqh")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

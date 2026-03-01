@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://dyags246afmgm"]
+
+[ext_resource type="Script" uid="uid://y87447spah2s" path="res://scenes/share-popup/ShareDialogue.gd" id="1_gdrsq"]
+[ext_resource type="Texture2D" uid="uid://vceyw8jntod2" path="res://assets/gui/panels.png" id="1_kqtxd"]
+[ext_resource type="Texture2D" uid="uid://dpaw6plsgel6f" path="res://assets/icon.png" id="2_y3cc6"]
+[ext_resource type="Texture2D" uid="uid://ci2mpewrmv3rv" path="res://assets/gui/close_button.png" id="4_nwu5e"]
+[ext_resource type="PackedScene" uid="uid://r1sotm75vv6j" path="res://scenes/server-contact/GalleryContact.tscn" id="5_b8pgv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58kqx"]
+atlas = ExtResource("1_kqtxd")
+region = Rect2(18, 2, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf28d"]
+atlas = ExtResource("4_nwu5e")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujvvc"]
+atlas = ExtResource("4_nwu5e")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu047"]
+atlas = ExtResource("4_nwu5e")
+region = Rect2(32, 0, 32, 32)
+
+[node name="ShareDialogue" type="MarginContainer" unique_id=1929791214]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_gdrsq")
+
+[node name="Container" type="MarginContainer" parent="." unique_id=367214655]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Content" type="MarginContainer" parent="Container" unique_id=95227871]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="Container/Content" unique_id=607396006]
+layout_mode = 2
+texture = SubResource("AtlasTexture_58kqx")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/Content" unique_id=12932214]
+layout_mode = 2
+
+[node name="Lines" type="VBoxContainer" parent="Container/Content/MarginContainer" unique_id=1474593041]
+layout_mode = 2
+
+[node name="ImagePreview" type="TextureRect" parent="Container/Content/MarginContainer/Lines" unique_id=1848463851]
+clip_contents = true
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "image you are about to send to the gallery"
+texture = ExtResource("2_y3cc6")
+
+[node name="Tabular" type="GridContainer" parent="Container/Content/MarginContainer/Lines" unique_id=1318725864]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="DescriptionLabel" type="Label" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=2108415537]
+layout_mode = 2
+text = "Description"
+
+[node name="DescriptionEdit" type="LineEdit" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=311897661]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter description here"
+placeholder_text = "my favorite fractal"
+
+[node name="NameLabel" type="Label" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=546820986]
+layout_mode = 2
+text = "Nickname"
+
+[node name="NameEdit" type="LineEdit" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=489477653]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter your nickname here"
+placeholder_text = "my name"
+max_length = 10
+
+[node name="VenueLabel" type="Label" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=1701188778]
+layout_mode = 2
+text = "Venue"
+
+[node name="VenueEdit" type="LineEdit" parent="Container/Content/MarginContainer/Lines/Tabular" unique_id=772731689]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter venue here (if existing)"
+placeholder_text = "none"
+
+[node name="ReadyButton" type="Button" parent="Container/Content/MarginContainer/Lines" unique_id=1853549031]
+layout_mode = 2
+text = "Share on website"
+
+[node name="GalleryAdressLabel" type="Label" parent="Container/Content/MarginContainer/Lines" unique_id=2143181694]
+layout_mode = 2
+text = "www.make-your-own-fractal-de/gallery3d"
+
+[node name="LegalLabel" type="Label" parent="Container/Content/MarginContainer/Lines" unique_id=570297257]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+text = "All fractals uploaded to the gallery are free to use and modify for everyone."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="TextureButton" parent="Container" unique_id=1905332010]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+tooltip_text = "close and reset"
+texture_normal = SubResource("AtlasTexture_nf28d")
+texture_pressed = SubResource("AtlasTexture_ujvvc")
+texture_hover = SubResource("AtlasTexture_tu047")
+
+[node name="GalleryContact" parent="." unique_id=1851786580 instance=ExtResource("5_b8pgv")]
+
+[connection signal="pressed" from="Container/Content/MarginContainer/Lines/ReadyButton" to="." method="_on_ready_button_pressed"]
+[connection signal="pressed" from="Container/CloseButton" to="." method="_on_close_button_pressed"]

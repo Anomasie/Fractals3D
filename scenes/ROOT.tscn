@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="1_sfemp"]
 [ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="2_sfemp"]
 [ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_v4i4c"]
+[ext_resource type="PackedScene" uid="uid://dyags246afmgm" path="res://scenes/share-popup/ShareDialogue.tscn" id="5_8rmqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rmqh"]
 atlas = ExtResource("4_v4i4c")
@@ -78,13 +79,26 @@ texture_hover = SubResource("AtlasTexture_7el72")
 texture_disabled = SubResource("AtlasTexture_d6r2u")
 
 [node name="DebugEdit" type="LineEdit" parent="." unique_id=182073387]
-visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 24.0
 grow_horizontal = 2
 placeholder_text = "Debug line edit"
+
+[node name="ShareDialogue" parent="." unique_id=1698785399 instance=ExtResource("5_8rmqh")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -245.0
+offset_top = -285.0
+offset_right = 245.0
+offset_bottom = 285.0
+script = null
 
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
 [connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]

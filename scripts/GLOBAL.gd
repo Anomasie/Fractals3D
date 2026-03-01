@@ -9,7 +9,7 @@ signal hide_tooltip
 # constants
 ## paths
 const SAVE_PATH = "res://"
-const GALLERY_ADRESS = "https://gallery.fracmi.cc/g/ifs"
+const GALLERY_ADRESS = "https://gallery.fracmi.cc/g/ifs3d"
 ## ResultUI
 const DEFAULT_DELAY = 100
 const DEFAULT_POINTS = 1000000

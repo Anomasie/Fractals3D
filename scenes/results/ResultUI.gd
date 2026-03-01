@@ -81,6 +81,7 @@ func set_ifs(new_ifs, overwrite_ui = false):
 
 func get_ifs() -> IFS:
 	var ifs = current_ifs
+	if not ifs: ifs = IFS.new()
 	
 	# constants
 	ifs.reusing_last_point = true

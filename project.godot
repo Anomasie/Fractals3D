@@ -23,6 +23,11 @@ config/icon="uid://co4o0tm4l6okd"
 
 Global="*res://scripts/GLOBAL.gd"
 
+[display]
+
+window/size/mode=2
+window/stretch/aspect="expand"
+
 [gui]
 
 theme/custom="uid://c42j2c4nk8yk"

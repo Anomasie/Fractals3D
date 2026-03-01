@@ -4,7 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cothr5kp6sd3u" path="res://scenes/playground/Playground3D.tscn" id="1_g2yml"]
 [ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="3_3dgkr"]
 [ext_resource type="PackedScene" uid="uid://mtu0mxcjwc41" path="res://scenes/color-options/ColorSliders.tscn" id="3_asuwu"]
+[ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="4_fsbk1"]
 [ext_resource type="PackedScene" uid="uid://co7ekdte8fr1f" path="res://scenes/presets/Presets.tscn" id="5_3dgkr"]
+[ext_resource type="PackedScene" uid="uid://ci4h23rvdej3t" path="res://scenes/advanced-options/GeometricOptions.tscn" id="6_xjfem"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_neaf8"]
 atlas = ExtResource("3_3dgkr")
@@ -110,6 +112,22 @@ region = Rect2(32, 128, 32, 32)
 atlas = ExtResource("3_3dgkr")
 region = Rect2(96, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a41y"]
+atlas = ExtResource("4_fsbk1")
+region = Rect2(0, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e3eo"]
+atlas = ExtResource("4_fsbk1")
+region = Rect2(64, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_splk4"]
+atlas = ExtResource("4_fsbk1")
+region = Rect2(32, 224, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1a2f"]
+atlas = ExtResource("4_fsbk1")
+region = Rect2(96, 224, 32, 32)
+
 [node name="PlaygroundUI" type="Control" unique_id=1516792894]
 layout_mode = 3
 anchors_preset = 15
@@ -183,6 +201,14 @@ texture_pressed = SubResource("AtlasTexture_xjfem")
 texture_hover = SubResource("AtlasTexture_fsbk1")
 texture_disabled = SubResource("AtlasTexture_3ugsc")
 
+[node name="GeometricButton" type="TextureButton" parent="Left/Main" unique_id=1917961477]
+layout_mode = 2
+toggle_mode = true
+texture_normal = SubResource("AtlasTexture_1a41y")
+texture_pressed = SubResource("AtlasTexture_7e3eo")
+texture_hover = SubResource("AtlasTexture_splk4")
+texture_disabled = SubResource("AtlasTexture_i1a2f")
+
 [node name="Bottom" type="MarginContainer" parent="." unique_id=840110763]
 layout_mode = 1
 anchors_preset = 12
@@ -218,14 +244,20 @@ offset_left = -72.0
 offset_top = -96.0
 offset_right = 72.0
 
+[node name="GeometricOptions" parent="." unique_id=250646440 instance=ExtResource("6_xjfem")]
+layout_mode = 1
+
 [connection signal="focus_these" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_focus_these"]
 [connection signal="fractal_changed" from="ViewportContainer/Subviewport/Playground" to="." method="_on_playground_fractal_changed"]
 [connection signal="pressed" from="Left/Main/AddButton" to="." method="_on_add_button_pressed"]
 [connection signal="toggled" from="Left/Main/ColorButton" to="." method="_on_color_button_toggled"]
 [connection signal="pressed" from="Left/Main/RemoveButton" to="." method="_on_remove_button_pressed"]
 [connection signal="pressed" from="Left/Main/RemoveAllButton" to="." method="_on_remove_all_button_pressed"]
+[connection signal="pressed" from="Left/Main/GeometricButton" to="." method="_on_geometric_button_pressed"]
 [connection signal="pressed" from="Bottom/PresetsButton" to="." method="_on_presets_button_pressed"]
 [connection signal="color_changed" from="ColorSliders" to="." method="_on_color_sliders_color_changed"]
 [connection signal="finished" from="ColorSliders" to="." method="_on_color_sliders_finished"]
 [connection signal="close_me" from="Presets" to="." method="_on_presets_close_me"]
 [connection signal="load_preset" from="Presets" to="." method="_on_presets_load_preset"]
+[connection signal="changed" from="GeometricOptions" to="." method="_on_geometric_options_changed"]
+[connection signal="close_me" from="GeometricOptions" to="." method="_on_geometric_options_close_me"]

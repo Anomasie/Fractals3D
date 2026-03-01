@@ -57,6 +57,15 @@ func focus(MyRects):
 		if child is ResizableBox:
 			child.set_focus( child in FocusedBoxes )
 
+func set_contraction(contraction, use_color = false):
+	for box in FocusedBoxes:
+		if not use_color:
+			contraction.color = box.get_color()
+		box.set_contraction(contraction)
+
+func get_contraction():
+	return FocusedBoxes[0].get_contraction()
+
 func set_color(color : Color):
 	for box in FocusedBoxes:
 		box.set_color(color)

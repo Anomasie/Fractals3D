@@ -1,8 +1,9 @@
 extends Control
 
 signal store_to_url
+signal share_fractal
 
-var current_ifs
+var current_ifs = IFS.new()
 
 # how many points should be drawn (in this frame and at all?)
 var limit = 0
@@ -81,7 +82,6 @@ func set_ifs(new_ifs, overwrite_ui = false):
 
 func get_ifs() -> IFS:
 	var ifs = current_ifs
-	if not ifs: ifs = IFS.new()
 	
 	# constants
 	ifs.reusing_last_point = true
@@ -238,7 +238,7 @@ func _on_save_file_path_selected(path) -> void:
 
 func _on_share_button_pressed() -> void:
 	store_to_url.emit()
-
+	share_fractal.emit(get_image(), current_ifs)
 
 func _on_center_button_pressed() -> void:
 	if current_ifs:

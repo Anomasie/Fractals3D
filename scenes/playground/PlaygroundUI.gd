@@ -9,14 +9,17 @@ signal fractal_changed_vastly
 @onready var RemoveButton = $Left/Main/RemoveButton
 @onready var ColorButton = $Left/Main/ColorButton
 @onready var RemoveAllButton = $Left/Main/RemoveAllButton
+@onready var GeometricButton = $Left/Main/GeometricButton
 ## extra menüs
 @onready var ColorSliders = $ColorSliders
 @onready var PresetsButton = $Bottom/PresetsButton
 @onready var Presets = $Presets
+@onready var GeometricOptions = $GeometricOptions
 
 func _ready():
 	# hide and show
 	ColorSliders.close()
+	_on_geometric_options_close_me()
 	_on_presets_button_pressed()
 	focus()
 
@@ -38,6 +41,7 @@ func focus(boxes = []) -> void:
 	
 	ColorButton.disabled = len(boxes) == 0
 	RemoveButton.disabled = len(boxes) == 0
+	GeometricButton.disabled = len(boxes) == 0
 	
 	if len(boxes) > 0:
 		if ColorButton.button_pressed:
@@ -50,6 +54,8 @@ func focus(boxes = []) -> void:
 
 func _on_playground_fractal_changed(ifs) -> void:
 	fractal_changed.emit( self.get_ifs(ifs) )
+	if GeometricOptions.visible:
+		GeometricOptions.load_ui(Playground.get_contraction())
 
 func _on_playground_focus_these(boxes) -> void:
 	focus(boxes)
@@ -109,3 +115,16 @@ func _on_presets_load_preset(new_ifs) -> void:
 func _on_presets_button_pressed() -> void:
 	PresetsButton.hide()
 	Presets.show()
+
+# geometric options
+
+func _on_geometric_button_pressed() -> void:
+	GeometricOptions.open(Playground.get_contraction())
+	GeometricButton.disabled = true
+
+func _on_geometric_options_changed() -> void:
+	Playground.set_contraction( GeometricOptions.read_ui(), false )
+
+func _on_geometric_options_close_me() -> void:
+	GeometricOptions.hide()
+	GeometricButton.disabled = len(Playground.FocusedBoxes)==0

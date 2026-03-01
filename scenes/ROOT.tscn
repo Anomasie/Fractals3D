@@ -88,8 +88,7 @@ offset_bottom = 24.0
 grow_horizontal = 2
 placeholder_text = "Debug line edit"
 
-[node name="ShareDialogue" parent="." unique_id=1698785399 instance=ExtResource("5_8rmqh")]
-visible = false
+[node name="ShareDialogue" parent="." unique_id=1929791214 instance=ExtResource("5_8rmqh")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,10 +99,10 @@ offset_left = -245.0
 offset_top = -285.0
 offset_right = 245.0
 offset_bottom = 285.0
-script = null
 
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
 [connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]
+[connection signal="share_fractal" from="Container/ResultUI" to="." method="_on_result_ui_share_fractal"]
 [connection signal="store_to_url" from="Container/ResultUI" to="." method="_on_result_ui_store_to_url"]
 [connection signal="pressed" from="Center/SyncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="text_submitted" from="DebugEdit" to="." method="_on_debug_edit_text_submitted"]

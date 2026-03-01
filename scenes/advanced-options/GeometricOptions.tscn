@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://ci4h23rvdej3t"]
+
+[ext_resource type="Script" uid="uid://c5yrack8p2hhf" path="res://scenes/advanced-options/GeometricOptions.gd" id="1_a1yj1"]
+[ext_resource type="Texture2D" uid="uid://vceyw8jntod2" path="res://assets/gui/panels.png" id="2_30xsd"]
+[ext_resource type="Texture2D" uid="uid://i6nt6wwqdq7s" path="res://assets/gui/result_buttons.png" id="3_5g22u"]
+[ext_resource type="Texture2D" uid="uid://ci2mpewrmv3rv" path="res://assets/gui/close_button.png" id="4_ngukf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa7ud"]
+atlas = ExtResource("2_30xsd")
+region = Rect2(18, 2, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd8lg"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt3rn"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v75dv"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skh3p"]
+atlas = ExtResource("4_ngukf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrwi1"]
+atlas = ExtResource("4_ngukf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v0vr"]
+atlas = ExtResource("4_ngukf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toxlq"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(0, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgt1m"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(64, 256, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8a5p"]
+atlas = ExtResource("3_5g22u")
+region = Rect2(32, 256, 32, 32)
+
+[node name="GeometricOptions" type="MarginContainer" unique_id=448669919]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -192.0
+offset_right = 152.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_a1yj1")
+
+[node name="Content" type="MarginContainer" parent="." unique_id=2050454679]
+layout_mode = 2
+
+[node name="Background" type="NinePatchRect" parent="Content" unique_id=1764410470]
+layout_mode = 2
+texture = SubResource("AtlasTexture_xa7ud")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Content" unique_id=480325121]
+layout_mode = 2
+
+[node name="AdvancedOptions" type="HBoxContainer" parent="Content/MarginContainer" unique_id=1561879370]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Main" type="VBoxContainer" parent="Content/MarginContainer/AdvancedOptions" unique_id=1498702331]
+layout_mode = 2
+
+[node name="TranslationBox" type="HBoxContainer" parent="Content/MarginContainer/AdvancedOptions/Main" unique_id=752305631]
+layout_mode = 2
+
+[node name="TranslationLabel" type="TextureRect" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=1073988469]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_xd8lg")
+
+[node name="LabelX" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=777800395]
+layout_mode = 2
+text = "X"
+
+[node name="TranslationX" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=1149462441]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter translation in x-axis"
+max_length = 5
+
+[node name="LabelY" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=277252081]
+layout_mode = 2
+text = "Y"
+
+[node name="TranslationY" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=1658307794]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter translation in y-axis"
+max_length = 5
+
+[node name="LabelZ" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=74391264]
+layout_mode = 2
+text = "Z"
+
+[node name="TranslationZ" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/TranslationBox" unique_id=1858011160]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter translation in y-axis"
+max_length = 5
+
+[node name="ContractionBox" type="HBoxContainer" parent="Content/MarginContainer/AdvancedOptions/Main" unique_id=1584876361]
+layout_mode = 2
+
+[node name="ContractionLabel" type="TextureRect" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=849575551]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_yt3rn")
+
+[node name="LabelX" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=1087011444]
+layout_mode = 2
+text = "X"
+
+[node name="ContractionX" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=272863089]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter distortion along x-axis"
+max_length = 5
+
+[node name="LabelY" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=62172679]
+layout_mode = 2
+text = "Y"
+
+[node name="ContractionY" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=1893334167]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter distortion along y-axis"
+max_length = 5
+
+[node name="LabelZ" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=1706646454]
+layout_mode = 2
+text = "Z"
+
+[node name="ContractionZ" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/ContractionBox" unique_id=688788655]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter distortion along y-axis"
+max_length = 5
+
+[node name="Label" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main" unique_id=91028494]
+visible = false
+layout_mode = 2
+text = "Rotation (Euler angles)"
+
+[node name="RotationBox" type="HBoxContainer" parent="Content/MarginContainer/AdvancedOptions/Main" unique_id=432961867]
+layout_mode = 2
+
+[node name="RotationLabel" type="TextureRect" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=1518661669]
+layout_mode = 2
+texture = SubResource("AtlasTexture_v75dv")
+
+[node name="LabelX" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=2001612977]
+layout_mode = 2
+text = "X"
+
+[node name="RotationX" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=1301356133]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter rotation degree"
+placeholder_text = "°"
+max_length = 5
+
+[node name="LabelY" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=1428447789]
+layout_mode = 2
+text = "Y"
+
+[node name="RotationY" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=1121141420]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter rotation degree"
+placeholder_text = "°"
+max_length = 5
+
+[node name="LabelZ" type="Label" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=558001795]
+layout_mode = 2
+text = "Z"
+
+[node name="RotationZ" type="LineEdit" parent="Content/MarginContainer/AdvancedOptions/Main/RotationBox" unique_id=696401307]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "enter rotation degree"
+placeholder_text = "°"
+max_length = 5
+
+[node name="ElseBox" type="VBoxContainer" parent="." unique_id=1097762426]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="CloseButton" type="TextureButton" parent="ElseBox" unique_id=404203462]
+layout_mode = 2
+size_flags_horizontal = 9
+tooltip_text = "close options"
+texture_normal = SubResource("AtlasTexture_skh3p")
+texture_pressed = SubResource("AtlasTexture_yrwi1")
+texture_hover = SubResource("AtlasTexture_0v0vr")
+
+[node name="MatrixButton" type="TextureButton" parent="ElseBox" unique_id=580913091]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 11
+tooltip_text = "swtich to matrix view"
+texture_normal = SubResource("AtlasTexture_toxlq")
+texture_pressed = SubResource("AtlasTexture_qgt1m")
+texture_hover = SubResource("AtlasTexture_n8a5p")
+
+[connection signal="pressed" from="ElseBox/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="ElseBox/MatrixButton" to="." method="_on_matrix_button_pressed"]

@@ -62,8 +62,8 @@ func _on_result_ui_store_to_url() -> void:
 	store_to_url()
 
 func _on_result_ui_share_fractal(image, ifs) -> void:
-	print(ifs.to_meta_data())
-	#ShareDialogue.open(image, ifs)
+	#print(ifs.to_meta_data())
+	ShareDialogue.open(image, ifs)
 
 # url stuff
 

@@ -185,7 +185,7 @@ mouse_filter = 2
 [node name="Grid" type="GridContainer" parent="Screen/Columns/Left/Bottom" unique_id=122036326]
 layout_mode = 2
 mouse_filter = 2
-columns = 5
+columns = 4
 
 [node name="PointTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1176675348]
 layout_mode = 2
@@ -228,11 +228,6 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "123456789"
 
-[node name="PointLabel" type="Label" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1946896848]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Text!"
-
 [node name="SpeedTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1193276408]
 layout_mode = 2
 mouse_filter = 2
@@ -254,11 +249,6 @@ texture = SubResource("AtlasTexture_t20r7")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "123456789"
-
-[node name="SpeedLabel" type="Label" parent="Screen/Columns/Left/Bottom/Grid" unique_id=223871418]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Text!"
 
 [node name="Right" type="MarginContainer" parent="Screen/Columns" unique_id=1505254544]
 layout_mode = 2

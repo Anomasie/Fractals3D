@@ -108,3 +108,7 @@ offset_bottom = 285.0
 [connection signal="store_to_url" from="Container/ResultUI" to="." method="_on_result_ui_store_to_url"]
 [connection signal="pressed" from="Center/SyncButton" to="." method="_on_sync_button_pressed"]
 [connection signal="text_submitted" from="DebugEdit" to="." method="_on_debug_edit_text_submitted"]
+[connection signal="no_connection_to_server" from="ShareDialogue" to="." method="_on_share_dialogue_no_connection_to_server"]
+[connection signal="sent_away" from="ShareDialogue" to="." method="_on_share_dialogue_sent_away"]
+[connection signal="sent_successfully" from="ShareDialogue" to="." method="_on_share_dialogue_sent_successfully"]
+[connection signal="sent_unsuccessfully" from="ShareDialogue" to="." method="_on_share_dialogue_sent_unsuccessfully"]

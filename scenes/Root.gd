@@ -88,6 +88,21 @@ func try_load_from_string(meta_data):
 		if meta_ifs is IFS:
 			set_ifs(meta_ifs, true)
 
+# notifications
+
+func _on_share_dialogue_sent_successfully() -> void:
+	print("successfully sent away")
+
+func _on_share_dialogue_sent_unsuccessfully(error_code) -> void:
+	print("could not send away. Error code: ", error_code)
+
+func _on_share_dialogue_sent_away() -> void:
+	pass
+
+func _on_share_dialogue_no_connection_to_server() -> void:
+	print("ERROR in ROOT.gd: No connection to server!")
+
+
 # debug area
 
 func _on_debug_edit_text_submitted(new_text: String) -> void:

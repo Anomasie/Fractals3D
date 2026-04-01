@@ -185,7 +185,7 @@ mouse_filter = 2
 [node name="Grid" type="GridContainer" parent="Screen/Columns/Left/Bottom" unique_id=122036326]
 layout_mode = 2
 mouse_filter = 2
-columns = 4
+columns = 5
 
 [node name="PointTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1176675348]
 layout_mode = 2
@@ -227,6 +227,38 @@ texture = SubResource("AtlasTexture_t20r7")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 placeholder_text = "123456789"
+
+[node name="PointLabel" type="Label" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1946896848]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text!"
+
+[node name="SpeedTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1193276408]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_7nurk")
+
+[node name="SpeedSlider" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid" unique_id=336690101]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1000000.0
+value = 500000.0
+
+[node name="SpeedTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=458435323]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_t20r7")
+
+[node name="SpeedLineEdit" type="LineEdit" parent="Screen/Columns/Left/Bottom/Grid" unique_id=279399461]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+placeholder_text = "123456789"
+
+[node name="SpeedLabel" type="Label" parent="Screen/Columns/Left/Bottom/Grid" unique_id=223871418]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Text!"
 
 [node name="Right" type="MarginContainer" parent="Screen/Columns" unique_id=1505254544]
 layout_mode = 2
@@ -314,6 +346,9 @@ offset_bottom = 40.0
 visible = false
 
 [connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/PointSlider" to="." method="_on_point_slider_drag_ended"]
+[connection signal="text_submitted" from="Screen/Columns/Left/Bottom/Grid/PointLineEdit" to="." method="_on_point_line_edit_text_submitted"]
+[connection signal="drag_ended" from="Screen/Columns/Left/Bottom/Grid/SpeedSlider" to="." method="_on_speed_slider_drag_ended"]
+[connection signal="text_submitted" from="Screen/Columns/Left/Bottom/Grid/SpeedLineEdit" to="." method="_on_speed_line_edit_text_submitted"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/BGColorButton" to="." method="_on_bg_color_button_pressed"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/LightColorButton" to="." method="_on_light_color_button_pressed"]
 [connection signal="pressed" from="Screen/Columns/Right/Top/Main/CenterButton" to="." method="_on_center_button_pressed"]

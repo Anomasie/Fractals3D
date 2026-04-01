@@ -8,20 +8,27 @@ var current_ifs = IFS.new()
 # how many points should be drawn (in this frame and at all?)
 var limit = 0
 var frame_limit = 1000 # to manage frame performance
-var frame_limit_for_new_ifs = 1000 # if ifs is loaded new
+var frame_limit_for_new_ifs : int = 1000 # if ifs is loaded new
 var max_frame_limit = 100000
 var frame_factor = 1.2
-var counter = 0
+var counter : int = 0
 
 var file_counter = 0
+
+const POINT_LIMIT_HALF_VALUE = 1000000
+const FRAME_LIMIT_HALF_VALUE = 1000
 
 # Result mesh stuff
 @onready var Result3D = $ViewportContainer/Subviewport/Result3D
 
 # sliders
+## point slider
 @onready var PointSlider = $Screen/Columns/Left/Bottom/Grid/PointSlider
 @onready var PointTeller = $Screen/Columns/Left/Bottom/Grid/PointSlider/PointTeller
 @onready var PointLineEdit = $Screen/Columns/Left/Bottom/Grid/PointLineEdit
+## speed slider
+@onready var SpeedSlider = $Screen/Columns/Left/Bottom/Grid/SpeedSlider
+@onready var SpeedLineEdit = $Screen/Columns/Left/Bottom/Grid/SpeedLineEdit
 
 # color sliders
 @onready var BGColorSliders = $BGColorSliders
@@ -42,11 +49,13 @@ func _ready():
 	# set values
 	## PointTeller (ActualValueSlider)
 	PointSlider.value = point_slider_descaled(Global.DEFAULT_POINTS)
+	SpeedSlider.value = speed_slider_descaled(FRAME_LIMIT_HALF_VALUE)
 	limit = Global.DEFAULT_POINTS
 	PointTeller.min_value = PointSlider.min_value
 	PointTeller.max_value = PointSlider.max_value
 	PointTeller.value = 0
 	PointLineEdit.placeholder_text = str(limit)
+	SpeedLineEdit.placeholder_text = str(frame_limit)
 	
 	# hide & show
 	BGColorSliders.hide()
@@ -106,19 +115,14 @@ func _process(delta):
 	new_ifs_this_frame = false
 
 func draw_points(delta, load_new_ifs=false):
-	if current_ifs and (limit < 0 or counter < limit):
+	if current_ifs and current_ifs.systems and (limit < 0 or counter < limit):
 		# decide how many points to be calculated in one frame
 		if current_ifs and len(current_ifs.systems) > 0:
 			if load_new_ifs:
 				if delta > 1.0/7:
-					frame_limit_for_new_ifs = frame_limit_for_new_ifs/frame_factor
+					frame_limit_for_new_ifs = int(frame_limit_for_new_ifs/frame_factor)
 				elif delta < 1.0/30:
-					frame_limit_for_new_ifs = frame_limit_for_new_ifs*frame_factor
-			else:
-				if delta > 1.0/30: # too slow
-					frame_limit = frame_limit/frame_factor
-				elif delta < 1.0/40: # fast enough
-					frame_limit = frame_limit*frame_factor
+					frame_limit_for_new_ifs = int(frame_limit_for_new_ifs*frame_factor)
 
 		# calculate more points
 		## how many?
@@ -126,7 +130,7 @@ func draw_points(delta, load_new_ifs=false):
 		if load_new_ifs:
 			amount = min(frame_limit_for_new_ifs, limit-counter)
 		else:
-			amount = min(frame_limit, limit-counter)
+			amount = frame_limit
 		
 		var start_point = point.new()
 		if current_ifs.reusing_last_point:
@@ -148,8 +152,6 @@ func draw_points(delta, load_new_ifs=false):
 
 # point limit
 
-const POINT_LIMIT_HALF_VALUE = 1000000
-
 func point_slider_scaled(x = float( PointSlider.value )):
 	if x >= PointSlider.max_value:
 		return -1
@@ -167,10 +169,51 @@ func point_slider_descaled(y):
 
 func _on_point_slider_drag_ended(_value_changed: bool) -> void:
 	# set new point limit
+	var old_limit = limit
 	limit = point_slider_scaled()
 	PointLineEdit.placeholder_text = str(limit)
+	if old_limit < limit:
+		set_ifs(current_ifs, false)
 	# if too many points:
 	counter = 0
+
+func _on_point_line_edit_text_submitted(new_text: String) -> void:
+	PointLineEdit.text = ""
+	var old_limit = limit
+	limit = int(new_text)
+	PointLineEdit.placeholder_text = str(limit)
+	PointSlider.value = point_slider_descaled(limit)
+	if old_limit < limit:
+		set_ifs(current_ifs, false)
+
+# speed slider
+
+# point limit
+
+func speed_slider_scaled(x = float( SpeedSlider.value )):
+	if x >= SpeedSlider.max_value:
+		return -1
+	else:
+		return int(
+			- log(float(SpeedSlider.max_value - x)/SpeedSlider.max_value) * FRAME_LIMIT_HALF_VALUE
+		)
+
+func speed_slider_descaled(y):
+	if y < 0:
+		return SpeedSlider.max_value
+	else:
+		return int( SpeedSlider.max_value * (1 - exp( - float(y) / FRAME_LIMIT_HALF_VALUE )) ) + 1
+
+func _on_speed_slider_drag_ended(_value_changed: bool) -> void:
+	# set new point limit
+	frame_limit = speed_slider_scaled()
+	SpeedLineEdit.placeholder_text = str(frame_limit)
+
+func _on_speed_line_edit_text_submitted(new_text: String) -> void:
+	SpeedLineEdit.text = ""
+	frame_limit = int(new_text)
+	SpeedLineEdit.placeholder_text = str(frame_limit)
+	SpeedSlider.value = speed_slider_descaled(frame_limit)
 
 # color sliders
 

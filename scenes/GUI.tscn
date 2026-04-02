@@ -1,21 +1,21 @@
 [gd_scene format=3 uid="uid://7bgwgslqm6hl"]
 
-[ext_resource type="Script" uid="uid://eapxsgipyw75" path="res://scenes/Root.gd" id="1_osk3a"]
-[ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="1_sfemp"]
-[ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="2_sfemp"]
-[ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_v4i4c"]
-[ext_resource type="PackedScene" uid="uid://dyags246afmgm" path="res://scenes/share-popup/ShareDialogue.tscn" id="5_8rmqh"]
+[ext_resource type="Script" uid="uid://eapxsgipyw75" path="res://scenes/GUI.gd" id="1_tqy5q"]
+[ext_resource type="PackedScene" uid="uid://badh6enwjuhom" path="res://scenes/playground/PlaygroundUI.tscn" id="2_hywd1"]
+[ext_resource type="PackedScene" uid="uid://dgxcq4wnjolon" path="res://scenes/results/ResultUI.tscn" id="3_cws7i"]
+[ext_resource type="Texture2D" uid="uid://c0ikmcsba2msv" path="res://assets/gui/playground_buttons.png" id="4_u3xxf"]
+[ext_resource type="PackedScene" uid="uid://dyags246afmgm" path="res://scenes/share-popup/ShareDialogue.tscn" id="5_cekc3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rmqh"]
-atlas = ExtResource("4_v4i4c")
+atlas = ExtResource("4_u3xxf")
 region = Rect2(0, 640, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ne5lc"]
-atlas = ExtResource("4_v4i4c")
+atlas = ExtResource("4_u3xxf")
 region = Rect2(64, 640, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7el72"]
-atlas = ExtResource("4_v4i4c")
+atlas = ExtResource("4_u3xxf")
 region = Rect2(32, 640, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4emob"]
@@ -25,7 +25,7 @@ load_path = "res://.godot/imported/playground_buttons.png-c3585ab828c152ec42a1d5
 atlas = SubResource("CompressedTexture2D_4emob")
 region = Rect2(96, 640, 32, 32)
 
-[node name="ROOT" type="Control" unique_id=362227451]
+[node name="GUI" type="Control" unique_id=362227451]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-script = ExtResource("1_osk3a")
+script = ExtResource("1_tqy5q")
 
 [node name="Container" type="HBoxContainer" parent="." unique_id=468426465]
 layout_mode = 1
@@ -47,11 +47,11 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="PlaygroundUI" parent="Container" unique_id=1930871 instance=ExtResource("1_sfemp")]
+[node name="PlaygroundUI" parent="Container" unique_id=1930871 instance=ExtResource("2_hywd1")]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ResultUI" parent="Container" unique_id=549357973 instance=ExtResource("2_sfemp")]
+[node name="ResultUI" parent="Container" unique_id=549357973 instance=ExtResource("3_cws7i")]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -89,7 +89,7 @@ offset_bottom = 24.0
 grow_horizontal = 2
 placeholder_text = "Debug line edit"
 
-[node name="ShareDialogue" parent="." unique_id=1929791214 instance=ExtResource("5_8rmqh")]
+[node name="ShareDialogue" parent="." unique_id=1929791214 instance=ExtResource("5_cekc3")]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -101,6 +101,21 @@ offset_left = -245.0
 offset_top = -285.0
 offset_right = 245.0
 offset_bottom = 285.0
+
+[node name="Screen" type="MarginContainer" parent="." unique_id=945558513]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_behavior_recursive = 1
+
+[node name="NotificationLabel" type="Label" parent="Screen" unique_id=1910294844]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Notification label! This is an alert that should not be shown in runtime."
 
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
 [connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]

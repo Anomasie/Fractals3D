@@ -5,12 +5,14 @@ extends Control
 @onready var SyncButton = $Center/SyncButton
 
 @onready var ShareDialogue = $ShareDialogue
+@onready var NotificationLabel = $Screen/NotificationLabel
 
 var js_callback_on_url_hash_change = JavaScriptBridge.create_callback(_on_url_hash_change)
 
 func _ready():
 	# hide and show
 	ShareDialogue.hide()
+	NotificationLabel.hide()
 	
 	# camera
 	_on_sync_button_pressed()
@@ -90,18 +92,42 @@ func try_load_from_string(meta_data):
 
 # notifications
 
+func show_alert(message : String, wait_time = 0) -> void:
+	NotificationLabel.text = message
+	NotificationLabel.show()
+	if wait_time:
+		await wait(wait_time)
+	else:
+		await get_tree().process_frame
+	NotificationLabel.hide()
+
+func wait(seconds : float = 1.0) -> void:
+	if seconds <= 0.0:
+		return
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.autostart = true
+	timer.wait_time = seconds
+	self.add_child(timer)
+	await timer.timeout
+	timer.queue_free()
+	return
+
 func _on_share_dialogue_sent_successfully() -> void:
-	print("successfully sent away")
+	show_alert("Your fractal has been sent to the gallery successfully.")
 
 func _on_share_dialogue_sent_unsuccessfully(error_code) -> void:
-	print("could not send away. Error code: ", error_code)
+	match error_code:
+		3:
+			show_alert("Error: Could not connect to gallery, probably due to failing of the internet connection.")
+		_:
+			show_alert("Error: Could not send fractal to gallery. Code " + error_code)
 
 func _on_share_dialogue_sent_away() -> void:
 	pass
 
-func _on_share_dialogue_no_connection_to_server() -> void:
-	print("ERROR in ROOT.gd: No connection to server!")
-
+func _on_share_dialogue_no_connection_to_server(result) -> void:
+	show_alert("Error: Could not connect to HTTP server.")
 
 # debug area
 

@@ -13,7 +13,6 @@ func send_image(image = Image.load_from_file("res://assets/icon.png"), descripti
 	PolaroidsApi.send_image(Global.GALLERY_ADRESS, image, description, nickname, venue, meta)
 
 func _on_response(result: int, response_code: int, response: Dictionary) -> void:
-	print(result)
 	if result == HTTPRequest.RESULT_SUCCESS:
 		if response_code == 200:
 			sent_successfully.emit()

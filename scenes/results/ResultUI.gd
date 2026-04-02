@@ -2,6 +2,7 @@ extends Control
 
 signal store_to_url
 signal share_fractal
+signal show_alert
 
 var current_ifs = IFS.new()
 
@@ -123,6 +124,11 @@ func draw_points(delta, load_new_ifs=false):
 					frame_limit_for_new_ifs = int(frame_limit_for_new_ifs/frame_factor)
 				elif delta < 1.0/30:
 					frame_limit_for_new_ifs = int(frame_limit_for_new_ifs*frame_factor)
+			else:
+				if delta > 1.0/7:
+					show_alert.emit("The frame rate is low. Consider calculating less points per frame (slider bottom right).", true)
+				elif delta < 1.0/60:
+					show_alert.emit("The frame rate is really high. Consider calculating more points per frame (slider bottom right).", true)
 
 		# calculate more points
 		## how many?
@@ -208,6 +214,9 @@ func _on_speed_slider_drag_ended(_value_changed: bool) -> void:
 	# set new point limit
 	frame_limit = speed_slider_scaled()
 	SpeedLineEdit.placeholder_text = str(frame_limit)
+	## show alerts
+	if frame_limit > 3000:
+		show_alert.emit("Warning! Computing " + str(frame_limit) + " points per frame might lead to significant lower fps.")
 
 func _on_speed_line_edit_text_submitted(new_text: String) -> void:
 	SpeedLineEdit.text = ""

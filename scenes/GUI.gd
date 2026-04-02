@@ -99,6 +99,8 @@ func show_alert(message : String, wait_time = true) -> void:
 		await wait()
 	else:
 		await get_tree().process_frame
+		await get_tree().process_frame
+		await get_tree().process_frame
 	NotificationLabel.hide()
 
 func wait(seconds : float = 2.5) -> void:
@@ -126,8 +128,11 @@ func _on_share_dialogue_sent_unsuccessfully(error_code) -> void:
 func _on_share_dialogue_sent_away() -> void:
 	show_alert("Sending fractal to gallery ...")
 
-func _on_share_dialogue_no_connection_to_server(result) -> void:
+func _on_share_dialogue_no_connection_to_server(_result) -> void:
 	show_alert("Error: Could not connect to HTTP server.")
+
+func _on_result_ui_show_alert(message : String, wait_for_it : bool = true) -> void:
+	show_alert(message, wait_for_it)
 
 # debug area
 

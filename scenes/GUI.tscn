@@ -117,6 +117,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Notification label! This is an alert that should not be shown in runtime."
 
+[node name="NotificationTimer" type="Timer" parent="." unique_id=1963015313]
+wait_time = 2.5
+one_shot = true
+
 [connection signal="fractal_changed" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed"]
 [connection signal="fractal_changed_vastly" from="Container/PlaygroundUI" to="." method="_on_playground_ui_fractal_changed_vastly"]
 [connection signal="share_fractal" from="Container/ResultUI" to="." method="_on_result_ui_share_fractal"]
@@ -128,3 +132,4 @@ text = "Notification label! This is an alert that should not be shown in runtime
 [connection signal="sent_away" from="ShareDialogue" to="." method="_on_share_dialogue_sent_away"]
 [connection signal="sent_successfully" from="ShareDialogue" to="." method="_on_share_dialogue_sent_successfully"]
 [connection signal="sent_unsuccessfully" from="ShareDialogue" to="." method="_on_share_dialogue_sent_unsuccessfully"]
+[connection signal="timeout" from="NotificationTimer" to="." method="_on_notification_timer_timeout"]

@@ -6,6 +6,7 @@ extends Control
 
 @onready var ShareDialogue = $ShareDialogue
 @onready var NotificationLabel = $Screen/NotificationLabel
+@onready var NotificationTimer = $NotificationTimer
 
 var js_callback_on_url_hash_change = JavaScriptBridge.create_callback(_on_url_hash_change)
 
@@ -96,24 +97,17 @@ func show_alert(message : String, wait_time = true) -> void:
 	NotificationLabel.text = message
 	NotificationLabel.show()
 	if wait_time:
-		await wait()
+		NotificationTimer.start()
 	else:
 		await get_tree().process_frame
 		await get_tree().process_frame
 		await get_tree().process_frame
-	NotificationLabel.hide()
+		if NotificationLabel.text == message:
+			NotificationLabel.hide()
 
-func wait(seconds : float = 2.5) -> void:
-	if seconds <= 0.0:
-		return
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.autostart = true
-	timer.wait_time = seconds
-	self.add_child(timer)
-	await timer.timeout
-	timer.queue_free()
-	return
+func _on_notification_timer_timeout() -> void:
+	NotificationLabel.text = ""
+	NotificationLabel.hide()
 
 func _on_share_dialogue_sent_successfully() -> void:
 	show_alert("Your fractal has been sent to the gallery successfully.")

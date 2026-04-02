@@ -266,7 +266,15 @@ func _on_light_color_sliders_finished() -> void:
 
 func get_image() -> Image:
 	var texture = (Result3D.get_viewport().get_texture())
-	return texture.get_image()
+	var image = texture.get_image()
+	var s = min( image.get_width(), image.get_height() )
+	var x = (image.get_width() - s)/2
+	var y = (image.get_height() - s)/2
+	var cropped_image = image.get_region(Rect2i(
+		x,y,
+		s,s
+	))
+	return cropped_image
 
 func save(path):
 	# save image

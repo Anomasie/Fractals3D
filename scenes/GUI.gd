@@ -92,16 +92,16 @@ func try_load_from_string(meta_data):
 
 # notifications
 
-func show_alert(message : String, wait_time = 0) -> void:
+func show_alert(message : String, wait_time = true) -> void:
 	NotificationLabel.text = message
 	NotificationLabel.show()
 	if wait_time:
-		await wait(wait_time)
+		await wait()
 	else:
 		await get_tree().process_frame
 	NotificationLabel.hide()
 
-func wait(seconds : float = 1.0) -> void:
+func wait(seconds : float = 2.5) -> void:
 	if seconds <= 0.0:
 		return
 	var timer = Timer.new()
@@ -124,7 +124,7 @@ func _on_share_dialogue_sent_unsuccessfully(error_code) -> void:
 			show_alert("Error: Could not send fractal to gallery. Code " + error_code)
 
 func _on_share_dialogue_sent_away() -> void:
-	pass
+	show_alert("Sending fractal to gallery ...")
 
 func _on_share_dialogue_no_connection_to_server(result) -> void:
 	show_alert("Error: Could not connect to HTTP server.")

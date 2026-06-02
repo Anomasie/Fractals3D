@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://eeubmpoydn2u" path="res://file-contact/MyFileDialog.tscn" id="6_alrpd"]
 [ext_resource type="PackedScene" uid="uid://dbsrwqoc4xjea" path="res://scenes/color-options/LightColorSliders.tscn" id="6_vurmb"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7nurk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqfh"]
 atlas = ExtResource("2_t20r7")
-region = Rect2(0, 320, 32, 32)
+region = Rect2(64, 352, 32, 32)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7nurk"]
 
@@ -19,10 +19,17 @@ region = Rect2(0, 320, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib1ij"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t20r7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2nw1"]
 atlas = ExtResource("2_t20r7")
-region = Rect2(32, 320, 32, 32)
-margin = Rect2(32, 0, 0, 0)
+region = Rect2(96, 352, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nurk"]
+atlas = ExtResource("2_t20r7")
+region = Rect2(64, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxkhy"]
+atlas = ExtResource("2_t20r7")
+region = Rect2(96, 320, 32, 32)
 
 [sub_resource type="InputEventKey" id="InputEventKey_iumx3"]
 device = -1
@@ -190,7 +197,7 @@ columns = 4
 [node name="PointTexture1" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1176675348]
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_7nurk")
+texture = SubResource("AtlasTexture_lsqfh")
 
 [node name="PointSlider" type="HSlider" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1715495702]
 layout_mode = 2
@@ -218,10 +225,10 @@ value = 200000.0
 editable = false
 scrollable = false
 
-[node name="PointTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=893778573]
+[node name="PointTexture3" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=278910879]
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_t20r7")
+texture = SubResource("AtlasTexture_u2nw1")
 
 [node name="PointLineEdit" type="LineEdit" parent="Screen/Columns/Left/Bottom/Grid" unique_id=1955955914]
 custom_minimum_size = Vector2(100, 0)
@@ -240,10 +247,10 @@ size_flags_vertical = 4
 max_value = 1000000.0
 value = 500000.0
 
-[node name="SpeedTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=458435323]
+[node name="SpeedTexture2" type="TextureRect" parent="Screen/Columns/Left/Bottom/Grid" unique_id=2005249654]
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_t20r7")
+texture = SubResource("AtlasTexture_uxkhy")
 
 [node name="SpeedLineEdit" type="LineEdit" parent="Screen/Columns/Left/Bottom/Grid" unique_id=279399461]
 custom_minimum_size = Vector2(100, 0)

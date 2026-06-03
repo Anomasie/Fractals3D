@@ -11,5 +11,5 @@ static func are_equal_approx(A, B):
 static func nrnumber() -> float: # nice random number
 	var nrn = randf() + randf()
 	nrn /= 2
-	nrn *= (int(randf() < 0.5)-0.5)*2
+	nrn *= (int(randf() < 0.5)-0.5)*2 * (2.0/3+randf()/3)
 	return nrn
